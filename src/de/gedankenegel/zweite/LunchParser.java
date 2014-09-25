@@ -85,7 +85,7 @@ public class LunchParser {
 				            Elements tds = row.select("td");
 				            
 				            if (!tds.isEmpty()) {
-			        			   if(tds.html().contains("€"))
+			        			   if(tds.html().contains("â‚¬-"))
 					        			   if(convertString(tds.get(1).text()) >= 0.1) {
 								        		   Log.d("App",tds.get(0).text() + ":" + tds.get(1).text()+ ":" + tds.get(2).text()+":" + tds.get(3).text());
 								        		   mittagsgerichte.add(new Mittagsgericht(tds.get(0).text(), convertString(tds.get(1).text()), convertString(tds.get(2).text()), convertString(tds.get(3).text())));
@@ -109,7 +109,7 @@ public class LunchParser {
 	
 	public float convertString(String td) {
 		float l=0;
-		String s = td.replaceAll("€", "");
+		String s = td.replaceAll("â‚¬", "");
 		s = s.replaceAll(",", ".");
 		try {
 			l = Float.parseFloat(s);
