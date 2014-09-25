@@ -29,6 +29,7 @@ public class dlfile {
 	               Log.d("DownloadManager", "downloaded file name:" + fileName);
 	               /* Open a connection to that URL. */
 	               URLConnection ucon = url.openConnection();
+			//€€€€ ÄäÄÄää
 
 	               /*
 	                * Define InputStreams to read from the URLConnection.
