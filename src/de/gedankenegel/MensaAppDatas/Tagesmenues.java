@@ -1,10 +1,6 @@
-package de.gedankenegel.zweite;
+package de.gedankenegel.MensaAppDatas;
 
-import java.util.Date;
-import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-
 
 
 public class Tagesmenues {

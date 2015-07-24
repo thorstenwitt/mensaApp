@@ -1,4 +1,4 @@
-package de.gedankenegel.zweite;
+package de.gedankenegel.MensaAppDatas;
 
 
 

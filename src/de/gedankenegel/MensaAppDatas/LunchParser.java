@@ -1,7 +1,6 @@
-package de.gedankenegel.zweite;
+package de.gedankenegel.MensaAppDatas;
 
 import java.io.IOException;
-import java.util.Date;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 
@@ -12,9 +11,7 @@ import org.jsoup.select.Elements;
 
 import android.util.Log;
 
-import java.util.Currency;
 import java.util.LinkedList;
-import java.util.Locale;
 import java.util.Queue;
 
 

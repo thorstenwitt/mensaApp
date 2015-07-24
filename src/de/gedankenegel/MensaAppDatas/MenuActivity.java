@@ -1,12 +1,11 @@
-package de.gedankenegel.zweite;
+package de.gedankenegel.MensaAppDatas;
 
 import java.text.DateFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 import de.stdevelopment.MensaApp.R;
-import de.stdevelopment.MensaApp.R.layout;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;

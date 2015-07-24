@@ -1,10 +1,9 @@
-package de.gedankenegel.zweite;
+package de.gedankenegel.MensaAppDatas;
 
 import java.io.File;
 
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
-import android.*;
 import android.content.Intent;
 import android.net.Uri;
 import android.widget.Toast;

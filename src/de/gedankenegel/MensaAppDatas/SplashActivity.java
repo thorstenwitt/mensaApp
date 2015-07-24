@@ -1,17 +1,15 @@
-package de.gedankenegel.zweite;
+package de.gedankenegel.MensaAppDatas;
 
 import java.io.IOException;
 
 import de.stdevelopment.MensaApp.R;
-import de.stdevelopment.MensaApp.R.layout;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
