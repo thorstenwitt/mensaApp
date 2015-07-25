@@ -60,7 +60,7 @@ public class LunchParser {
 		}
 		requestedDays.add("");
 		while(!requestedDays.isEmpty()) {
-			String url="http://www.fh-stralsund.de/studwerk/speiseplan/speiseplan_hst.php"+requestedDays.poll();
+			String url="http://studwerk.fh-stralsund.de/speiseplan/speiseplan_hst.php"+requestedDays.poll();
 			try {
 				Document doc = Jsoup.connect(url).get();
 				String day = doc.getElementsByTag("h2").get(0).text();
@@ -68,28 +68,28 @@ public class LunchParser {
 				ArrayList<Mittagsgericht> mittagsgerichte = new ArrayList<Mittagsgericht>(); 
 						
 				Elements links = doc.getElementsByTag("a");
-				for (Element link: links) {
-					if(link.text().equals("weiter")) {
-						requestedDays.offer(link.attr("href"));
-					}
+				if(links.size()>2) {
+					requestedDays.offer(links.get(2).attr("href"));
 				}
+
 				doc.select("span").remove();
 				doc.getElementsByClass("tblkopflinks").remove();
 				doc.getElementsByClass("tblkopf").remove();
+				doc.select("sup").remove();
+
 				
 					for (Element table : doc.select("table")) {
 				        for (Element row : table.select("tr")) {
 				            Elements tds = row.select("td");
-				            
 				            if (!tds.isEmpty()) {
-			        			   if(tds.html().contains("€-"))
-					        			   if(convertString(tds.get(1).text()) >= 0.1) {
-								        		   Log.d("App",tds.get(0).text() + ":" + tds.get(1).text()+ ":" + tds.get(2).text()+":" + tds.get(3).text());
-								        		   mittagsgerichte.add(new Mittagsgericht(tds.get(0).text(), convertString(tds.get(1).text()), convertString(tds.get(2).text()), convertString(tds.get(3).text())));
-								        		   //m.addMittagsgericht(tds.get(0).text(), convertString(tds.get(1).text()), convertString(tds.get(2).text()), convertString(tds.get(3).text()));
-				        				   }
-						        		}
-				       			}
+								if (tds.html().contains("€")) {
+									if (convertString(tds.get(1).text()) >= 0.1) {
+										Log.d("App", tds.get(0).text() + ":" + tds.get(1).text() + ":" + tds.get(2).text() + ":" + tds.get(3).text());
+										mittagsgerichte.add(new Mittagsgericht(tds.get(0).text(), convertString(tds.get(1).text()), convertString(tds.get(2).text()), convertString(tds.get(3).text())));
+									}
+								}
+							}
+						}
 				    }
 				gerichteListe.add(new Tagesmenues(day, mittagsgerichte));
 					
@@ -106,7 +106,7 @@ public class LunchParser {
 	
 	public float convertString(String td) {
 		float l=0;
-		String s = td.replaceAll("€", "");
+		String s = td.replaceAll("\\s€", "");
 		s = s.replaceAll(",", ".");
 		try {
 			l = Float.parseFloat(s);
@@ -114,8 +114,6 @@ public class LunchParser {
 		catch (Exception e) {
 			Log.d("App", e.getMessage());
 		}
-		
-		
 		return l;
 	}
 
