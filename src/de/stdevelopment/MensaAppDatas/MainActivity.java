@@ -1,4 +1,4 @@
-package de.gedankenegel.MensaAppDatas;
+package de.stdevelopment.MensaAppDatas;
 
 
 import java.util.ArrayList;
