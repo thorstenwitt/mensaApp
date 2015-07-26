@@ -54,8 +54,7 @@ public class SplashActivity extends Activity {
 
 		@Override
 		protected void onPreExecute() {
-		    }
-
+	    }
 		@Override
 		protected String doInBackground(String... params) {
 			LunchParser lp = LunchParser.getInstance();
@@ -67,15 +66,11 @@ public class SplashActivity extends Activity {
 			}
 		    return null;
 		}
-
 		@Override
 		protected void onPostExecute(String result) {
 			Intent i = new Intent(getApplicationContext(), MenuActivity.class);
 			startActivity(i);
 			finish();
-
 		}
-
 	}
-
 }

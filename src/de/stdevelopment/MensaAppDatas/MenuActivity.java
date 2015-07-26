@@ -61,12 +61,15 @@ public class MenuActivity extends Activity {
 				
 			}
 		});
-		
 		lstLunch = (ListView) findViewById(R.id.listViewLunch);
 		LunchParser lp = LunchParser.getInstance();
-		myLunchData = lp.getLunchData();
-		
-		
+
+		if(savedInstanceState!=null) {
+			myLunchData = savedInstanceState.getParcelableArrayList("menues");
+		}
+		else {
+			myLunchData = lp.getLunchData();
+		}
 		ArrayList<String> lunchDates = new ArrayList<String>();
 		for(Tagesmenues t:myLunchData) {
 			DateFormat df = DateFormat.getDateInstance();
@@ -103,19 +106,25 @@ public class MenuActivity extends Activity {
 
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int position,
-					long arg3) {
+									long arg3) {
 				gesamtBetrag += selectedMittagsgerichte.get(position).preisStud;
 				updateBetragsLabel(gesamtBetrag);
 			}
 		});
 	}
 	@Override
+	protected void onSaveInstanceState(Bundle bundle) {
+		bundle.putParcelableArrayList("menues", myLunchData);
+	}
+
+
+	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
 		
 		menu.add(Menu.NONE, 0, Menu.NONE,"Speisekarte aktualisieren");
 		
-		SubMenu submenu = menu.addSubMenu(Menu.NONE, 1, Menu.NONE,"Preiskategorie auswählen");
+		SubMenu submenu = menu.addSubMenu(Menu.NONE, 1, Menu.NONE,"Preiskategorie auswaehlen");
 		menu.add(Menu.NONE, 2, Menu.NONE,"Beenden");
 		submenu.add(Menu.NONE, 11, Menu.NONE,"Studenten");
 		submenu.add(Menu.NONE, 12, Menu.NONE,"Angestellte");
@@ -144,6 +153,6 @@ public class MenuActivity extends Activity {
 		if(item.getItemId()==13) {
 			setListAdapter(selectedDay, PREIS_GAST);
 		}		
-		return super.onOptionsItemSelected(item);	
+		return super.onOptionsItemSelected(item);
 	}
 }

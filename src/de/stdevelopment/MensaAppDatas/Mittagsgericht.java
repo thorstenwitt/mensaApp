@@ -1,9 +1,12 @@
 package de.stdevelopment.MensaAppDatas;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 
 
-public class Mittagsgericht {
+public class Mittagsgericht implements Parcelable {
 	String mName;
 	float preisStud;
 	float preisMit;
@@ -14,6 +17,14 @@ public class Mittagsgericht {
 	
 	public Mittagsgericht() {
 		
+	}
+
+	public Mittagsgericht(Parcel in) {
+		mName = in.readString();
+		preisStud = in.readFloat();
+		preisMit = in.readFloat();
+		preisGast = in.readFloat();
+
 	}
 	public Mittagsgericht(String lName,float lpreisStud,float lpreisMit, float lpreisGast) {
 		
@@ -54,8 +65,30 @@ public class Mittagsgericht {
 		
 		return gn;
 	}
-	
-	
+
+
+	@Override
+	public int describeContents() {
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeString(mName);
+		dest.writeFloat(preisGast);
+		dest.writeFloat(preisMit);
+		dest.writeFloat(preisStud);
+	}
+
+	public static final Parcelable.Creator<Mittagsgericht> CREATOR = new Parcelable.Creator<Mittagsgericht>() {
+		public Mittagsgericht createFromParcel(Parcel in) {
+			return new Mittagsgericht(in);
+		}
+
+		public Mittagsgericht[] newArray(int size) {
+			return new Mittagsgericht[size];
+		}
+	};
 }
 
 	
