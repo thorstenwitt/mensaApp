@@ -5,7 +5,6 @@ package de.thorstenwitt.mensaapp;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 
-import de.thorstenwitt.mensaapp.R;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,25 +15,25 @@ import android.widget.TextView;
 public class MenuListAdapter extends BaseAdapter {
 	
 	private Context mContext;
-	ArrayList<Mittagsgericht> myMenu;
+	ArrayList<MiddayMeal> myMenu;
 	private int preistyp;
-	private final int PREIS_STUDENT = 0;
-	private final int PREIS_ANGESTELLTER = 1;
-	private final int PREIS_GAST = 2;
+	private final int PRICE_STUDENT = 0;
+	private final int PRICE_EMPLOYEE = 1;
+	private final int PRICE_GUEST = 2;
 	
 	
 
-	public MenuListAdapter(Context mContext,ArrayList<Mittagsgericht> pMittagsgericht, int preistyp) {
+	public MenuListAdapter(Context mContext, ArrayList<MiddayMeal> pMiddayMeal, int preistyp) {
 		super();
 		this.mContext = mContext;
-		myMenu = pMittagsgericht;
-		this.preistyp = preistyp; 
+		myMenu = pMiddayMeal;
+		this.preistyp = preistyp;
 	
 	}
 
 	@Override
 	public int getCount() {
-		//return myMenu.get(0).mittagsgerichte.size();
+		//return myMenu.get(0).middayMealList.size();
 		return myMenu.size();
 	}
 
@@ -56,14 +55,14 @@ public class MenuListAdapter extends BaseAdapter {
         TextView tvLunchPrice=(TextView)view.findViewById(R.id.lunchPrice);
         tvLunchName.setText(myMenu.get(position).mName);
         NumberFormat nf = NumberFormat.getCurrencyInstance();
-        if(preistyp==PREIS_STUDENT) {
-        	tvLunchPrice.setText(nf.format(myMenu.get(position).preisStud));	
+        if(preistyp== PRICE_STUDENT) {
+        	tvLunchPrice.setText(nf.format(myMenu.get(position).priceStud));
         }
-        else if(preistyp==PREIS_ANGESTELLTER) {
-        	tvLunchPrice.setText(nf.format(myMenu.get(position).preisMit));	
+        else if(preistyp== PRICE_EMPLOYEE) {
+        	tvLunchPrice.setText(nf.format(myMenu.get(position).priceEmp));
         }        
-        else if(preistyp==PREIS_GAST) {
-        	tvLunchPrice.setText(nf.format(myMenu.get(position).preisGast));	
+        else if(preistyp== PRICE_GUEST) {
+        	tvLunchPrice.setText(nf.format(myMenu.get(position).priceGuest));
         }
 
         return view;

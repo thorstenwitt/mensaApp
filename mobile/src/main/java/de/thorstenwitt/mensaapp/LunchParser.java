@@ -24,7 +24,7 @@ public class LunchParser {
 	
 	Queue<String> requestedDays = new LinkedList<String>();
 	NumberFormat nf = NumberFormat.getInstance();
-	ArrayList<Tagesmenues> gerichteListe = new ArrayList<Tagesmenues>();
+	ArrayList<FoodSelection> foodSelectionList = new ArrayList<FoodSelection>();
 	DateFormat df = new SimpleDateFormat("EEEE, dd.MM.yyyy");
 	private static LunchParser instance = null;
 
@@ -38,21 +38,21 @@ public class LunchParser {
 		return instance;
 	}
 	
-	public static ArrayList<Tagesmenues> exampleDatas() {
-		Mittagsgericht m1 = new Mittagsgericht("Schnitzel",1,2,3);
-		Mittagsgericht m2 = new Mittagsgericht("Nudeln",0.5f,1f,1.5f);
-		Mittagsgericht m3 = new Mittagsgericht("Wurst",2,4,6);
+	public static ArrayList<FoodSelection> exampleDatas() {
+		MiddayMeal m1 = new MiddayMeal("Schnitzel",1,2,3);
+		MiddayMeal m2 = new MiddayMeal("Nudeln",0.5f,1f,1.5f);
+		MiddayMeal m3 = new MiddayMeal("Wurst",2,4,6);
 		String d1 = "Montag 1.1.2001";
 		String d2 = "Dienstag 1.2.2002";
-		ArrayList<Mittagsgericht> mm1 = new ArrayList<Mittagsgericht>();
+		ArrayList<MiddayMeal> mm1 = new ArrayList<MiddayMeal>();
 		mm1.add(m1);
 		mm1.add(m2);
-		ArrayList<Mittagsgericht> mm2 = new ArrayList<Mittagsgericht>();
+		ArrayList<MiddayMeal> mm2 = new ArrayList<MiddayMeal>();
 		mm2.add(m3);
 		
-		Tagesmenues myDay1 = new Tagesmenues(d1, mm1);
-		Tagesmenues myDay2 = new Tagesmenues(d2, mm2);
-		ArrayList<Tagesmenues> liste = new ArrayList<Tagesmenues>();
+		FoodSelection myDay1 = new FoodSelection(d1, mm1);
+		FoodSelection myDay2 = new FoodSelection(d2, mm2);
+		ArrayList<FoodSelection> liste = new ArrayList<FoodSelection>();
 		liste.add(myDay1);
 		liste.add(myDay2);
 		return liste;
@@ -60,8 +60,8 @@ public class LunchParser {
 	}
 	 
 	public void parse() throws IOException {
-		if(!gerichteListe.isEmpty()) {
-			gerichteListe = new ArrayList<Tagesmenues>();
+		if(!foodSelectionList.isEmpty()) {
+			foodSelectionList = new ArrayList<FoodSelection>();
 		}
 		requestedDays.add("");
 		while(!requestedDays.isEmpty()) {
@@ -70,7 +70,7 @@ public class LunchParser {
 				Document doc = Jsoup.connect(url).get();
 				String day = doc.getElementsByTag("h2").get(0).text();
 				day = day.substring(0, day.indexOf(" ("));
-				ArrayList<Mittagsgericht> mittagsgerichte = new ArrayList<Mittagsgericht>(); 
+				ArrayList<MiddayMeal> middayMealList = new ArrayList<MiddayMeal>();
 						
 				Elements links = doc.getElementsByTag("a");
 				for (Element e: links) {
@@ -98,13 +98,13 @@ public class LunchParser {
 								if (tds.html().contains("€")) {
 									if (convertString(tds.get(1).text()) >= 0.1) {
 										Log.d("App", tds.get(0).text() + ":" + tds.get(1).text() + ":" + tds.get(2).text() + ":" + tds.get(3).text());
-										mittagsgerichte.add(new Mittagsgericht(tds.get(0).text(), convertString(tds.get(1).text()), convertString(tds.get(2).text()), convertString(tds.get(3).text())));
+										middayMealList.add(new MiddayMeal(tds.get(0).text(), convertString(tds.get(1).text()), convertString(tds.get(2).text()), convertString(tds.get(3).text())));
 									}
 								}
 							}
 						}
 				    }
-				gerichteListe.add(new Tagesmenues(day, mittagsgerichte));
+				foodSelectionList.add(new FoodSelection(day, middayMealList));
 					
 			}
 			catch (IOException e) {
@@ -112,8 +112,8 @@ public class LunchParser {
 			}
 		}
 	}
-	public ArrayList<Tagesmenues> getLunchData() {
-		return gerichteListe;
+	public ArrayList<FoodSelection> getLunchData() {
+		return foodSelectionList;
 	}
 		    
 	

@@ -4,12 +4,8 @@ import java.text.DateFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 
-import de.thorstenwitt.mensaapp.R;
-
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -27,16 +23,16 @@ import android.widget.Spinner;
 
 public class MenuActivity extends AppCompatActivity {
 	
-	public TextView lbBetrag;
+	public TextView lbAmount;
 	public Button btReset;
 	public Spinner spDate;
 	public ListView lstLunch;
 	public MenuListAdapter menuListAdapter;
-	public float gesamtBetrag = 0.0f;
-	public ArrayList<Tagesmenues> myLunchData;
-	private final int PREIS_STUDENT = 0;
-	private final int PREIS_ANGESTELLTER = 1;
-	private final int PREIS_GAST = 2;
+	public float totalAmount = 0.0f;
+	public ArrayList<FoodSelection> myLunchData;
+	private final int PRICE_STUDENT = 0;
+	private final int PRICE_EMPLOYEE = 1;
+	private final int PRICE_GUEST = 2;
 	int selectedDay=0;
 	
 
@@ -44,7 +40,7 @@ public class MenuActivity extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_menu);
-		lbBetrag = (TextView) findViewById(R.id.textViewBetrag);
+		lbAmount = (TextView) findViewById(R.id.textViewBetrag);
 		btReset = (Button) findViewById(R.id.buttonReset);
 		spDate = (Spinner) findViewById(R.id.spinnerDay);
 		spDate.setOnItemSelectedListener(new OnItemSelectedListener() {
@@ -53,7 +49,7 @@ public class MenuActivity extends AppCompatActivity {
 			public void onItemSelected(AdapterView<?> arg0, View arg1,
 					int position, long arg3) {
 				selectedDay = position;
-				setListAdapter(selectedDay,PREIS_STUDENT);
+				setListAdapter(selectedDay, PRICE_STUDENT);
 				
 			}
 
@@ -73,7 +69,7 @@ public class MenuActivity extends AppCompatActivity {
 			myLunchData = lp.getLunchData();
 		}
 		ArrayList<String> lunchDates = new ArrayList<String>();
-		for(Tagesmenues t:myLunchData) {
+		for(FoodSelection t:myLunchData) {
 			DateFormat df = DateFormat.getDateInstance();
 			String myDate = t.getMydate(); 
 			lunchDates.add(myDate);
@@ -84,33 +80,33 @@ public class MenuActivity extends AppCompatActivity {
 
 		
 		
-		updateBetragsLabel(gesamtBetrag);
+		updateAmountLabel(totalAmount);
 		btReset.setText("Reset");
 		btReset.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				gesamtBetrag=0.0f;
-				updateBetragsLabel(gesamtBetrag);
+				totalAmount =0.0f;
+				updateAmountLabel(totalAmount);
 				
 			}
 		});
 		
 	}
-	public void updateBetragsLabel(float betrag) {
-		lbBetrag.setText("Gesamtbetrag: "+NumberFormat.getCurrencyInstance().format(betrag));
+	public void updateAmountLabel(float amount) {
+		lbAmount.setText("Gesamtbetrag: "+NumberFormat.getCurrencyInstance().format(amount));
 	}
-	public void setListAdapter(int selectedDay, int preistyp){
-		final ArrayList<Mittagsgericht> selectedMittagsgerichte = myLunchData.get(selectedDay).getMittagsgerichte();
-		menuListAdapter = new MenuListAdapter(this.getApplicationContext(),selectedMittagsgerichte,preistyp);
+	public void setListAdapter(int selectedDay, int priceCategory){
+		final ArrayList<MiddayMeal> selectedMiddayMeals = myLunchData.get(selectedDay).getMiddayMealList();
+		menuListAdapter = new MenuListAdapter(this.getApplicationContext(), selectedMiddayMeals, priceCategory);
 		lstLunch.setAdapter(menuListAdapter);
 		lstLunch.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int position,
 									long arg3) {
-				gesamtBetrag += selectedMittagsgerichte.get(position).preisStud;
-				updateBetragsLabel(gesamtBetrag);
+				totalAmount += selectedMiddayMeals.get(position).priceStud;
+				updateAmountLabel(totalAmount);
 			}
 		});
 	}
@@ -147,13 +143,13 @@ public class MenuActivity extends AppCompatActivity {
 			System.exit(1);
 		}
 		if(item.getItemId()==11) {
-			setListAdapter(selectedDay, PREIS_STUDENT);
+			setListAdapter(selectedDay, PRICE_STUDENT);
 		}
 		if(item.getItemId()==12) {
-			setListAdapter(selectedDay, PREIS_ANGESTELLTER);
+			setListAdapter(selectedDay, PRICE_EMPLOYEE);
 		}
 		if(item.getItemId()==13) {
-			setListAdapter(selectedDay, PREIS_GAST);
+			setListAdapter(selectedDay, PRICE_GUEST);
 		}		
 		return super.onOptionsItemSelected(item);
 	}
