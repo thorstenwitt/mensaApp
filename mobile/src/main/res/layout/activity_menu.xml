@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    tools:context=".MenuActivity">
+    tools:context=".activity.MenuActivity">
 
     <Spinner
         android:id="@+id/spinnerDay"
