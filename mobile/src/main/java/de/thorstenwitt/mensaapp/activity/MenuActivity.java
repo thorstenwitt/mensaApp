@@ -1,4 +1,4 @@
-package de.thorstenwitt.mensaapp;
+package de.thorstenwitt.mensaapp.activity;
 
 import java.text.DateFormat;
 import java.text.NumberFormat;
@@ -20,6 +20,12 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Spinner;
+
+import de.thorstenwitt.mensaapp.parser.LunchParser;
+import de.thorstenwitt.mensaapp.businessobject.MenuListAdapter;
+import de.thorstenwitt.mensaapp.R;
+import de.thorstenwitt.mensaapp.businessobject.Lunch;
+import de.thorstenwitt.mensaapp.businessobject.LunchOffer;
 
 public class MenuActivity extends AppCompatActivity {
 	
@@ -105,7 +111,7 @@ public class MenuActivity extends AppCompatActivity {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int position,
 									long arg3) {
-				totalAmount += selectedLunches.get(position).priceStud;
+				totalAmount += selectedLunches.get(position).getPriceStud();
 				updateAmountLabel(totalAmount);
 			}
 		});

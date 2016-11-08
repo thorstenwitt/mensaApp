@@ -1,4 +1,4 @@
-package de.thorstenwitt.mensaapp;
+package de.thorstenwitt.mensaapp.businessobject;
 
 
 
@@ -11,6 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import de.thorstenwitt.mensaapp.R;
+import de.thorstenwitt.mensaapp.businessobject.Lunch;
 
 public class MenuListAdapter extends BaseAdapter {
 	
@@ -53,16 +56,16 @@ public class MenuListAdapter extends BaseAdapter {
         view = inflater.inflate(R.layout.listviewlunch, null);
         TextView tvLunchName=(TextView)view.findViewById(R.id.lunchName);
         TextView tvLunchPrice=(TextView)view.findViewById(R.id.lunchPrice);
-        tvLunchName.setText(myMenu.get(position).mName);
+        tvLunchName.setText(myMenu.get(position).getmName());
         NumberFormat nf = NumberFormat.getCurrencyInstance();
         if(preistyp== PRICE_STUDENT) {
-        	tvLunchPrice.setText(nf.format(myMenu.get(position).priceStud));
+        	tvLunchPrice.setText(nf.format(myMenu.get(position).getPriceStud()));
         }
         else if(preistyp== PRICE_EMPLOYEE) {
-        	tvLunchPrice.setText(nf.format(myMenu.get(position).priceEmp));
+        	tvLunchPrice.setText(nf.format(myMenu.get(position).getPriceEmp()));
         }        
         else if(preistyp== PRICE_GUEST) {
-        	tvLunchPrice.setText(nf.format(myMenu.get(position).priceGuest));
+        	tvLunchPrice.setText(nf.format(myMenu.get(position).getPriceGuest()));
         }
 
         return view;

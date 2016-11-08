@@ -1,17 +1,15 @@
-package de.thorstenwitt.mensaapp;
+package de.thorstenwitt.mensaapp.activity;
 
 import java.io.IOException;
 
+import de.thorstenwitt.mensaapp.parser.LunchParser;
 import de.thorstenwitt.mensaapp.R;
 
-import android.app.ActionBar;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.View;

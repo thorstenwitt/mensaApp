@@ -1,4 +1,4 @@
-package de.thorstenwitt.mensaapp;
+package de.thorstenwitt.mensaapp.parser;
 
 import java.io.IOException;
 import java.text.DateFormat;
@@ -18,6 +18,8 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.Queue;
 
+import de.thorstenwitt.mensaapp.businessobject.Lunch;
+import de.thorstenwitt.mensaapp.businessobject.LunchOffer;
 
 
 public class LunchParser {
