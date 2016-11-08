@@ -14,19 +14,13 @@ public class Lunch implements Parcelable {
 	private float priceGuest;
 	private ArrayList<Lunch> m = new ArrayList<Lunch>();
 
-	 
-	
-	public Lunch() {
-		
-	}
-
 	public Lunch(Parcel in) {
 		setmName(in.readString());
 		setPriceStud(in.readFloat());
 		setPriceEmp(in.readFloat());
 		setPriceGuest(in.readFloat());
-
 	}
+
 	public Lunch(String lName, float lpriceStud, float lpriceEmp, float lpriceGuest) {
 		
 		setmName(lName);
@@ -34,39 +28,6 @@ public class Lunch implements Parcelable {
 		setPriceEmp(lpriceEmp);
 		setPriceGuest(lpriceGuest);
 	}
-	
-	public void addMittagsgericht(String lName, float lpriceStud, float lpriceEmp, float lpreisGast) {
-		/*mName = lName;
-		priceStud = lpriceStud;
-		priceEmp = lpriceEmp;
-		priceGuest = lpreisGast;
-		*/
-		getM().add(new Lunch(lName, lpriceStud, lpriceEmp,lpreisGast));
-		
-	}
-	
-	public ArrayList<Lunch> returnGerichte () {
-		
-		return getM();
-	}
-	// 1=Student, 2=Employee, 3=Guest
-
-	public ArrayList<String> returnGerichtsnamen () {
-		ArrayList<String> gn = new ArrayList<String>();
-		for (int i = 0; i< getM().size(); i++) {
-			if(getM().get(i).getmName().equals("")) {
-				gn.add("<Unbenanntes Lunch>");
-			}
-			else {
-				gn.add(getM().get(i).getmName());
-			}
-			
-		}
-		
-		
-		return gn;
-	}
-
 
 	@Override
 	public int describeContents() {
@@ -123,13 +84,6 @@ public class Lunch implements Parcelable {
 		this.priceGuest = priceGuest;
 	}
 
-	public ArrayList<Lunch> getM() {
-		return m;
-	}
-
-	public void setM(ArrayList<Lunch> m) {
-		this.m = m;
-	}
 }
 
 	

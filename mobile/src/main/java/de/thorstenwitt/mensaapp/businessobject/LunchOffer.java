@@ -24,16 +24,8 @@ public class LunchOffer implements Parcelable{
 		return mydate;
 	}
 
-	public void setMydate(String mydate) {
-		this.mydate = mydate;
-	}
-
 	public ArrayList<Lunch> getLunchList() {
 		return lunchList;
-	}
-
-	public void setLunchList(ArrayList<Lunch> lunchList) {
-		this.lunchList = lunchList;
 	}
 
 	@Override
