@@ -6,27 +6,27 @@ import android.os.Parcelable;
 import java.util.ArrayList;
 
 
-public class MiddayMeal implements Parcelable {
+public class Lunch implements Parcelable {
 	String mName;
 	float priceStud;
 	float priceEmp;
 	float priceGuest;
-	ArrayList<MiddayMeal> m = new ArrayList<MiddayMeal>();
+	ArrayList<Lunch> m = new ArrayList<Lunch>();
 
 	 
 	
-	public MiddayMeal() {
+	public Lunch() {
 		
 	}
 
-	public MiddayMeal(Parcel in) {
+	public Lunch(Parcel in) {
 		mName = in.readString();
 		priceStud = in.readFloat();
 		priceEmp = in.readFloat();
 		priceGuest = in.readFloat();
 
 	}
-	public MiddayMeal(String lName, float lpriceStud, float lpriceEmp, float lpriceGuest) {
+	public Lunch(String lName, float lpriceStud, float lpriceEmp, float lpriceGuest) {
 		
 		mName = lName;
 		priceStud = lpriceStud;
@@ -40,11 +40,11 @@ public class MiddayMeal implements Parcelable {
 		priceEmp = lpriceEmp;
 		priceGuest = lpreisGast;
 		*/
-		m.add(new MiddayMeal(lName, lpriceStud, lpriceEmp,lpreisGast));
+		m.add(new Lunch(lName, lpriceStud, lpriceEmp,lpreisGast));
 		
 	}
 	
-	public ArrayList<MiddayMeal> returnGerichte () {
+	public ArrayList<Lunch> returnGerichte () {
 		
 		return m;
 	}
@@ -54,7 +54,7 @@ public class MiddayMeal implements Parcelable {
 		ArrayList<String> gn = new ArrayList<String>();
 		for (int i=0; i<m.size(); i++) {
 			if(m.get(i).mName.equals("")) {
-				gn.add("<Unbenanntes MiddayMeal>");
+				gn.add("<Unbenanntes Lunch>");
 			}
 			else {
 				gn.add(m.get(i).mName);
@@ -80,13 +80,13 @@ public class MiddayMeal implements Parcelable {
 		dest.writeFloat(priceStud);
 	}
 
-	public static final Creator<MiddayMeal> CREATOR = new Creator<MiddayMeal>() {
-		public MiddayMeal createFromParcel(Parcel in) {
-			return new MiddayMeal(in);
+	public static final Creator<Lunch> CREATOR = new Creator<Lunch>() {
+		public Lunch createFromParcel(Parcel in) {
+			return new Lunch(in);
 		}
 
-		public MiddayMeal[] newArray(int size) {
-			return new MiddayMeal[size];
+		public Lunch[] newArray(int size) {
+			return new Lunch[size];
 		}
 	};
 }

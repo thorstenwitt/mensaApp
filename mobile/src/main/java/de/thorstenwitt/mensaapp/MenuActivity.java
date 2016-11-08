@@ -29,7 +29,7 @@ public class MenuActivity extends AppCompatActivity {
 	public ListView lstLunch;
 	public MenuListAdapter menuListAdapter;
 	public float totalAmount = 0.0f;
-	public ArrayList<FoodSelection> myLunchData;
+	public ArrayList<LunchOffer> myLunchData;
 	private final int PRICE_STUDENT = 0;
 	private final int PRICE_EMPLOYEE = 1;
 	private final int PRICE_GUEST = 2;
@@ -69,7 +69,7 @@ public class MenuActivity extends AppCompatActivity {
 			myLunchData = lp.getLunchData();
 		}
 		ArrayList<String> lunchDates = new ArrayList<String>();
-		for(FoodSelection t:myLunchData) {
+		for(LunchOffer t:myLunchData) {
 			DateFormat df = DateFormat.getDateInstance();
 			String myDate = t.getMydate(); 
 			lunchDates.add(myDate);
@@ -97,15 +97,15 @@ public class MenuActivity extends AppCompatActivity {
 		lbAmount.setText("Gesamtbetrag: "+NumberFormat.getCurrencyInstance().format(amount));
 	}
 	public void setListAdapter(int selectedDay, int priceCategory){
-		final ArrayList<MiddayMeal> selectedMiddayMeals = myLunchData.get(selectedDay).getMiddayMealList();
-		menuListAdapter = new MenuListAdapter(this.getApplicationContext(), selectedMiddayMeals, priceCategory);
+		final ArrayList<Lunch> selectedLunches = myLunchData.get(selectedDay).getLunchList();
+		menuListAdapter = new MenuListAdapter(this.getApplicationContext(), selectedLunches, priceCategory);
 		lstLunch.setAdapter(menuListAdapter);
 		lstLunch.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int position,
 									long arg3) {
-				totalAmount += selectedMiddayMeals.get(position).priceStud;
+				totalAmount += selectedLunches.get(position).priceStud;
 				updateAmountLabel(totalAmount);
 			}
 		});

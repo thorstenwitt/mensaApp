@@ -15,7 +15,7 @@ import android.widget.TextView;
 public class MenuListAdapter extends BaseAdapter {
 	
 	private Context mContext;
-	ArrayList<MiddayMeal> myMenu;
+	ArrayList<Lunch> myMenu;
 	private int preistyp;
 	private final int PRICE_STUDENT = 0;
 	private final int PRICE_EMPLOYEE = 1;
@@ -23,17 +23,17 @@ public class MenuListAdapter extends BaseAdapter {
 	
 	
 
-	public MenuListAdapter(Context mContext, ArrayList<MiddayMeal> pMiddayMeal, int preistyp) {
+	public MenuListAdapter(Context mContext, ArrayList<Lunch> pLunch, int preistyp) {
 		super();
 		this.mContext = mContext;
-		myMenu = pMiddayMeal;
+		myMenu = pLunch;
 		this.preistyp = preistyp;
 	
 	}
 
 	@Override
 	public int getCount() {
-		//return myMenu.get(0).middayMealList.size();
+		//return myMenu.get(0).lunchList.size();
 		return myMenu.size();
 	}
 
