@@ -18,7 +18,7 @@
         </activity>
         <activity
             android:name=".MenuActivity"
-            android:label="MensaApp 2.0"
+            android:label="MensaApp 3.0"
             android:screenOrientation="portrait" >
         </activity>
     </application>
