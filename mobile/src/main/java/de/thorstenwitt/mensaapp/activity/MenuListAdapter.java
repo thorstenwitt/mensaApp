@@ -1,4 +1,4 @@
-package de.thorstenwitt.mensaapp.businessobject;
+package de.thorstenwitt.mensaapp.activity;
 
 
 

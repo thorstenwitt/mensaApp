@@ -2,7 +2,10 @@ package de.thorstenwitt.mensaapp.activity;
 
 import java.text.DateFormat;
 import java.text.NumberFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,9 +23,9 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import de.thorstenwitt.mensaapp.parser.LunchParser;
-import de.thorstenwitt.mensaapp.businessobject.MenuListAdapter;
 import de.thorstenwitt.mensaapp.R;
 import de.thorstenwitt.mensaapp.businessobject.Lunch;
 import de.thorstenwitt.mensaapp.businessobject.LunchOffer;
@@ -72,13 +75,20 @@ public class MenuActivity extends AppCompatActivity {
 			myLunchData = savedInstanceState.getParcelableArrayList("menues");
 		}
 		else {
-			myLunchData = lp.getLunchData();
+			myLunchData = lp.getLunchDataForStralsund();
 		}
 		ArrayList<String> lunchDates = new ArrayList<String>();
 		for(LunchOffer t:myLunchData) {
-			DateFormat df = DateFormat.getDateInstance();
-			String myDate = t.getMydate(); 
-			lunchDates.add(myDate);
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			try {
+				Date lunchOfferDate = sdf.parse(t.getMydate());
+				String localizedLunchDate = DateFormat.getDateInstance().format(lunchOfferDate);
+				lunchDates.add(localizedLunchDate);
+			} catch (ParseException e) {
+				Toast.makeText(getApplicationContext(),e.getLocalizedMessage(), Toast.LENGTH_LONG);
+			}
+
+
 		}
 		ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, lunchDates);
 		spDate.setAdapter(spinnerAdapter);

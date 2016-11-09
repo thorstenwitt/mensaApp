@@ -1,37 +1,37 @@
 package de.thorstenwitt.mensaapp.parser;
 
 import java.io.IOException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-
 import android.util.Log;
 
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.Queue;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Element;
+
+import java.util.List;
+import java.util.Locale;
+
 
 import de.thorstenwitt.mensaapp.businessobject.Lunch;
 import de.thorstenwitt.mensaapp.businessobject.LunchOffer;
+import de.thorstenwitt.mensaapp.businessobject.Mensa;
 
 
 public class LunchParser {
-	
-	Queue<String> requestedDays = new LinkedList<String>();
-	NumberFormat nf = NumberFormat.getInstance();
-	ArrayList<LunchOffer> lunchOfferList = new ArrayList<LunchOffer>();
-	DateFormat df = new SimpleDateFormat("EEEE, dd.MM.yyyy");
+
 	private static LunchParser instance = null;
+	ArrayList<Mensa> mensaList = new ArrayList<>();
+	DecimalFormat df = (DecimalFormat) DecimalFormat.getNumberInstance(Locale.GERMANY);
+
 
 	private LunchParser() {
-		
+
 	}
 	public static LunchParser getInstance() {
 		if(instance == null) {
@@ -40,97 +40,74 @@ public class LunchParser {
 		return instance;
 	}
 	
-	public static ArrayList<LunchOffer> exampleDatas() {
-		Lunch m1 = new Lunch("Schnitzel",1,2,3);
-		Lunch m2 = new Lunch("Nudeln",0.5f,1f,1.5f);
-		Lunch m3 = new Lunch("Wurst",2,4,6);
-		String d1 = "Montag 1.1.2001";
-		String d2 = "Dienstag 1.2.2002";
-		ArrayList<Lunch> mm1 = new ArrayList<Lunch>();
-		mm1.add(m1);
-		mm1.add(m2);
-		ArrayList<Lunch> mm2 = new ArrayList<Lunch>();
-		mm2.add(m3);
-		
-		LunchOffer myDay1 = new LunchOffer(d1, mm1);
-		LunchOffer myDay2 = new LunchOffer(d2, mm2);
-		ArrayList<LunchOffer> liste = new ArrayList<LunchOffer>();
-		liste.add(myDay1);
-		liste.add(myDay2);
-		return liste;
-		
-	}
-	 
-	public void parse() throws IOException {
-		if(!lunchOfferList.isEmpty()) {
-			lunchOfferList = new ArrayList<LunchOffer>();
-		}
-		requestedDays.add("");
-		while(!requestedDays.isEmpty()) {
-			String url="http://studwerk.fh-stralsund.de/speiseplan/speiseplan_hst.php"+requestedDays.poll();
-			try {
-				Document doc = Jsoup.connect(url).get();
-				String day = doc.getElementsByTag("h2").get(0).text();
-				day = day.substring(0, day.indexOf(" ("));
-				ArrayList<Lunch> lunchList = new ArrayList<Lunch>();
-						
-				Elements links = doc.getElementsByTag("a");
-				for (Element e: links) {
-					String strDate = e.text();
-					try {
-						Date linkDate = new SimpleDateFormat("EEEE, dd.MM.yy").parse(strDate);
-						Date currentParsedDate = df.parse(day);
-						if(currentParsedDate.before(linkDate)) {
-							requestedDays.offer(e.attr("href"));
-						}
-					} catch (ParseException e1) {
-						e1.printStackTrace();
-					}
-				}
-				doc.select("span").remove();
-				doc.getElementsByClass("tblkopflinks").remove();
-				doc.getElementsByClass("tblkopf").remove();
-				doc.select("sup").remove();
 
-				
-					for (Element table : doc.select("table")) {
-				        for (Element row : table.select("tr")) {
-				            Elements tds = row.select("td");
-				            if (!tds.isEmpty()) {
-								if (tds.html().contains("€")) {
-									if (convertString(tds.get(1).text()) >= 0.1) {
-										Log.d("App", tds.get(0).text() + ":" + tds.get(1).text() + ":" + tds.get(2).text() + ":" + tds.get(3).text());
-										lunchList.add(new Lunch(tds.get(0).text(), convertString(tds.get(1).text()), convertString(tds.get(2).text()), convertString(tds.get(3).text())));
-									}
-								}
-							}
+	public void parse() throws IOException {
+		URL mensaUrl = new URL("http://studwerk.fh-stralsund.de/speiseplan/speiseplan_xml.php");
+		URLConnection connection = mensaUrl.openConnection();
+		org.jsoup.nodes.Document mensaDoc = Jsoup.parse(connection.getInputStream(),"UTF-8","http://studwerk.fh-stralsund.de/speiseplan/speiseplan_xml.php");
+
+		int i=0;
+		for (Element mensaElement: mensaDoc.children().select("mensa > name")) {
+
+			String mensaName = mensaElement.text();
+			mensaList.add(new Mensa(mensaName, new ArrayList<LunchOffer>()));
+
+			for (Element lunchOffer: mensaElement.parent().children().select("theke > gericht")) {
+				Lunch lunch;
+				String date = lunchOffer.children().select("datum").text();
+				String lunchOfferName = "";
+				String foodAdditives = "";
+				try {
+					float studentPrice = df.parse(lunchOffer.children().select("preisStudent").text()).floatValue();
+					float employeePrice = df.parse(lunchOffer.children().select("preisMitarbeiter").text()).floatValue();
+					float guestPrice = df.parse(lunchOffer.children().select("preisGast").text()).floatValue();
+					for(Element name: lunchOffer.children().select("name")) {
+						if(name.parent().tagName().equals("gericht")) {
+							lunchOfferName = name.text();
 						}
-				    }
-				lunchOfferList.add(new LunchOffer(day, lunchList));
-					
+						else {
+							foodAdditives+=name.text()+" ";
+						}
+					}
+
+					lunch = new Lunch(lunchOfferName, studentPrice, employeePrice, guestPrice);
+					boolean lunchOfferNotExists = true;
+					for(LunchOffer existentLunchOffers: mensaList.get(i).getGerichte()) {
+						if(existentLunchOffers.getMydate().equals(date)) {
+							existentLunchOffers.getLunchList().add(lunch);
+							lunchOfferNotExists=false;
+							break;
+						}
+					}
+					if (lunchOfferNotExists) {
+						ArrayList<Lunch> lunchList = new ArrayList<>();
+						lunchList.add(lunch);
+						LunchOffer lunchOfferDay = new LunchOffer(date, lunchList);
+						mensaList.get(i).getGerichte().add(lunchOfferDay);
+					}
+
+				}
+				catch (ParseException e) {
+					System.out.println(e.getMessage());
+				}
+
 			}
-			catch (IOException e) {
-				throw e; 
-			}
+			i++;
 		}
 	}
-	public ArrayList<LunchOffer> getLunchData() {
-		return lunchOfferList;
+	public ArrayList<LunchOffer> getLunchDataForStralsund() {
+		for(Mensa mensa: mensaList) {
+			if (mensa.getMensaName().equals("Mensa Stralsund")) {
+				return mensa.getGerichte();
+			}
+		}
+		return null;
 	}
-		    
+
+	public List<Mensa> getLunchDataForAllMensas() {
+		return mensaList;
+	}
 	
-	public float convertString(String td) {
-		float l=0;
-		String s = td.replaceAll("\\s€", "");
-		s = s.replaceAll(",", ".");
-		try {
-			l = Float.parseFloat(s);
-		}
-		catch (Exception e) {
-			Log.d("App", e.getMessage());
-		}
-		return l;
-	}
 
 
 }

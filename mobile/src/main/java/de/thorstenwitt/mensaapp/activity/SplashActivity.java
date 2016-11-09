@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class SplashActivity extends AppCompatActivity {
 	
@@ -70,8 +71,7 @@ public class SplashActivity extends AppCompatActivity {
 			try {
 				lp.parse();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				Toast.makeText(getApplicationContext(),e.getLocalizedMessage(),Toast.LENGTH_LONG);
 			}
 		    return null;
 		}

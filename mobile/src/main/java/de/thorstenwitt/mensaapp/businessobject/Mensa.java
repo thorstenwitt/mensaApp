@@ -1,14 +1,14 @@
 package de.thorstenwitt.mensaapp.businessobject;
 
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class Mensa {
 
     private String mensaName;
-    private List<LunchOffer> lunchOffers;
+    private ArrayList<LunchOffer> lunchOffers;
 
-    public Mensa(String mensaName, List<LunchOffer> lunchOffers) {
+    public Mensa(String mensaName, ArrayList<LunchOffer> lunchOffers) {
         this.mensaName = mensaName;
         this.lunchOffers = lunchOffers;
     }
@@ -21,11 +21,11 @@ public class Mensa {
         this.mensaName = mensaName;
     }
 
-    public List<LunchOffer> getGerichte() {
+    public ArrayList<LunchOffer> getGerichte() {
         return lunchOffers;
     }
 
-    public void setGerichte(List<LunchOffer> lunchOffers) {
+    public void setGerichte(ArrayList<LunchOffer> lunchOffers) {
         lunchOffers = lunchOffers;
     }
 }
