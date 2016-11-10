@@ -30,3 +30,4 @@ proguard/
 
 # Scheiß idea
 .idea
+.iml
