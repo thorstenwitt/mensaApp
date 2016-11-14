@@ -6,12 +6,15 @@ import android.util.Log;
 import static android.content.ContentValues.TAG;
 import android.content.Context;
 
+import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.wearable.DataApi;
 import com.google.android.gms.wearable.PutDataMapRequest;
 import com.google.android.gms.wearable.PutDataRequest;
 import com.google.android.gms.wearable.Wearable;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by freese on 13.11.2016.
@@ -56,6 +59,7 @@ public class SyncHelper {
             });
         }
     Log.d(TAG, "GOOGLEAPI!!!!!!!!! :" + googleApiClient.isConnected() );
+
 
     }
     private boolean validateConnection() {
