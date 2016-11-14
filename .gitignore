@@ -31,3 +31,5 @@ proguard/
 # idea
 *.idea
 *.iml
+mobile/mobile.iml
+wear/wear.iml
