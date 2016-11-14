@@ -10,6 +10,8 @@ import android.widget.ListView;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
+import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.wearable.CapabilityApi;
 import com.google.android.gms.wearable.CapabilityInfo;
@@ -30,7 +32,7 @@ import java.util.concurrent.TimeUnit;
  * Created by freese on 13.11.2016.
  */
 
-public class SyncHelper implements GoogleApiClient.ConnectionCallbacks, CapabilityApi.CapabilityListener, MessageApi.MessageListener, DataApi.DataListener, GoogleApiClient.OnConnectionFailedListener {
+public class SyncHelper implements ConnectionCallbacks, CapabilityApi.CapabilityListener, MessageApi.MessageListener, DataApi.DataListener, OnConnectionFailedListener {
     private GoogleApiClient googleApiClient;
     private Context context;
     private static SyncHelper instance;
@@ -49,7 +51,6 @@ public class SyncHelper implements GoogleApiClient.ConnectionCallbacks, Capabili
         if (instance == null) {
             instance = new SyncHelper(context.getApplicationContext());
         }
-
         return instance;
     }
 
@@ -82,9 +83,6 @@ public class SyncHelper implements GoogleApiClient.ConnectionCallbacks, Capabili
         googleApiClient.connect();
         Log.d(TAG, "gSTATUS:" + googleApiClient.isConnected());
      }
-
-
-
 
     @Override
     public void onConnected(Bundle bundle) {
