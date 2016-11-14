@@ -25,6 +25,7 @@ import android.widget.TextView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import de.thorstenwitt.mensaapp.datasync.SyncHelper;
 import de.thorstenwitt.mensaapp.parser.LunchParser;
 import de.thorstenwitt.mensaapp.R;
 import de.thorstenwitt.mensaapp.businessobject.Lunch;
@@ -43,7 +44,7 @@ public class MenuActivity extends AppCompatActivity {
 	private final int PRICE_EMPLOYEE = 1;
 	private final int PRICE_GUEST = 2;
 	int selectedDay=0;
-	
+	private SyncHelper syncHelper;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +69,10 @@ public class MenuActivity extends AppCompatActivity {
 				
 			}
 		});
+
+		syncHelper = SyncHelper.getInstance(this);
+		syncHelper.testConnection();
+
 		lstLunch = (ListView) findViewById(R.id.listViewLunch);
 		LunchParser lp = LunchParser.getInstance();
 
