@@ -21,11 +21,11 @@ public class Mensa {
         this.mensaName = mensaName;
     }
 
-    public ArrayList<LunchOffer> getGerichte() {
+    public ArrayList<LunchOffer> getLunchOffers() {
         return lunchOffers;
     }
 
-    public void setGerichte(ArrayList<LunchOffer> lunchOffers) {
+    public void setLunchOffers(ArrayList<LunchOffer> lunchOffers) {
         lunchOffers = lunchOffers;
     }
 }

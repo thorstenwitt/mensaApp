@@ -3,13 +3,9 @@ package de.thorstenwitt.mensaapp.parser;
 import java.io.IOException;
 import java.net.URL;
 import java.net.URLConnection;
-import java.text.DateFormat;
 import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import android.util.Log;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
@@ -72,7 +68,7 @@ public class LunchParser {
 
 					lunch = new Lunch(lunchOfferName, studentPrice, employeePrice, guestPrice);
 					boolean lunchOfferNotExists = true;
-					for(LunchOffer existentLunchOffers: mensaList.get(i).getGerichte()) {
+					for(LunchOffer existentLunchOffers: mensaList.get(i).getLunchOffers()) {
 						if(existentLunchOffers.getMydate().equals(date)) {
 							existentLunchOffers.getLunchList().add(lunch);
 							lunchOfferNotExists=false;
@@ -83,7 +79,7 @@ public class LunchParser {
 						ArrayList<Lunch> lunchList = new ArrayList<>();
 						lunchList.add(lunch);
 						LunchOffer lunchOfferDay = new LunchOffer(date, lunchList);
-						mensaList.get(i).getGerichte().add(lunchOfferDay);
+						mensaList.get(i).getLunchOffers().add(lunchOfferDay);
 					}
 
 				}
@@ -98,7 +94,7 @@ public class LunchParser {
 	public ArrayList<LunchOffer> getLunchDataForStralsund() {
 		for(Mensa mensa: mensaList) {
 			if (mensa.getMensaName().equals("Mensa Stralsund")) {
-				return mensa.getGerichte();
+				return mensa.getLunchOffers();
 			}
 		}
 		return null;
