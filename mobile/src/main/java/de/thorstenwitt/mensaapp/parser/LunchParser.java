@@ -42,6 +42,8 @@ public class LunchParser {
 	
 
 	public void parse() throws IOException {
+		mensaList = new ArrayList<>();
+
 		URL mensaUrl = new URL("http://studwerk.fh-stralsund.de/speiseplan/speiseplan_xml.php");
 		URLConnection connection = mensaUrl.openConnection();
 		org.jsoup.nodes.Document mensaDoc = Jsoup.parse(connection.getInputStream(),"UTF-8","http://studwerk.fh-stralsund.de/speiseplan/speiseplan_xml.php");
