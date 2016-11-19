@@ -29,5 +29,6 @@ proguard/
 .navigation/
 
 # idea
-*.idea
+.idea
 *.iml
+
