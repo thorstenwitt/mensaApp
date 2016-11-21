@@ -13,6 +13,9 @@ public class Lunch implements Parcelable {
 	private float priceEmp;
 	private float priceGuest;
 	private ArrayList<Lunch> m = new ArrayList<Lunch>();
+	public static final int PRICE_STUDENT = 0;
+	public static final int PRICE_EMPLOYEE = 1;
+	public static int PRICE_GUEST = 2;
 
 	public Lunch(Parcel in) {
 		setmName(in.readString());

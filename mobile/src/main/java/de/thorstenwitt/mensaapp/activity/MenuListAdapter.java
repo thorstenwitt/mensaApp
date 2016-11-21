@@ -20,9 +20,6 @@ public class MenuListAdapter extends BaseAdapter {
 	private Context mContext;
 	ArrayList<Lunch> myMenu;
 	private int preistyp;
-	private final int PRICE_STUDENT = 0;
-	private final int PRICE_EMPLOYEE = 1;
-	private final int PRICE_GUEST = 2;
 	
 	
 
@@ -58,13 +55,13 @@ public class MenuListAdapter extends BaseAdapter {
         TextView tvLunchPrice=(TextView)view.findViewById(R.id.lunchPrice);
         tvLunchName.setText(myMenu.get(position).getmName());
         NumberFormat nf = NumberFormat.getCurrencyInstance();
-        if(preistyp== PRICE_STUDENT) {
+        if(preistyp==Lunch.PRICE_STUDENT) {
         	tvLunchPrice.setText(nf.format(myMenu.get(position).getPriceStud()));
         }
-        else if(preistyp== PRICE_EMPLOYEE) {
+        else if(preistyp==Lunch.PRICE_EMPLOYEE) {
         	tvLunchPrice.setText(nf.format(myMenu.get(position).getPriceEmp()));
         }        
-        else if(preistyp== PRICE_GUEST) {
+        else if(preistyp==Lunch.PRICE_GUEST) {
         	tvLunchPrice.setText(nf.format(myMenu.get(position).getPriceGuest()));
         }
 

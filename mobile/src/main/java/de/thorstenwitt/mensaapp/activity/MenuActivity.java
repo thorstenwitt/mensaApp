@@ -39,9 +39,6 @@ public class MenuActivity extends AppCompatActivity {
 	public MenuListAdapter menuListAdapter;
 	public float totalAmount = 0.0f;
 	public ArrayList<LunchOffer> myLunchData;
-	private static final int PRICE_STUDENT = 0;
-	private static final int PRICE_EMPLOYEE = 1;
-	private static final int PRICE_GUEST = 2;
 	int selectedDay=0;
 	
 
@@ -58,7 +55,7 @@ public class MenuActivity extends AppCompatActivity {
 			public void onItemSelected(AdapterView<?> arg0, View arg1,
 					int position, long arg3) {
 				selectedDay = position;
-				setListAdapter(selectedDay, PRICE_STUDENT);
+				setListAdapter(selectedDay, Lunch.PRICE_STUDENT);
 				
 			}
 
@@ -112,7 +109,7 @@ public class MenuActivity extends AppCompatActivity {
 	public void updateAmountLabel(float amount) {
 		lbAmount.setText("Gesamtbetrag: "+NumberFormat.getCurrencyInstance().format(amount));
 	}
-	public void setListAdapter(int selectedDay, int priceCategory){
+	public void setListAdapter(int selectedDay, final int priceCategory){
 		final ArrayList<Lunch> selectedLunches = myLunchData.get(selectedDay).getLunchList();
 		menuListAdapter = new MenuListAdapter(this.getApplicationContext(), selectedLunches, priceCategory);
 		lstLunch.setAdapter(menuListAdapter);
@@ -121,10 +118,10 @@ public class MenuActivity extends AppCompatActivity {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int position,
 									long arg3) {
-				if (priceCategory == PRICE_STUDENT){
+				if (priceCategory == Lunch.PRICE_STUDENT){
 					totalAmount += selectedLunches.get(position).getPriceStud();
 					updateAmountLabel(totalAmount);
-				}else if (priceCategory == PRICE_EMPLOYEE){
+				}else if (priceCategory == Lunch.PRICE_EMPLOYEE){
 					totalAmount += selectedLunches.get(position).getPriceEmp();
 					updateAmountLabel(totalAmount);
 				}else{
@@ -167,13 +164,13 @@ public class MenuActivity extends AppCompatActivity {
 			System.exit(1);
 		}
 		if(item.getItemId()==11) {
-			setListAdapter(selectedDay, PRICE_STUDENT);
+			setListAdapter(selectedDay, Lunch.PRICE_STUDENT);
 		}
 		if(item.getItemId()==12) {
-			setListAdapter(selectedDay, PRICE_EMPLOYEE);
+			setListAdapter(selectedDay, Lunch.PRICE_EMPLOYEE);
 		}
 		if(item.getItemId()==13) {
-			setListAdapter(selectedDay, PRICE_GUEST);
+			setListAdapter(selectedDay, Lunch.PRICE_GUEST);
 		}		
 		return super.onOptionsItemSelected(item);
 	}
