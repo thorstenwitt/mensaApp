@@ -39,9 +39,9 @@ public class MenuActivity extends AppCompatActivity {
 	public MenuListAdapter menuListAdapter;
 	public float totalAmount = 0.0f;
 	public ArrayList<LunchOffer> myLunchData;
-	private final int PRICE_STUDENT = 0;
-	private final int PRICE_EMPLOYEE = 1;
-	private final int PRICE_GUEST = 2;
+	private static final int PRICE_STUDENT = 0;
+	private static final int PRICE_EMPLOYEE = 1;
+	private static final int PRICE_GUEST = 2;
 	int selectedDay=0;
 	
 
