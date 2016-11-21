@@ -30,4 +30,5 @@ proguard/
 
 # idea
 .idea
-.iml
+*.iml
+

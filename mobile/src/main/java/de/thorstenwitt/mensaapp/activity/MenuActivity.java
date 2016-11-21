@@ -32,17 +32,17 @@ import de.thorstenwitt.mensaapp.businessobject.LunchOffer;
 
 public class MenuActivity extends AppCompatActivity {
 	
-	public TextView  lbAmount;
+	public TextView lbAmount;
 	public Button btReset;
 	public Spinner spDate;
 	public ListView lstLunch;
 	public MenuListAdapter menuListAdapter;
 	public float totalAmount = 0.0f;
 	public ArrayList<LunchOffer> myLunchData;
-	public final int PRICE_STUDENT = 0;
-	public final int PRICE_EMPLOYEE = 1;
-	public final int PRICE_GUEST = 2;
-	int selectedDay = 0;
+	private final int PRICE_STUDENT = 0;
+	private final int PRICE_EMPLOYEE = 1;
+	private final int PRICE_GUEST = 2;
+	int selectedDay=0;
 	
 
 	@Override
@@ -94,7 +94,7 @@ public class MenuActivity extends AppCompatActivity {
 		spDate.setAdapter(spinnerAdapter);
 
 
-
+		
 		
 		updateAmountLabel(totalAmount);
 		btReset.setText("Reset");
@@ -112,7 +112,7 @@ public class MenuActivity extends AppCompatActivity {
 	public void updateAmountLabel(float amount) {
 		lbAmount.setText("Gesamtbetrag: "+NumberFormat.getCurrencyInstance().format(amount));
 	}
-	public void setListAdapter(int selectedDay, final int priceCategory){
+	public void setListAdapter(int selectedDay, int priceCategory){
 		final ArrayList<Lunch> selectedLunches = myLunchData.get(selectedDay).getLunchList();
 		menuListAdapter = new MenuListAdapter(this.getApplicationContext(), selectedLunches, priceCategory);
 		lstLunch.setAdapter(menuListAdapter);
