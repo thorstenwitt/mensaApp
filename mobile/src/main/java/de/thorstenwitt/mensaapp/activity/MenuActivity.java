@@ -40,6 +40,7 @@ public class MenuActivity extends AppCompatActivity {
 	public float totalAmount = 0.0f;
 	public ArrayList<LunchOffer> myLunchData;
 	int selectedDay=0;
+	private int priceCategory = Lunch.PRICE_STUDENT;
 	
 
 	@Override
@@ -55,7 +56,7 @@ public class MenuActivity extends AppCompatActivity {
 			public void onItemSelected(AdapterView<?> arg0, View arg1,
 					int position, long arg3) {
 				selectedDay = position;
-				setListAdapter(selectedDay, Lunch.PRICE_STUDENT);
+				setListAdapter(selectedDay);
 				
 			}
 
@@ -109,7 +110,7 @@ public class MenuActivity extends AppCompatActivity {
 	public void updateAmountLabel(float amount) {
 		lbAmount.setText("Gesamtbetrag: "+NumberFormat.getCurrencyInstance().format(amount));
 	}
-	public void setListAdapter(int selectedDay, final int priceCategory){
+	public void setListAdapter(int selectedDay){
 		final ArrayList<Lunch> selectedLunches = myLunchData.get(selectedDay).getLunchList();
 		menuListAdapter = new MenuListAdapter(this.getApplicationContext(), selectedLunches, priceCategory);
 		lstLunch.setAdapter(menuListAdapter);
@@ -164,13 +165,16 @@ public class MenuActivity extends AppCompatActivity {
 			System.exit(1);
 		}
 		if(item.getItemId()==11) {
-			setListAdapter(selectedDay, Lunch.PRICE_STUDENT);
+			priceCategory = Lunch.PRICE_STUDENT;
+			setListAdapter(selectedDay);
 		}
 		if(item.getItemId()==12) {
-			setListAdapter(selectedDay, Lunch.PRICE_EMPLOYEE);
+			priceCategory = Lunch.PRICE_EMPLOYEE;
+			setListAdapter(selectedDay);
 		}
 		if(item.getItemId()==13) {
-			setListAdapter(selectedDay, Lunch.PRICE_GUEST);
+			priceCategory = Lunch.PRICE_GUEST;
+			setListAdapter(selectedDay);
 		}		
 		return super.onOptionsItemSelected(item);
 	}
