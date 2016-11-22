@@ -1,15 +1,29 @@
 package de.thorstenwitt.mensaapp.activity;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.lang.reflect.Array;
 import java.text.DateFormat;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.UUID;
 
 import android.content.Intent;
+import android.content.IntentSender;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.SubMenu;
@@ -25,12 +39,32 @@ import android.widget.TextView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.wearable.Asset;
+import com.google.android.gms.wearable.CapabilityApi;
+import com.google.android.gms.wearable.CapabilityInfo;
+import com.google.android.gms.wearable.DataApi;
+import com.google.android.gms.wearable.DataEvent;
+import com.google.android.gms.wearable.DataEventBuffer;
+import com.google.android.gms.wearable.MessageApi;
+import com.google.android.gms.wearable.MessageEvent;
+import com.google.android.gms.wearable.PutDataMapRequest;
+import com.google.android.gms.wearable.PutDataRequest;
+import com.google.android.gms.wearable.Wearable;
+
 import de.thorstenwitt.mensaapp.parser.LunchParser;
 import de.thorstenwitt.mensaapp.R;
 import de.thorstenwitt.mensaapp.businessobject.Lunch;
 import de.thorstenwitt.mensaapp.businessobject.LunchOffer;
 
-public class MenuActivity extends AppCompatActivity {
+public class MenuActivity extends AppCompatActivity implements
+		CapabilityApi.CapabilityListener,
+		MessageApi.MessageListener,
+		DataApi.DataListener,
+		GoogleApiClient.ConnectionCallbacks,
+		GoogleApiClient.OnConnectionFailedListener {
 	
 	public TextView lbAmount;
 	public Button btReset;
@@ -41,7 +75,11 @@ public class MenuActivity extends AppCompatActivity {
 	public ArrayList<LunchOffer> myLunchData;
 	int selectedDay=0;
 	private int priceCategory = Lunch.PRICE_STUDENT;
-	
+
+	private GoogleApiClient mGoogleApiClient;
+	private boolean mResolvingError = false;
+	//Request code for launching the Intent to resolve Google Play services errors.
+	private static final int REQUEST_RESOLVE_ERROR = 1000;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -86,14 +124,11 @@ public class MenuActivity extends AppCompatActivity {
 				Toast.makeText(getApplicationContext(),e.getLocalizedMessage(), Toast.LENGTH_LONG);
 			}
 
-
 		}
 		ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, lunchDates);
 		spDate.setAdapter(spinnerAdapter);
 
 
-		
-		
 		updateAmountLabel(totalAmount);
 		btReset.setText("Reset");
 		btReset.setOnClickListener(new OnClickListener() {
@@ -105,8 +140,19 @@ public class MenuActivity extends AppCompatActivity {
 				
 			}
 		});
-		
+		mGoogleApiClient = new GoogleApiClient.Builder(this)
+				.addApi(Wearable.API)
+				.addConnectionCallbacks(this)
+				.addOnConnectionFailedListener(this)
+				.build();
+		if (!mResolvingError) {
+			mGoogleApiClient.connect();
+		}
+		Bitmap bitmap = Bitmap.createBitmap(300,300, Bitmap.Config.ARGB_8888);
+		sendPhoto(toAsset(bitmap));
 	}
+
+
 	public void updateAmountLabel(float amount) {
 		lbAmount.setText("Gesamtbetrag: "+NumberFormat.getCurrencyInstance().format(amount));
 	}
@@ -119,7 +165,7 @@ public class MenuActivity extends AppCompatActivity {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int position,
 									long arg3) {
-				if (priceCategory == Lunch.PRICE_STUDENT){
+				if (priceCategory == Lunch.PRICE_STUDENT	){
 					totalAmount += selectedLunches.get(position).getPriceStud();
 					updateAmountLabel(totalAmount);
 				}else if (priceCategory == Lunch.PRICE_EMPLOYEE){
@@ -177,5 +223,116 @@ public class MenuActivity extends AppCompatActivity {
 			setListAdapter(selectedDay);
 		}		
 		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
+	public void onConnected(@Nullable Bundle bundle) {
+		Log.d("MenuActivity", "Google API Client was connected");
+		mResolvingError = false;
+		Wearable.DataApi.addListener(mGoogleApiClient, this);
+		Wearable.MessageApi.addListener(mGoogleApiClient, this);
+		Wearable.CapabilityApi.addListener(
+				mGoogleApiClient, this, Uri.parse("wear://"), CapabilityApi.FILTER_REACHABLE);
+
+	}
+
+	@Override
+	public void onConnectionSuspended(int i) {
+		Log.d("MenuActivity", "Google API Client was suspended");
+	}
+
+	@Override
+	public void onConnectionFailed(@NonNull ConnectionResult result) {
+		if (!mResolvingError) {
+
+			if (result.hasResolution()) {
+				try {
+					mResolvingError = true;
+					result.startResolutionForResult(this, REQUEST_RESOLVE_ERROR);
+				} catch (IntentSender.SendIntentException e) {
+					// There was an error with the resolution intent. Try again.
+					mGoogleApiClient.connect();
+				}
+			} else {
+				Log.e("MenuActivity", "Connection to Google API client has failed: " + result.getErrorMessage());
+				mResolvingError = false;
+				Wearable.DataApi.removeListener(mGoogleApiClient, this);
+				Wearable.MessageApi.removeListener(mGoogleApiClient, this);
+				Wearable.CapabilityApi.removeListener(mGoogleApiClient, this);
+			}
+		}
+	}
+
+	@Override
+	public void onCapabilityChanged(CapabilityInfo capabilityInfo) {
+		Log.d("MenuActivity", "onCapabilityChanged: " + capabilityInfo);
+	}
+
+	@Override
+	public void onDataChanged(DataEventBuffer dataEvents) {
+		Log.d("MenuActivity", "onDataChanged: " + dataEvents);
+
+		for (DataEvent event : dataEvents) {
+			Log.d("MenuActivity", "Event: "+ event.toString());
+		}
+	}
+
+	@Override
+	public void onMessageReceived(MessageEvent messageEvent) {
+
+	}
+
+	/**
+	 * Sends the asset that was created from the photo we took by adding it to the Data Item store.
+	 */
+	private void sendPhoto(Asset asset) {
+		PutDataMapRequest dataMap = PutDataMapRequest.create("/image");
+		dataMap.getDataMap().putAsset("photo", asset);
+		dataMap.getDataMap().putLong("time", new Date().getTime());
+		PutDataRequest request = dataMap.asPutDataRequest();
+		request.setUrgent();
+
+		Wearable.DataApi.putDataItem(mGoogleApiClient, request)
+				.setResultCallback(new ResultCallback<DataApi.DataItemResult>() {
+					@Override
+					public void onResult(DataApi.DataItemResult dataItemResult) {
+						Log.d("MenuActivity", "Sending image was successful: " + dataItemResult.getStatus()
+								.isSuccess());
+					}
+				});
+	}
+	/**
+	 * Builds an {@link com.google.android.gms.wearable.Asset} from a bitmap. The image that we get
+	 * back from the camera in "data" is a thumbnail size. Typically, your image should not exceed
+	 * 320x320 and if you want to have zoom and parallax effect in your app, limit the size of your
+	 * image to 640x400. Resize your image before transferring to your wearable device.
+	 */
+	private static Asset toAsset(Bitmap bitmap) {
+		ByteArrayOutputStream byteStream = null;
+		try {
+			byteStream = new ByteArrayOutputStream();
+			bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteStream);
+			return Asset.createFromBytes(byteStream.toByteArray());
+		} finally {
+			if (null != byteStream) {
+				try {
+					byteStream.close();
+				} catch (IOException e) {
+					// ignore
+				}
+			}
+		}
+	}
+
+
+	private class Event {
+
+		String title;
+		String text;
+
+		public Event(String title, String text) {
+			this.title = title;
+			this.text = text;
+		}
 	}
 }
