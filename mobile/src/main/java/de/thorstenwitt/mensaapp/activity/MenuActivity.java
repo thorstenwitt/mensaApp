@@ -148,8 +148,10 @@ public class MenuActivity extends AppCompatActivity implements
 		if (!mResolvingError) {
 			mGoogleApiClient.connect();
 		}
+		if(mGoogleApiClient.isConnected()){
 		Bitmap bitmap = Bitmap.createBitmap(300,300, Bitmap.Config.ARGB_8888);
 		sendPhoto(toAsset(bitmap));
+		}
 	}
 
 
