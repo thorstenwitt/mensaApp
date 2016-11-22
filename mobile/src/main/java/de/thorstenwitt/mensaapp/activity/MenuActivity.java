@@ -148,10 +148,12 @@ public class MenuActivity extends AppCompatActivity implements
 		if (!mResolvingError) {
 			mGoogleApiClient.connect();
 		}
-		if(mGoogleApiClient.isConnected()){
-		Bitmap bitmap = Bitmap.createBitmap(300,300, Bitmap.Config.ARGB_8888);
-		sendPhoto(toAsset(bitmap));
-		}
+		//if(mGoogleApiClient.isConnected()){
+			Bitmap bitmap = Bitmap.createBitmap(300,300, Bitmap.Config.ARGB_8888);
+			sendPhoto(toAsset(bitmap));
+			sendText("Tach, Post!!!");
+			sendText("22222222222222222");
+		//}
 	}
 
 
@@ -303,6 +305,29 @@ public class MenuActivity extends AppCompatActivity implements
 					}
 				});
 	}
+	private void sendText(String text) {
+		PutDataMapRequest putDataMapRequest = PutDataMapRequest.create("/count");
+		putDataMapRequest.getDataMap().putString("count", text);
+
+		PutDataRequest request = putDataMapRequest.asPutDataRequest();
+		request.setUrgent();
+		Log.d("MenuActivity", "Generating DataItem: " + request);
+		if (!mGoogleApiClient.isConnected()) {
+			return;
+		}
+		Wearable.DataApi.putDataItem(mGoogleApiClient, request)
+				.setResultCallback(new ResultCallback<DataApi.DataItemResult>() {
+					@Override
+					public void onResult(DataApi.DataItemResult dataItemResult) {
+						if (!dataItemResult.getStatus().isSuccess()) {
+							Log.e("MenuActivity", "ERROR: failed to putDataItem, status code: "
+									+ dataItemResult.getStatus().getStatusCode());
+						}
+					}
+				});
+
+	}
+
 	/**
 	 * Builds an {@link com.google.android.gms.wearable.Asset} from a bitmap. The image that we get
 	 * back from the camera in "data" is a thumbnail size. Typically, your image should not exceed
@@ -311,6 +336,7 @@ public class MenuActivity extends AppCompatActivity implements
 	 */
 	private static Asset toAsset(Bitmap bitmap) {
 		ByteArrayOutputStream byteStream = null;
+
 		try {
 			byteStream = new ByteArrayOutputStream();
 			bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteStream);
@@ -337,4 +363,6 @@ public class MenuActivity extends AppCompatActivity implements
 			this.text = text;
 		}
 	}
+
+
 }
