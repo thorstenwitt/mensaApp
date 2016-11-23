@@ -13,6 +13,10 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 import android.content.Intent;
 import android.content.IntentSender;
@@ -76,9 +80,17 @@ public class MenuActivity extends AppCompatActivity implements
 	int selectedDay=0;
 	private int priceCategory = Lunch.PRICE_STUDENT;
 
+	// Send DataItems.
+	private ScheduledExecutorService mGeneratorExecutor;
+	private ScheduledFuture<?> mDataItemGeneratorFuture;
+
+
+
 	private GoogleApiClient mGoogleApiClient;
 	private boolean mResolvingError = false;
-	//Request code for launching the Intent to resolve Google Play services errors.
+	//Request code for launching the Intent to resolve Google
+	//
+	// Play services errors.
 	private static final int REQUEST_RESOLVE_ERROR = 1000;
 
 	@Override
@@ -140,6 +152,10 @@ public class MenuActivity extends AppCompatActivity implements
 				
 			}
 		});
+
+		mGeneratorExecutor = new ScheduledThreadPoolExecutor(1);
+		mDataItemGeneratorFuture = mGeneratorExecutor.scheduleWithFixedDelay(
+				new DataItemGenerator(), 1, 5, TimeUnit.SECONDS);
 		mGoogleApiClient = new GoogleApiClient.Builder(this)
 				.addApi(Wearable.API)
 				.addConnectionCallbacks(this)
@@ -151,8 +167,8 @@ public class MenuActivity extends AppCompatActivity implements
 		//if(mGoogleApiClient.isConnected()){
 			Bitmap bitmap = Bitmap.createBitmap(300,300, Bitmap.Config.ARGB_8888);
 			sendPhoto(toAsset(bitmap));
-			sendText("Tach, Post!!!");
-			sendText("22222222222222222");
+			//sendText("Tach, Post!!!");
+			//sendText("22222222222222222");
 		//}
 	}
 
@@ -312,9 +328,9 @@ public class MenuActivity extends AppCompatActivity implements
 		PutDataRequest request = putDataMapRequest.asPutDataRequest();
 		request.setUrgent();
 		Log.d("MenuActivity", "Generating DataItem: " + request);
-		if (!mGoogleApiClient.isConnected()) {
-			return;
-		}
+		//if (!mGoogleApiClient.isConnected()) {
+		//	return;
+		//}
 		Wearable.DataApi.putDataItem(mGoogleApiClient, request)
 				.setResultCallback(new ResultCallback<DataApi.DataItemResult>() {
 					@Override
@@ -364,5 +380,35 @@ public class MenuActivity extends AppCompatActivity implements
 		}
 	}
 
+	/**
+	 * Generates a DataItem based on an incrementing count.
+	 */
+	private class DataItemGenerator implements Runnable {
 
+		private int count = 0;
+
+		@Override
+		public void run() {
+			PutDataMapRequest putDataMapRequest = PutDataMapRequest.create("/count");
+			putDataMapRequest.getDataMap().putInt("count", count++);
+
+			PutDataRequest request = putDataMapRequest.asPutDataRequest();
+			request.setUrgent();
+
+			Log.d("DataItemGenerator", "Generating DataItem: " + request);
+			if (!mGoogleApiClient.isConnected()) {
+				return;
+			}
+			Wearable.DataApi.putDataItem(mGoogleApiClient, request)
+					.setResultCallback(new ResultCallback<DataApi.DataItemResult>() {
+						@Override
+						public void onResult(DataApi.DataItemResult dataItemResult) {
+							if (!dataItemResult.getStatus().isSuccess()) {
+								Log.e("DataItemGenerator", "ERROR: failed to putDataItem, status code: "
+										+ dataItemResult.getStatus().getStatusCode());
+							}
+						}
+					});
+		}
+	}
 }

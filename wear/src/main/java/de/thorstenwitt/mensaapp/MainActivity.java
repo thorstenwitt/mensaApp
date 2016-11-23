@@ -62,6 +62,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
 
 /**
  * The main activity with a view pager, containing three pages:<p/>
@@ -93,12 +96,17 @@ public class MainActivity extends Activity implements
     private DataFragment mDataFragment;
     private AssetFragment mAssetFragment;
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setupViews();
+
+
+
+
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addApi(Wearable.API)
                 .addConnectionCallbacks(this)
@@ -159,7 +167,10 @@ public class MainActivity extends Activity implements
 
                 } else if (DataLayerListenerService.COUNT_PATH.equals(path)) {
                     LOGD(TAG, "Data Changed for COUNT_PATH");
-                    mDataFragment.appendItem("DataItem Changed", event.getDataItem().toString());
+                    DataMapItem dataMapItem = DataMapItem.fromDataItem(event.getDataItem());
+                    int c = dataMapItem.getDataMap().getInt("count");
+                    //LOGD(TAG, Integer.toString(c));
+                    mDataFragment.appendItem("DataItem Changed", Integer.toString(c));
                 } else {
                     LOGD(TAG, "Unrecognized path: " + path);
                 }
