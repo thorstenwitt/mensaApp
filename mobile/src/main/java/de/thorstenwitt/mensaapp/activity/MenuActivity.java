@@ -130,7 +130,7 @@ public class MenuActivity extends AppCompatActivity implements
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			try {
 				Date lunchOfferDate = sdf.parse(t.getMydate());
-				String localizedLunchDate = DateFormat.getDateInstance().format(lunchOfferDate);
+				String localizedLunchDate = DateFormat.getDateInstance(DateFormat.FULL).format(lunchOfferDate);
 				lunchDates.add(localizedLunchDate);
 			} catch (ParseException e) {
 				Toast.makeText(getApplicationContext(),e.getLocalizedMessage(), Toast.LENGTH_LONG);
