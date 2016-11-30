@@ -40,9 +40,9 @@ public class Lunch implements Parcelable {
 	@Override
 	public void writeToParcel(Parcel dest, int flags) {
 		dest.writeString(getmName());
-		dest.writeFloat(getPriceGuest());
-		dest.writeFloat(getPriceEmp());
 		dest.writeFloat(getPriceStud());
+		dest.writeFloat(getPriceEmp());
+		dest.writeFloat(getPriceGuest());
 	}
 
 	public static final Creator<Lunch> CREATOR = new Creator<Lunch>() {
