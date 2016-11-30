@@ -4,7 +4,7 @@
 Android Anwendung zur Abfrage der Mittagskarte in der Mensa.
 
 
-[Download-Link Google Play Store](https://play.google.com/apps/testing/de.thorstenwitt.mensaapp) __
+[Download-Link Google Play Store](https://play.google.com/apps/testing/de.thorstenwitt.mensaapp)__
 [Download-Link für F-DROID](https://apt.izzysoft.de/fdroid/index/apk/de.thorstenwitt.mensaapp)
 
 
