@@ -232,7 +232,37 @@ public class DataSync  implements
                             }
                         }
                     });
+
+            //// send string
+
+            String text = "THIS IS SPARTA!!";
+
+            PutDataMapRequest putDataMapRequestString = PutDataMapRequest.create("/string");
+            putDataMapRequestString.getDataMap().putString("string", text);
+
+            request = putDataMapRequestString.asPutDataRequest();
+            request.setUrgent();
+
+            Log.d("DataItemGenerator", "Generating DataItem String: " + request);
+
+            Wearable.DataApi.putDataItem(mGoogleApiClient, request)
+                    .setResultCallback(new ResultCallback<DataApi.DataItemResult>() {
+                        @Override
+                        public void onResult(DataApi.DataItemResult dataItemResult) {
+                            if (!dataItemResult.getStatus().isSuccess()) {
+                                Log.e("DataItemGenerator", "ERROR: failed to putDataItem, status code: "
+                                        + dataItemResult.getStatus().getStatusCode());
+                            }
+                        }
+                    });
+
+
+
         }
+
+
     }
+
+
 
 }
