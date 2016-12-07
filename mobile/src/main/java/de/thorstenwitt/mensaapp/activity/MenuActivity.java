@@ -148,7 +148,9 @@ public class MenuActivity extends AppCompatActivity {
 			}
 		});
 
+		//Sende String an uhr
 		ds = new DataSync(this);
+		ds.sendText("!!!!!!!!!TESTTEXT!!!!!!!");
 
 
 

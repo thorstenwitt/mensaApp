@@ -146,27 +146,7 @@ public class DataSync  implements
                 });
     }
 
-    private void sendText(String text) {
-        PutDataMapRequest putDataMapRequest = PutDataMapRequest.create("/count");
-        putDataMapRequest.getDataMap().putString("count", text);
 
-        PutDataRequest request = putDataMapRequest.asPutDataRequest();
-        request.setUrgent();
-        Log.d("MenuActivity", "Generating DataItem: " + request);
-        //if (!mGoogleApiClient.isConnected()) {
-        //	return;
-        //}
-        Wearable.DataApi.putDataItem(mGoogleApiClient, request)
-                .setResultCallback(new ResultCallback<DataApi.DataItemResult>() {
-                    @Override
-                    public void onResult(DataApi.DataItemResult dataItemResult) {
-                        if (!dataItemResult.getStatus().isSuccess()) {
-                            Log.e("MenuActivity", "ERROR: failed to putDataItem, status code: "
-                                    + dataItemResult.getStatus().getStatusCode());
-                        }
-                    }
-                });
-    }
 
     /**
      * Builds an {@link com.google.android.gms.wearable.Asset} from a bitmap. The image that we get
@@ -190,6 +170,31 @@ public class DataSync  implements
                 }
             }
         }
+    }
+
+    /**
+     * Sendet Strings an die WearableAPI
+     * @param text
+     */
+    public void sendText(String text){
+        PutDataMapRequest putDataMapRequestString = PutDataMapRequest.create("/string");
+        putDataMapRequestString.getDataMap().putString("string", text);
+
+        PutDataRequest request = putDataMapRequestString.asPutDataRequest();
+        request.setUrgent();
+
+        Log.d("DataItemGenerator", "Generating DataItem String: " + request);
+
+        Wearable.DataApi.putDataItem(mGoogleApiClient, request)
+                .setResultCallback(new ResultCallback<DataApi.DataItemResult>() {
+                    @Override
+                    public void onResult(DataApi.DataItemResult dataItemResult) {
+                        if (!dataItemResult.getStatus().isSuccess()) {
+                            Log.e("DataItemGenerator", "ERROR: failed to putDataItem, status code: "
+                                    + dataItemResult.getStatus().getStatusCode());
+                        }
+                    }
+                });
     }
 
     private class Event {
@@ -235,30 +240,11 @@ public class DataSync  implements
 
             //// send string
 
-            String text = "THIS IS SPARTA!!";
-
-            PutDataMapRequest putDataMapRequestString = PutDataMapRequest.create("/string");
-            putDataMapRequestString.getDataMap().putString("string", text);
-
-            request = putDataMapRequestString.asPutDataRequest();
-            request.setUrgent();
-
-            Log.d("DataItemGenerator", "Generating DataItem String: " + request);
-
-            Wearable.DataApi.putDataItem(mGoogleApiClient, request)
-                    .setResultCallback(new ResultCallback<DataApi.DataItemResult>() {
-                        @Override
-                        public void onResult(DataApi.DataItemResult dataItemResult) {
-                            if (!dataItemResult.getStatus().isSuccess()) {
-                                Log.e("DataItemGenerator", "ERROR: failed to putDataItem, status code: "
-                                        + dataItemResult.getStatus().getStatusCode());
-                            }
-                        }
-                    });
-
+            sendText("Argh" + count);
 
 
         }
+
 
 
     }
