@@ -16,8 +16,6 @@
 
 package de.thorstenwitt.mensaapp;
 
-import static de.thorstenwitt.mensaapp.DataLayerListenerService.LOGD;
-
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -26,24 +24,17 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.wearable.view.DotsPageIndicator;
 import android.support.wearable.view.FragmentGridPagerAdapter;
 import android.support.wearable.view.GridViewPager;
-import android.text.TextUtils;
 import android.util.Log;
-import android.view.View;
 import android.view.WindowManager;
-import android.widget.Toast;
 
-import de.thorstenwitt.mensaapp.fragments.AssetFragment;
-import de.thorstenwitt.mensaapp.fragments.DataFragment;
-import de.thorstenwitt.mensaapp.fragments.DiscoveryFragment;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
 import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
-import com.google.android.gms.common.api.PendingResult;
-import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.wearable.Asset;
 import com.google.android.gms.wearable.CapabilityApi;
 import com.google.android.gms.wearable.CapabilityInfo;
@@ -53,18 +44,16 @@ import com.google.android.gms.wearable.DataEventBuffer;
 import com.google.android.gms.wearable.DataMapItem;
 import com.google.android.gms.wearable.MessageApi;
 import com.google.android.gms.wearable.MessageEvent;
-import com.google.android.gms.wearable.Node;
 import com.google.android.gms.wearable.Wearable;
 
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ScheduledFuture;
-import java.util.concurrent.ScheduledThreadPoolExecutor;
+
+import de.thorstenwitt.mensaapp.fragments.AssetFragment;
+import de.thorstenwitt.mensaapp.fragments.DataFragment;
+
+import static de.thorstenwitt.mensaapp.DataLayerListenerService.LOGD;
 
 /**
  * The main activity with a view pager, containing three pages:<p/>
@@ -88,8 +77,8 @@ public class MainActivity extends Activity implements
         CapabilityApi.CapabilityListener {
 
     private static final String TAG = "MainActivity";
-    private static final String CAPABILITY_1_NAME = "capability_1";
-    private static final String CAPABILITY_2_NAME = "capability_2";
+//    private static final String CAPABILITY_1_NAME = "capability_1";
+//    private static final String CAPABILITY_2_NAME = "capability_2";
 
     private GoogleApiClient mGoogleApiClient;
     private GridViewPager mPager;
@@ -104,14 +93,12 @@ public class MainActivity extends Activity implements
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setupViews();
 
-
-
-
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addApi(Wearable.API)
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
                 .build();
+        Log.d(TAG, "onCreate!!!");
     }
 
     @Override
@@ -147,7 +134,7 @@ public class MainActivity extends Activity implements
     }
 
     @Override
-    public void onConnectionFailed(ConnectionResult result) {
+    public void onConnectionFailed(@NonNull ConnectionResult result) {
         Log.e(TAG, "onConnectionFailed(): Failed to connect, with result: " + result);
     }
 
@@ -169,8 +156,13 @@ public class MainActivity extends Activity implements
                     LOGD(TAG, "Data Changed for COUNT_PATH");
                     DataMapItem dataMapItem = DataMapItem.fromDataItem(event.getDataItem());
                     int c = dataMapItem.getDataMap().getInt("count");
-                    //LOGD(TAG, Integer.toString(c));
+//                    LOGD(TAG, Integer.toString(c));
                     mDataFragment.appendItem("DataItem Changed", Integer.toString(c));
+                } else if (DataLayerListenerService.STRING_PATH.equals(path)) {
+                    Log.d(TAG, "Data Changed for STRING_PATH");
+                    DataMapItem dataMapItem = DataMapItem.fromDataItem(event.getDataItem());
+                    String s = dataMapItem.getDataMap().getString("string");
+                    mDataFragment.appendItem("DataItem Changed: String ", s);
                 } else {
                     LOGD(TAG, "Unrecognized path: " + path);
                 }
@@ -181,77 +173,6 @@ public class MainActivity extends Activity implements
                 mDataFragment.appendItem("Unknown data event type", "Type = " + event.getType());
             }
         }
-    }
-
-    public void onClicked(View view) {
-        switch (view.getId()) {
-            case R.id.capability_2_btn:
-                showNodes(CAPABILITY_2_NAME);
-                break;
-            case R.id.capabilities_1_and_2_btn:
-                showNodes(CAPABILITY_1_NAME, CAPABILITY_2_NAME);
-                break;
-            default:
-                Log.e(TAG, "Unknown click event registered");
-        }
-    }
-
-    /**
-     * Find the connected nodes that provide at least one of the given capabilities
-     */
-    private void showNodes(final String... capabilityNames) {
-
-        PendingResult<CapabilityApi.GetAllCapabilitiesResult> pendingCapabilityResult =
-                Wearable.CapabilityApi.getAllCapabilities(
-                        mGoogleApiClient,
-                        CapabilityApi.FILTER_REACHABLE);
-
-        pendingCapabilityResult.setResultCallback(
-                new ResultCallback<CapabilityApi.GetAllCapabilitiesResult>() {
-                    @Override
-                    public void onResult(
-                            CapabilityApi.GetAllCapabilitiesResult getAllCapabilitiesResult) {
-
-                        if (!getAllCapabilitiesResult.getStatus().isSuccess()) {
-                            Log.e(TAG, "Failed to get capabilities");
-                            return;
-                        }
-
-                        Map<String, CapabilityInfo> capabilitiesMap =
-                                getAllCapabilitiesResult.getAllCapabilities();
-                        Set<Node> nodes = new HashSet<>();
-
-                        if (capabilitiesMap.isEmpty()) {
-                            showDiscoveredNodes(nodes);
-                            return;
-                        }
-                        for (String capabilityName : capabilityNames) {
-                            CapabilityInfo capabilityInfo = capabilitiesMap.get(capabilityName);
-                            if (capabilityInfo != null) {
-                                nodes.addAll(capabilityInfo.getNodes());
-                            }
-                        }
-                        showDiscoveredNodes(nodes);
-                    }
-
-                    private void showDiscoveredNodes(Set<Node> nodes) {
-                        List<String> nodesList = new ArrayList<>();
-                        for (Node node : nodes) {
-                            nodesList.add(node.getDisplayName());
-                        }
-                        LOGD(TAG, "Connected Nodes: " + (nodesList.isEmpty()
-                                ? "No connected device was found for the given capabilities"
-                                : TextUtils.join(",", nodesList)));
-                        String msg;
-                        if (!nodesList.isEmpty()) {
-                            msg = getString(R.string.connected_nodes,
-                                    TextUtils.join(", ", nodesList));
-                        } else {
-                            msg = getString(R.string.no_device);
-                        }
-                        Toast.makeText(MainActivity.this, msg, Toast.LENGTH_LONG).show();
-                    }
-                });
     }
 
     @Override
@@ -274,11 +195,11 @@ public class MainActivity extends Activity implements
         dotsPageIndicator.setPager(mPager);
         mDataFragment = new DataFragment();
         mAssetFragment = new AssetFragment();
-        DiscoveryFragment discoveryFragment = new DiscoveryFragment();
+        //DiscoveryFragment discoveryFragment = new DiscoveryFragment();
         List<Fragment> pages = new ArrayList<>();
         pages.add(mDataFragment);
         pages.add(mAssetFragment);
-        pages.add(discoveryFragment);
+        //pages.add(discoveryFragment);
         final MyPagerAdapter adapter = new MyPagerAdapter(getFragmentManager(), pages);
         mPager.setAdapter(adapter);
     }
@@ -294,7 +215,7 @@ public class MainActivity extends Activity implements
 
         private List<Fragment> mFragments;
 
-        public MyPagerAdapter(FragmentManager fm, List<Fragment> fragments) {
+        MyPagerAdapter(FragmentManager fm, List<Fragment> fragments) {
             super(fm);
             mFragments = fragments;
         }

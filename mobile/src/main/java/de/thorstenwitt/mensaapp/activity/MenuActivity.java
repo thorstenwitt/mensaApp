@@ -58,17 +58,13 @@ import com.google.android.gms.wearable.PutDataMapRequest;
 import com.google.android.gms.wearable.PutDataRequest;
 import com.google.android.gms.wearable.Wearable;
 
+import de.thorstenwitt.mensaapp.helper.DataSync;
 import de.thorstenwitt.mensaapp.parser.LunchParser;
 import de.thorstenwitt.mensaapp.R;
 import de.thorstenwitt.mensaapp.businessobject.Lunch;
 import de.thorstenwitt.mensaapp.businessobject.LunchOffer;
 
-public class MenuActivity extends AppCompatActivity implements
-		CapabilityApi.CapabilityListener,
-		MessageApi.MessageListener,
-		DataApi.DataListener,
-		GoogleApiClient.ConnectionCallbacks,
-		GoogleApiClient.OnConnectionFailedListener {
+public class MenuActivity extends AppCompatActivity {
 	
 	public TextView lbAmount;
 	public Button btReset;
@@ -80,18 +76,17 @@ public class MenuActivity extends AppCompatActivity implements
 	int selectedDay=0;
 	private int priceCategory = Lunch.PRICE_STUDENT;
 
-	// Send DataItems.
-	private ScheduledExecutorService mGeneratorExecutor;
-	private ScheduledFuture<?> mDataItemGeneratorFuture;
+	private DataSync ds;
+
+//	// Send DataItems.
+//	private ScheduledExecutorService mGeneratorExecutor;
+//	private ScheduledFuture<?> mDataItemGeneratorFuture;
 
 
-
-	private GoogleApiClient mGoogleApiClient;
-	private boolean mResolvingError = false;
+//	private boolean mResolvingError = false;
 	//Request code for launching the Intent to resolve Google
 	//
-	// Play services errors.
-	private static final int REQUEST_RESOLVE_ERROR = 1000;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -153,20 +148,19 @@ public class MenuActivity extends AppCompatActivity implements
 			}
 		});
 
-		mGeneratorExecutor = new ScheduledThreadPoolExecutor(1);
+		//Sende String an uhr
+		ds = new DataSync(this);
+		ds.sendText("!!!!!!!!!TESTTEXT!!!!!!!");
+
+
+
+		/*mGeneratorExecutor = new ScheduledThreadPoolExecutor(1);
 		mDataItemGeneratorFuture = mGeneratorExecutor.scheduleWithFixedDelay(
-				new DataItemGenerator(), 1, 5, TimeUnit.SECONDS);
-		mGoogleApiClient = new GoogleApiClient.Builder(this)
-				.addApi(Wearable.API)
-				.addConnectionCallbacks(this)
-				.addOnConnectionFailedListener(this)
-				.build();
-		if (!mResolvingError) {
-			mGoogleApiClient.connect();
-		}
+				new DataItemGenerator(), 1, 5, TimeUnit.SECONDS);*/
+
+
 		//if(mGoogleApiClient.isConnected()){
-			Bitmap bitmap = Bitmap.createBitmap(300,300, Bitmap.Config.ARGB_8888);
-			sendPhoto(toAsset(bitmap));
+
 			//sendText("Tach, Post!!!");
 			//sendText("22222222222222222");
 		//}
@@ -245,7 +239,7 @@ public class MenuActivity extends AppCompatActivity implements
 		return super.onOptionsItemSelected(item);
 	}
 
-	@Override
+	/*@Override
 	public void onConnected(@Nullable Bundle bundle) {
 		Log.d("MenuActivity", "Google API Client was connected");
 		mResolvingError = false;
@@ -254,14 +248,14 @@ public class MenuActivity extends AppCompatActivity implements
 		Wearable.CapabilityApi.addListener(
 				mGoogleApiClient, this, Uri.parse("wear://"), CapabilityApi.FILTER_REACHABLE);
 
-	}
+	}*/
 
-	@Override
+	/*@Override
 	public void onConnectionSuspended(int i) {
 		Log.d("MenuActivity", "Google API Client was suspended");
-	}
+	}*/
 
-	@Override
+	/*@Override
 	public void onConnectionFailed(@NonNull ConnectionResult result) {
 		if (!mResolvingError) {
 
@@ -281,31 +275,31 @@ public class MenuActivity extends AppCompatActivity implements
 				Wearable.CapabilityApi.removeListener(mGoogleApiClient, this);
 			}
 		}
-	}
+	}*/
 
-	@Override
+	/*@Override
 	public void onCapabilityChanged(CapabilityInfo capabilityInfo) {
 		Log.d("MenuActivity", "onCapabilityChanged: " + capabilityInfo);
-	}
+	}*/
 
-	@Override
+	/*@Override
 	public void onDataChanged(DataEventBuffer dataEvents) {
 		Log.d("MenuActivity", "onDataChanged: " + dataEvents);
 
 		for (DataEvent event : dataEvents) {
 			Log.d("MenuActivity", "Event: "+ event.toString());
 		}
-	}
+	}*/
 
-	@Override
+	/*@Override
 	public void onMessageReceived(MessageEvent messageEvent) {
 
-	}
+	}*/
 
 	/**
 	 * Sends the asset that was created from the photo we took by adding it to the Data Item store.
 	 */
-	private void sendPhoto(Asset asset) {
+	/*private void sendPhoto(Asset asset) {
 		PutDataMapRequest dataMap = PutDataMapRequest.create("/image");
 		dataMap.getDataMap().putAsset("photo", asset);
 		dataMap.getDataMap().putLong("time", new Date().getTime());
@@ -320,8 +314,8 @@ public class MenuActivity extends AppCompatActivity implements
 								.isSuccess());
 					}
 				});
-	}
-	private void sendText(String text) {
+	}*/
+	/*private void sendText(String text) {
 		PutDataMapRequest putDataMapRequest = PutDataMapRequest.create("/count");
 		putDataMapRequest.getDataMap().putString("count", text);
 
@@ -342,7 +336,7 @@ public class MenuActivity extends AppCompatActivity implements
 					}
 				});
 
-	}
+	}*/
 
 	/**
 	 * Builds an {@link com.google.android.gms.wearable.Asset} from a bitmap. The image that we get
@@ -350,7 +344,7 @@ public class MenuActivity extends AppCompatActivity implements
 	 * 320x320 and if you want to have zoom and parallax effect in your app, limit the size of your
 	 * image to 640x400. Resize your image before transferring to your wearable device.
 	 */
-	private static Asset toAsset(Bitmap bitmap) {
+	/*private static Asset toAsset(Bitmap bitmap) {
 		ByteArrayOutputStream byteStream = null;
 
 		try {
@@ -366,10 +360,10 @@ public class MenuActivity extends AppCompatActivity implements
 				}
 			}
 		}
-	}
+	}*/
 
 
-	private class Event {
+	/*private class Event {
 
 		String title;
 		String text;
@@ -378,12 +372,12 @@ public class MenuActivity extends AppCompatActivity implements
 			this.title = title;
 			this.text = text;
 		}
-	}
+	}*/
 
 	/**
 	 * Generates a DataItem based on an incrementing count.
 	 */
-	private class DataItemGenerator implements Runnable {
+	/*private class DataItemGenerator implements Runnable {
 
 		private int count = 0;
 
@@ -410,5 +404,5 @@ public class MenuActivity extends AppCompatActivity implements
 						}
 					});
 		}
-	}
+	}*/
 }
