@@ -6,6 +6,7 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,6 +65,10 @@ public class MenuListAdapter extends BaseAdapter {
         else if(preistyp==Lunch.PRICE_GUEST) {
         	tvLunchPrice.setText(nf.format(myMenu.get(position).getPriceGuest()));
         }
+		if (myMenu.get(position).getIsMensaVital()) {
+			tvLunchName.setTextColor(Color.rgb(0,134,61));
+			tvLunchPrice.setTextColor(Color.rgb(0,134,61));
+		}
 
         return view;
 	}

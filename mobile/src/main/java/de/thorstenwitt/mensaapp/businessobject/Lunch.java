@@ -12,6 +12,7 @@ public class Lunch implements Parcelable {
 	private float priceStud;
 	private float priceEmp;
 	private float priceGuest;
+	private boolean isMensaVital;
 	private ArrayList<Lunch> m = new ArrayList<Lunch>();
 	public static final int PRICE_STUDENT = 0;
 	public static final int PRICE_EMPLOYEE = 1;
@@ -22,14 +23,16 @@ public class Lunch implements Parcelable {
 		setPriceStud(in.readFloat());
 		setPriceEmp(in.readFloat());
 		setPriceGuest(in.readFloat());
+		setIsMensaVital(in.readInt() == 0 ? false : true);
 	}
 
-	public Lunch(String lName, float lpriceStud, float lpriceEmp, float lpriceGuest) {
+	public Lunch(String lName, float lpriceStud, float lpriceEmp, float lpriceGuest, boolean isMensaVital) {
 		
 		setmName(lName);
 		setPriceStud(lpriceStud);
 		setPriceEmp(lpriceEmp);
 		setPriceGuest(lpriceGuest);
+		setIsMensaVital(isMensaVital);
 	}
 
 	@Override
@@ -43,6 +46,7 @@ public class Lunch implements Parcelable {
 		dest.writeFloat(getPriceStud());
 		dest.writeFloat(getPriceEmp());
 		dest.writeFloat(getPriceGuest());
+		dest.writeInt(getIsMensaVital() ? 1 : 0);
 	}
 
 	public static final Creator<Lunch> CREATOR = new Creator<Lunch>() {
@@ -86,6 +90,10 @@ public class Lunch implements Parcelable {
 	public void setPriceGuest(float priceGuest) {
 		this.priceGuest = priceGuest;
 	}
+
+	public boolean getIsMensaVital() {return  this.isMensaVital;}
+
+	public void setIsMensaVital(boolean isMensaVital) { this.isMensaVital = isMensaVital; }
 
 }
 

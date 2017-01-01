@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 import java.util.List;
 import java.util.Locale;
@@ -24,7 +25,6 @@ public class LunchParser {
 	private static LunchParser instance = null;
 	ArrayList<Mensa> mensaList = new ArrayList<>();
 	DecimalFormat df = (DecimalFormat) DecimalFormat.getNumberInstance(Locale.GERMANY);
-
 
 	private LunchParser() {
 
@@ -55,6 +55,7 @@ public class LunchParser {
 				String date = lunchOffer.children().select("datum").text();
 				String lunchOfferName = "";
 				String foodAdditives = "";
+				boolean isMensaVital = lunchOffer.parent().select("name").text().contains("Mensa Vital");
 				try {
 					float studentPrice = df.parse(lunchOffer.children().select("preisStudent").text()).floatValue();
 					float employeePrice = df.parse(lunchOffer.children().select("preisMitarbeiter").text()).floatValue();
@@ -68,7 +69,7 @@ public class LunchParser {
 						}
 					}
 
-					lunch = new Lunch(lunchOfferName, studentPrice, employeePrice, guestPrice);
+					lunch = new Lunch(lunchOfferName, studentPrice, employeePrice, guestPrice, isMensaVital);
 					boolean lunchOfferNotExists = true;
 					for(LunchOffer existentLunchOffers: mensaList.get(i).getLunchOffers()) {
 						if(existentLunchOffers.getMydate().equals(date)) {
