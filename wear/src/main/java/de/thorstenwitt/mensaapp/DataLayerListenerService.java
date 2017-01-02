@@ -138,7 +138,6 @@ public class DataLayerListenerService implements
     @Override
     public void onDataChanged(DataEventBuffer dataEvents) {
         LOGD(TAG, "onDataChanged(): " + dataEvents);
-
         for (DataEvent event : dataEvents) {
             if (event.getType() == DataEvent.TYPE_CHANGED) {
                 String path = event.getDataItem().getUri().getPath();
