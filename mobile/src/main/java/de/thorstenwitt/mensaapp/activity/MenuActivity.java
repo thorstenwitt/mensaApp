@@ -118,6 +118,7 @@ public class MenuActivity extends AppCompatActivity {
 				
 			}
 		});
+		int counter = 0;
 
 		//Sende String an uhr
 		ds = new DataSync(this);
@@ -125,13 +126,18 @@ public class MenuActivity extends AppCompatActivity {
 
 		ArrayList<Lunch> lo = myLunchData.get(0).getLunchList();
 
-		for (Lunch l : lo) {
-			ds.sendLunch(l);
-		}
+		Lunch lunchy =  new Lunch("InitialLunch", 1f, 2f, 3f, false);
+
 		Lunch lu = new Lunch("Essen",1f,2f,3f,false);
-		ds.sendLunch(lu);
+		ds.sendLunch(lu, counter);
 		lu = new Lunch("Essen2",1f,2f,3f,false);
-		ds.sendLunch(lu);
+		ds.sendLunch(lu, counter);
+
+
+		for (Lunch l : lo) {
+			lunchy = new Lunch(l);
+			ds.sendLunch(lunchy, counter++);
+		}
 
 
 		/*mGeneratorExecutor = new ScheduledThreadPoolExecutor(1);

@@ -11,11 +11,13 @@ import com.google.android.gms.wearable.DataMap;
 
 public class DataMapParcelableUtils {
 
-    public static void putParcelable(DataMap dataMap, String key, Parcelable parcelable) {
+    public static void putParcelable(DataMap dataMap, String key, Parcelable parcelable, int counter) {
         final Parcel parcel = Parcel.obtain();
         parcelable.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
         dataMap.putByteArray(key, parcel.marshall());
+        dataMap.putLong("Time", System.currentTimeMillis());
+        dataMap.putInt("counter", counter);
         parcel.recycle();
     }
 

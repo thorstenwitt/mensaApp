@@ -68,9 +68,9 @@ public class DataSync  implements
             Bitmap bitmap = Bitmap.createBitmap(300,300, Bitmap.Config.ARGB_8888);
             sendPhoto(toAsset(bitmap));
         }
-        //mGeneratorExecutor = new ScheduledThreadPoolExecutor(1);
-       // mDataItemGeneratorFuture = mGeneratorExecutor.scheduleWithFixedDelay(
-          //      new DataItemGenerator(), 1, 5, TimeUnit.SECONDS);
+//        mGeneratorExecutor = new ScheduledThreadPoolExecutor(1);
+//        mDataItemGeneratorFuture = mGeneratorExecutor.scheduleWithFixedDelay(
+//                new DataItemGenerator(), 1, 5, TimeUnit.SECONDS);
     }
 
     @Override
@@ -206,9 +206,9 @@ public class DataSync  implements
      * Sendet Lunch an die WearableAPI
      * @param text
      */
-    public void sendLunch(Lunch lunch){
+    public void sendLunch(Lunch lunch, int counter){
         PutDataMapRequest putDataMapRequest = PutDataMapRequest.create("/lunch");
-        DataMapParcelableUtils.putParcelable(putDataMapRequest.getDataMap(), "lunch", lunch);
+        DataMapParcelableUtils.putParcelable(putDataMapRequest.getDataMap(), "lunch", lunch, counter);
 
         PutDataRequest request = putDataMapRequest.asPutDataRequest();
         request.setUrgent();
@@ -271,7 +271,9 @@ public class DataSync  implements
 
             //// send string
 
+            Lunch lunch = new Lunch("Nahrung", 1f,2f,3f, false);
             sendText("Argh" + count++);
+            sendLunch(lunch, count);
 
 
         }

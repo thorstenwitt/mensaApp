@@ -36,6 +36,14 @@ public class Lunch implements Parcelable,Serializable {
 		setIsMensaVital(isMensaVital);
 	}
 
+	public Lunch(Lunch lunch){
+		setmName(lunch.getmName());
+		setPriceStud(lunch.getPriceStud());
+		setPriceEmp(lunch.getPriceEmp());
+		setPriceGuest(lunch.getPriceGuest());
+		setIsMensaVital(lunch.getIsMensaVital());
+	}
+
 	@Override
 	public int describeContents() {
 		return 0;

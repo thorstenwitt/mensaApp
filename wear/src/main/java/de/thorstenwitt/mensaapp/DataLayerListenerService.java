@@ -42,6 +42,8 @@ import com.google.android.gms.wearable.Wearable;
 import com.google.android.gms.wearable.WearableListenerService;
 
 import java.io.InputStream;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 import de.thorstenwitt.mensaapp.common.DataMapParcelableUtils;
@@ -72,6 +74,8 @@ public class DataLayerListenerService implements
     private GoogleApiClient mGoogleApiClient;
     private DataFragment mDataFragment;
     private AssetFragment mAssetFragment;
+
+    ArrayList<Lunch> lunches = new ArrayList<Lunch>();
 
     public DataLayerListenerService(Activity activity) {
         this.activity = activity;
@@ -166,6 +170,7 @@ public class DataLayerListenerService implements
                     Log.d(TAG, "Data Changed for LUNCH_PATH");
                     DataMapItem dataMapItem = DataMapItem.fromDataItem(event.getDataItem());
                     Lunch l = DataMapParcelableUtils.getParcelable(dataMapItem.getDataMap(), "lunch", Lunch.CREATOR);
+                    lunches.add(l);
                     String s = l.getmName();
                     mDataFragment.appendItem("DataItem Changed: Lunch ", s);
                 } else {
