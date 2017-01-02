@@ -9,15 +9,14 @@ import java.util.ArrayList;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
 import java.util.List;
 import java.util.Locale;
 
 
-import de.thorstenwitt.mensaapp.businessobject.Lunch;
-import de.thorstenwitt.mensaapp.businessobject.LunchOffer;
-import de.thorstenwitt.mensaapp.businessobject.Mensa;
+import de.thorstenwitt.mensaapp.common.businessobject.Lunch;
+import de.thorstenwitt.mensaapp.common.businessobject.LunchOffer;
+import de.thorstenwitt.mensaapp.common.businessobject.Mensa;
 
 
 public class LunchParser {

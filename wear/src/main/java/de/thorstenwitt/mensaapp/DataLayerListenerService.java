@@ -44,6 +44,8 @@ import com.google.android.gms.wearable.WearableListenerService;
 import java.io.InputStream;
 import java.util.concurrent.TimeUnit;
 
+import de.thorstenwitt.mensaapp.common.DataMapParcelableUtils;
+import de.thorstenwitt.mensaapp.common.businessobject.Lunch;
 import de.thorstenwitt.mensaapp.fragments.AssetFragment;
 import de.thorstenwitt.mensaapp.fragments.DataFragment;
 
@@ -62,6 +64,7 @@ public class DataLayerListenerService implements
     public static final String COUNT_PATH = "/count";
     public static final String IMAGE_PATH = "/image";
     public static final String STRING_PATH = "/string";
+    public static final String LUNCH_PATH = "/lunch";
     public static final String IMAGE_KEY = "photo";
 
     private Activity activity;
@@ -159,6 +162,12 @@ public class DataLayerListenerService implements
                     DataMapItem dataMapItem = DataMapItem.fromDataItem(event.getDataItem());
                     String s = dataMapItem.getDataMap().getString("string");
                     mDataFragment.appendItem("DataItem Changed: String ", s);
+                } else if (DataLayerListenerService.LUNCH_PATH.equals(path)) {
+                    Log.d(TAG, "Data Changed for LUNCH_PATH");
+                    DataMapItem dataMapItem = DataMapItem.fromDataItem(event.getDataItem());
+                    Lunch l = DataMapParcelableUtils.getParcelable(dataMapItem.getDataMap(), "lunch", Lunch.CREATOR);
+                    String s = l.getmName();
+                    mDataFragment.appendItem("DataItem Changed: Lunch ", s);
                 } else {
                     LOGD(TAG, "Unrecognized path: " + path);
                 }

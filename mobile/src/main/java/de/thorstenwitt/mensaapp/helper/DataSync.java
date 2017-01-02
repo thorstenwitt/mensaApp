@@ -32,6 +32,9 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
+import de.thorstenwitt.mensaapp.common.businessobject.Lunch;
+import de.thorstenwitt.mensaapp.common.DataMapParcelableUtils;
+
 /**
  * Created by freese on 05.12.2016.
  */
@@ -65,9 +68,9 @@ public class DataSync  implements
             Bitmap bitmap = Bitmap.createBitmap(300,300, Bitmap.Config.ARGB_8888);
             sendPhoto(toAsset(bitmap));
         }
-        mGeneratorExecutor = new ScheduledThreadPoolExecutor(1);
-        mDataItemGeneratorFuture = mGeneratorExecutor.scheduleWithFixedDelay(
-                new DataItemGenerator(), 1, 5, TimeUnit.SECONDS);
+        //mGeneratorExecutor = new ScheduledThreadPoolExecutor(1);
+       // mDataItemGeneratorFuture = mGeneratorExecutor.scheduleWithFixedDelay(
+          //      new DataItemGenerator(), 1, 5, TimeUnit.SECONDS);
     }
 
     @Override
@@ -197,6 +200,34 @@ public class DataSync  implements
                 });
     }
 
+
+
+    /**
+     * Sendet Lunch an die WearableAPI
+     * @param text
+     */
+    public void sendLunch(Lunch lunch){
+        PutDataMapRequest putDataMapRequest = PutDataMapRequest.create("/lunch");
+        DataMapParcelableUtils.putParcelable(putDataMapRequest.getDataMap(), "lunch", lunch);
+
+        PutDataRequest request = putDataMapRequest.asPutDataRequest();
+        request.setUrgent();
+
+        Log.d("DataItemGenerator", "Generating DataItem Lunch: " + request);
+
+        Wearable.DataApi.putDataItem(mGoogleApiClient, request)
+                .setResultCallback(new ResultCallback<DataApi.DataItemResult>() {
+                    @Override
+                    public void onResult(DataApi.DataItemResult dataItemResult) {
+                        if (!dataItemResult.getStatus().isSuccess()) {
+                            Log.e("DataItemGenerator", "ERROR: failed to putDataItem, status code: "
+                                    + dataItemResult.getStatus().getStatusCode());
+                        }
+                    }
+                });
+    }
+
+
     private class Event {
 
         String title;
@@ -217,30 +248,30 @@ public class DataSync  implements
 
         @Override
         public void run() {
-            PutDataMapRequest putDataMapRequest = PutDataMapRequest.create("/count");
-            putDataMapRequest.getDataMap().putInt("count", count++);
-
-            PutDataRequest request = putDataMapRequest.asPutDataRequest();
-            request.setUrgent();
-
-            Log.d("DataItemGenerator", "Generating DataItem: " + request);
-            if (!mGoogleApiClient.isConnected()) {
-                return;
-            }
-            Wearable.DataApi.putDataItem(mGoogleApiClient, request)
-                    .setResultCallback(new ResultCallback<DataApi.DataItemResult>() {
-                        @Override
-                        public void onResult(DataApi.DataItemResult dataItemResult) {
-                            if (!dataItemResult.getStatus().isSuccess()) {
-                                Log.e("DataItemGenerator", "ERROR: failed to putDataItem, status code: "
-                                        + dataItemResult.getStatus().getStatusCode());
-                            }
-                        }
-                    });
+//            PutDataMapRequest putDataMapRequest = PutDataMapRequest.create("/count");
+//            putDataMapRequest.getDataMap().putInt("count", count++);
+//
+//            PutDataRequest request = putDataMapRequest.asPutDataRequest();
+//            request.setUrgent();
+//
+//            Log.d("DataItemGenerator", "Generating DataItem: " + request);
+//            if (!mGoogleApiClient.isConnected()) {
+//                return;
+//            }
+//            Wearable.DataApi.putDataItem(mGoogleApiClient, request)
+//                    .setResultCallback(new ResultCallback<DataApi.DataItemResult>() {
+//                        @Override
+//                        public void onResult(DataApi.DataItemResult dataItemResult) {
+//                            if (!dataItemResult.getStatus().isSuccess()) {
+//                                Log.e("DataItemGenerator", "ERROR: failed to putDataItem, status code: "
+//                                        + dataItemResult.getStatus().getStatusCode());
+//                            }
+//                        }
+//                    });
 
             //// send string
 
-            sendText("Argh" + count);
+            sendText("Argh" + count++);
 
 
         }
