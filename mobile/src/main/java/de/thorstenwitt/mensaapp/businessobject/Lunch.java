@@ -3,10 +3,11 @@ package de.thorstenwitt.mensaapp.businessobject;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
-public class Lunch implements Parcelable {
+public class Lunch implements Parcelable,Serializable {
 
 	private String mName;
 	private float priceStud;

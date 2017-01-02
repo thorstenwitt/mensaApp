@@ -34,7 +34,6 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    wearApp project(':wear')
     compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'org.jsoup:jsoup:1.8.2'
     compile 'com.google.android.gms:play-services-wearable:8.4.0'
