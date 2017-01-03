@@ -4,6 +4,7 @@ package de.thorstenwitt.mensaapp.activity;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -55,7 +56,7 @@ public class MenuListAdapter extends BaseAdapter {
         TextView tvLunchName=(TextView)view.findViewById(R.id.lunchName);
         TextView tvLunchPrice=(TextView)view.findViewById(R.id.lunchPrice);
         tvLunchName.setText(myMenu.get(position).getmName());
-        NumberFormat nf = NumberFormat.getCurrencyInstance();
+        NumberFormat nf = NumberFormat.getCurrencyInstance(Locale.GERMAN);
         if(preistyp==Lunch.PRICE_STUDENT) {
         	tvLunchPrice.setText(nf.format(myMenu.get(position).getPriceStud()));
         }

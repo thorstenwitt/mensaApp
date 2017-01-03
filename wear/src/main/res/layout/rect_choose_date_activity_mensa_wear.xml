@@ -1,0 +1,23 @@
+<android.support.wearable.view.BoxInsetLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:padding="5dp"
+    android:id="@+id/rectLayout">
+
+<!--    <TextView android:id="@+id/text" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:text="@string/hello_square" /> -->
+
+    <FrameLayout
+        android:id="@+id/frame_layout"
+        android:layout_height="fill_parent"
+        android:layout_width="fill_parent">
+
+        <android.support.wearable.view.WearableListView
+            android:id="@+id/wearable_date_list"
+            android:layout_height="fill_parent"
+            android:layout_width="fill_parent">
+        </android.support.wearable.view.WearableListView>
+    </FrameLayout>
+</android.support.wearable.view.BoxInsetLayout>

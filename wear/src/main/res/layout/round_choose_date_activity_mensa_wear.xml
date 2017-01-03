@@ -17,7 +17,7 @@
         android:orientation="vertical">
 
         <android.support.wearable.view.WearableListView
-            android:id="@+id/wearable_list"
+            android:id="@+id/wearable_date_list"
             android:layout_height="match_parent"
             android:layout_width="fill_parent"
             android:paddingTop="20dp"
@@ -26,16 +26,6 @@
             android:paddingBottom="5dp"
             android:layout_weight=".15">
         </android.support.wearable.view.WearableListView>
-
-        <ImageButton
-            android:id="@+id/date_button"
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent"
-            android:layout_weight=".85"
-            android:layout_gravity="bottom|center"
-            android:src="@drawable/date2"
-            android:background="@color/green"
-            android:tint="@color/white" />
 
     </LinearLayout>
 </android.support.wearable.view.BoxInsetLayout>
