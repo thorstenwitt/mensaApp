@@ -15,7 +15,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import de.thorstenwitt.mensaapp.R;
-import de.thorstenwitt.mensaapp.businessobject.Lunch;
+import de.thorstenwitt.mensaapp.common.businessobject.Lunch;
 
 public class MenuListAdapter extends BaseAdapter {
 	

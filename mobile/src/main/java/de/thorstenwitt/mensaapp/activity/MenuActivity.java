@@ -1,33 +1,15 @@
 package de.thorstenwitt.mensaapp.activity;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.lang.reflect.Array;
 import java.text.DateFormat;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.UUID;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ScheduledFuture;
-import java.util.concurrent.ScheduledThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
 
 import android.content.Intent;
-import android.content.IntentSender;
-import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.SubMenu;
@@ -43,26 +25,14 @@ import android.widget.TextView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.ResultCallback;
-import com.google.android.gms.wearable.Asset;
-import com.google.android.gms.wearable.CapabilityApi;
-import com.google.android.gms.wearable.CapabilityInfo;
-import com.google.android.gms.wearable.DataApi;
-import com.google.android.gms.wearable.DataEvent;
-import com.google.android.gms.wearable.DataEventBuffer;
-import com.google.android.gms.wearable.MessageApi;
-import com.google.android.gms.wearable.MessageEvent;
 import com.google.android.gms.wearable.PutDataMapRequest;
-import com.google.android.gms.wearable.PutDataRequest;
-import com.google.android.gms.wearable.Wearable;
 
+import de.thorstenwitt.mensaapp.common.DataMapParcelableUtils;
 import de.thorstenwitt.mensaapp.helper.DataSync;
 import de.thorstenwitt.mensaapp.parser.LunchParser;
 import de.thorstenwitt.mensaapp.R;
-import de.thorstenwitt.mensaapp.businessobject.Lunch;
-import de.thorstenwitt.mensaapp.businessobject.LunchOffer;
+import de.thorstenwitt.mensaapp.common.businessobject.Lunch;
+import de.thorstenwitt.mensaapp.common.businessobject.LunchOffer;
 
 public class MenuActivity extends AppCompatActivity {
 	
@@ -144,14 +114,30 @@ public class MenuActivity extends AppCompatActivity {
 			public void onClick(View v) {
 				totalAmount =0.0f;
 				updateAmountLabel(totalAmount);
+
 				
 			}
 		});
+		int counter = 0;
 
 		//Sende String an uhr
 		ds = new DataSync(this);
 		ds.sendText("!!!!!!!!!TESTTEXT!!!!!!!");
 
+		ArrayList<Lunch> lo = myLunchData.get(0).getLunchList();
+
+		Lunch lunchy =  new Lunch("InitialLunch", 1f, 2f, 3f, false);
+
+		Lunch lu = new Lunch("Essen",1f,2f,3f,false);
+		ds.sendLunch(lu, counter);
+		lu = new Lunch("Essen2",1f,2f,3f,false);
+		ds.sendLunch(lu, counter);
+
+
+		for (Lunch l : lo) {
+			lunchy = new Lunch(l);
+			ds.sendLunch(lunchy, counter++);
+		}
 
 
 		/*mGeneratorExecutor = new ScheduledThreadPoolExecutor(1);

@@ -1,4 +1,4 @@
-package de.thorstenwitt.mensaapp.businessobject;
+package de.thorstenwitt.mensaapp.common.businessobject;
 
 import android.os.Parcel;
 import android.os.Parcelable;

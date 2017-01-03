@@ -1,12 +1,13 @@
-package de.thorstenwitt.mensaapp.businessobject;
+package de.thorstenwitt.mensaapp.common.businessobject;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
-public class Lunch implements Parcelable {
+public class Lunch implements Parcelable,Serializable {
 
 	private String mName;
 	private float priceStud;
@@ -33,6 +34,14 @@ public class Lunch implements Parcelable {
 		setPriceEmp(lpriceEmp);
 		setPriceGuest(lpriceGuest);
 		setIsMensaVital(isMensaVital);
+	}
+
+	public Lunch(Lunch lunch){
+		setmName(lunch.getmName());
+		setPriceStud(lunch.getPriceStud());
+		setPriceEmp(lunch.getPriceEmp());
+		setPriceGuest(lunch.getPriceGuest());
+		setIsMensaVital(lunch.getIsMensaVital());
 	}
 
 	@Override
