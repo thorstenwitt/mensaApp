@@ -89,7 +89,7 @@ public class MensaActivityWear extends Activity implements WearableListView.Clic
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == PICK_DATE_FROM_ACTIVITY) {
             if (resultCode == RESULT_OK) {
-                String[] mylunches = {"Schnitzel mit Suppe", "Klopse mit Kuchen"};
+                String[] mylunches = {"Schnitzel mit Champignons", "Senfeier mit Kartoffeln"};
                 String test=data.getStringExtra("DATE");
                 loadAdapter(mylunches);
             }

@@ -3,22 +3,36 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:padding="5dp"
+
     android:id="@+id/rectLayout">
 
 <!--    <TextView android:id="@+id/text" android:layout_width="wrap_content"
         android:layout_height="wrap_content" android:text="@string/hello_square" /> -->
 
-    <FrameLayout
+    <LinearLayout
         android:id="@+id/frame_layout"
-        android:layout_height="fill_parent"
-        android:layout_width="fill_parent"
-        >
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical">
 
         <android.support.wearable.view.WearableListView
             android:id="@+id/wearable_list"
             android:layout_height="fill_parent"
-            android:layout_width="fill_parent">
+            android:layout_weight=".15"
+            android:layout_width="fill_parent"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="5dp">
         </android.support.wearable.view.WearableListView>
-    </FrameLayout>
+
+        <ImageButton
+            android:id="@+id/date_button"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_weight=".85"
+            android:layout_gravity="bottom|center"
+            android:src="@drawable/date2"
+            android:background="@color/green"
+            android:tint="@color/white" />
+    </LinearLayout>
 </android.support.wearable.view.BoxInsetLayout>
