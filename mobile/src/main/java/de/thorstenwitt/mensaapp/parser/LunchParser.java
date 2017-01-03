@@ -93,13 +93,12 @@ public class LunchParser {
 			i++;
 		}
 	}
-	public ArrayList<LunchOffer> getLunchDataForStralsund() {
-		for(Mensa mensa: mensaList) {
-			if (mensa.getMensaName().equals("Mensa Stralsund")) {
-				return mensa.getLunchOffers();
-			}
-		}
-		return null;
+	public ArrayList<LunchOffer> getLunchData(int mensaLocation) {
+
+		ArrayList<LunchOffer> t = mensaList.get(mensaLocation).getLunchOffers();
+
+		return t;
+
 	}
 
 	public List<Mensa> getLunchDataForAllMensas() {

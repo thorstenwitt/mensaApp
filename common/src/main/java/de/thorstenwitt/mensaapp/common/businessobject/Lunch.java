@@ -17,7 +17,12 @@ public class Lunch implements Parcelable,Serializable {
 	private ArrayList<Lunch> m = new ArrayList<Lunch>();
 	public static final int PRICE_STUDENT = 0;
 	public static final int PRICE_EMPLOYEE = 1;
-	public static int PRICE_GUEST = 2;
+	public static final int PRICE_GUEST = 2;
+	public static final int MENSA_AM_WALL = 0;
+	public static final int MENSA_NEUBRANDENBURG = 1;
+	public static final int MENSA_STRALSUND = 2;
+	public static final int MENSA_BERTHOLD_BEITZ_PLATZ = 3;
+
 
 	public Lunch(Parcel in) {
 		setmName(in.readString());

@@ -6,6 +6,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -35,7 +36,7 @@ import de.thorstenwitt.mensaapp.common.businessobject.Lunch;
 import de.thorstenwitt.mensaapp.common.businessobject.LunchOffer;
 
 public class MenuActivity extends AppCompatActivity {
-	
+
 	public TextView lbAmount;
 	public Button btReset;
 	public Spinner spDate;
@@ -82,13 +83,12 @@ public class MenuActivity extends AppCompatActivity {
 			}
 		});
 		lstLunch = (ListView) findViewById(R.id.listViewLunch);
-		LunchParser lp = LunchParser.getInstance();
 
 		if(savedInstanceState!=null) {
 			myLunchData = savedInstanceState.getParcelableArrayList("menues");
 		}
 		else {
-			myLunchData = lp.getLunchDataForStralsund();
+			getLunchOffersfromSelectedMensa(LunchParser.getInstance(), Lunch.MENSA_STRALSUND);
 		}
 		ArrayList<String> lunchDates = new ArrayList<String>();
 		for(LunchOffer t:myLunchData) {
@@ -154,7 +154,7 @@ public class MenuActivity extends AppCompatActivity {
 
 
 	public void updateAmountLabel(float amount) {
-		lbAmount.setText("Gesamtbetrag: "+NumberFormat.getCurrencyInstance().format(amount));
+		lbAmount.setText("Gesamtbetrag: "+NumberFormat.getCurrencyInstance(Locale.GERMANY).format(amount));
 	}
 	public void setListAdapter(int selectedDay){
 		final ArrayList<Lunch> selectedLunches = myLunchData.get(selectedDay).getLunchList();
@@ -189,12 +189,19 @@ public class MenuActivity extends AppCompatActivity {
 		super.onCreateOptionsMenu(menu);
 		
 		menu.add(Menu.NONE, 0, Menu.NONE,"Speisekarte aktualisieren");
-		
-		SubMenu submenu = menu.addSubMenu(Menu.NONE, 1, Menu.NONE,"Preiskategorie auswaehlen");
-		menu.add(Menu.NONE, 2, Menu.NONE,"Beenden");
-		submenu.add(Menu.NONE, 11, Menu.NONE,"Studenten");
-		submenu.add(Menu.NONE, 12, Menu.NONE,"Angestellte");
-		submenu.add(Menu.NONE, 13, Menu.NONE,"Gäste");
+		SubMenu submenuPreis = menu.addSubMenu(Menu.NONE, 1, Menu.NONE,"Preiskategorie auswaehlen");
+		SubMenu submenuMensa = menu.addSubMenu(Menu.NONE, 2, Menu.NONE,"Mensa auswaehlen");
+		menu.add(Menu.NONE, 3, Menu.NONE,"Beenden");
+
+		submenuPreis.add(Menu.NONE, 11, Menu.NONE,"Studenten");
+		submenuPreis.add(Menu.NONE, 12, Menu.NONE,"Angestellte");
+		submenuPreis.add(Menu.NONE, 13, Menu.NONE,"Gäste");
+
+		submenuMensa.add(Menu.NONE, 21, Menu.NONE,"Mensa am Wall");
+		submenuMensa.add(Menu.NONE, 22, Menu.NONE,"Mensa Neubrandenburg");
+		submenuMensa.add(Menu.NONE, 23, Menu.NONE,"Mensa Stralsund");
+		submenuMensa.add(Menu.NONE, 24, Menu.NONE,"Mensa Berthold-Beitz-Platz");
+
 		return true;
 	}
 	@Override
@@ -204,7 +211,7 @@ public class MenuActivity extends AppCompatActivity {
 			startActivity(i);
 			finish();
 		}
-		if(item.getItemId()==2) {
+		if(item.getItemId()==3) {
 			finish();
 			super.onDestroy();
 			android.os.Process.killProcess(android.os.Process.myPid());
@@ -221,8 +228,28 @@ public class MenuActivity extends AppCompatActivity {
 		if(item.getItemId()==13) {
 			priceCategory = Lunch.PRICE_GUEST;
 			setListAdapter(selectedDay);
-		}		
+		}
+		if(item.getItemId()==21) {
+			getLunchOffersfromSelectedMensa(LunchParser.getInstance(), Lunch.MENSA_AM_WALL);
+			setListAdapter(selectedDay);
+		}
+		if(item.getItemId()==22) {
+			getLunchOffersfromSelectedMensa(LunchParser.getInstance(), Lunch.MENSA_NEUBRANDENBURG);
+			setListAdapter(selectedDay);
+		}
+		if(item.getItemId()==23) {
+			getLunchOffersfromSelectedMensa(LunchParser.getInstance(), Lunch.MENSA_STRALSUND);
+			setListAdapter(selectedDay);
+		}
+		if(item.getItemId()==24) {
+			getLunchOffersfromSelectedMensa(LunchParser.getInstance(), Lunch.MENSA_BERTHOLD_BEITZ_PLATZ);
+			setListAdapter(selectedDay);
+		}
+
 		return super.onOptionsItemSelected(item);
+	}
+	private void getLunchOffersfromSelectedMensa (LunchParser lp, int selectedMensa) {
+		myLunchData = lp.getLunchData(selectedMensa);
 	}
 
 	/*@Override
