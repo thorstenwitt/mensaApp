@@ -23,6 +23,7 @@ import android.widget.Toast;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 
+import de.thorstenwitt.mensaapp.DataLayerListenerService;
 import de.thorstenwitt.mensaapp.R;
 import de.thorstenwitt.mensaapp.common.businessobject.Lunch;
 import de.thorstenwitt.mensaapp.common.businessobject.LunchOffer;
@@ -39,23 +40,23 @@ public class MensaActivityWear extends Activity implements WearableListView.Clic
     WearableListView listView;
     LinearLayout linearLayout;
     ImageButton dateButton;
-    RelativeLayout rectLayout;
-    RelativeLayout roundLayout;
     private static final int PICK_DATE_FROM_ACTIVITY=1;
     private Mensa mensaData;
     private int selectedDate;
+    private DataLayerListenerService dls;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT_WATCH)
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mensa_wear);
-
-
         ArrayList<Lunch> lunchlist = new ArrayList<>();
         lunchlist.add(new Lunch("Test",1,1,1,false));
         LunchOffer lo = new LunchOffer("12.12.2016", lunchlist);
         ArrayList<LunchOffer> lolist = new ArrayList<>();
+        dls = new DataLayerListenerService(this);
+        dls.getGoogleApiClient().connect();
+
         lolist.add(lo);
         Mensa mensa = new Mensa("Mensa1", lolist);
         mensaData = mensa;
@@ -84,7 +85,13 @@ public class MensaActivityWear extends Activity implements WearableListView.Clic
                 dateButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        String[] availableDates = new String[mensaData.getLunchOffers().size()];
+                        for(int i=0; i<mensaData.getLunchOffers().size(); i++) {
+                            availableDates[i] = mensaData.getLunchOffers().get(i).getMydate();
+                        }
                         Intent intentDate = new Intent(getApplicationContext(), ChooseDateActivityWear.class);
+                        intentDate.putExtra("DATES", availableDates);
+
                         startActivityForResult(intentDate, PICK_DATE_FROM_ACTIVITY);
 
 
@@ -96,7 +103,7 @@ public class MensaActivityWear extends Activity implements WearableListView.Clic
         });
     }
 
-    private void notifyAboutNewMensaData(Mensa mensa) {
+    public void notifyAboutNewMensaData(Mensa mensa) {
         this.mensaData = mensa;
         loadAdapter();
     }
@@ -110,8 +117,7 @@ public class MensaActivityWear extends Activity implements WearableListView.Clic
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == PICK_DATE_FROM_ACTIVITY) {
             if (resultCode == RESULT_OK) {
-                String[] mylunches = {"Schnitzel mit Champignons", "Senfeier mit Kartoffeln"};
-                String test=data.getStringExtra("DATE");
+
                 loadAdapter();
             }
         }

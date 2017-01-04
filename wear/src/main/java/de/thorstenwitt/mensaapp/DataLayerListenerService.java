@@ -39,19 +39,11 @@ import com.google.android.gms.wearable.DataMapItem;
 import com.google.android.gms.wearable.MessageApi;
 import com.google.android.gms.wearable.MessageEvent;
 import com.google.android.gms.wearable.Wearable;
-import com.google.android.gms.wearable.WearableListenerService;
-
-import java.io.InputStream;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
-
 import de.thorstenwitt.mensaapp.common.DataMapParcelableUtils;
-import de.thorstenwitt.mensaapp.common.businessobject.Lunch;
-import de.thorstenwitt.mensaapp.common.businessobject.LunchOffer;
 import de.thorstenwitt.mensaapp.common.businessobject.Mensa;
 import de.thorstenwitt.mensaapp.fragments.AssetFragment;
 import de.thorstenwitt.mensaapp.fragments.DataFragment;
+import de.thorstenwitt.mensaapp.views.MensaActivityWear;
 
 /**
  * Listens to DataItems and Messages from the local node.
@@ -68,14 +60,14 @@ public class DataLayerListenerService implements
 
     public static final String LUNCH_PATH = "/lunch";
 
-    private Activity activity;
     private GoogleApiClient mGoogleApiClient;
     private DataFragment mDataFragment;
     private AssetFragment mAssetFragment;
+    private MensaActivityWear mensaActivityWear;
 
-    public DataLayerListenerService(Activity activity) {
-        this.activity = activity;
-        mGoogleApiClient = new GoogleApiClient.Builder(activity)
+    public DataLayerListenerService(MensaActivityWear mensaActivityWear) {
+        this.mensaActivityWear = mensaActivityWear;
+        mGoogleApiClient = new GoogleApiClient.Builder(mensaActivityWear)
                 .addApi(Wearable.API)
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
@@ -147,7 +139,7 @@ public class DataLayerListenerService implements
                     Log.d(TAG, "Data Changed for LUNCH_PATH");
                     DataMapItem dataMapItem = DataMapItem.fromDataItem(event.getDataItem());
                     Mensa m = DataMapParcelableUtils.getParcelable(dataMapItem.getDataMap(), "lunch", Mensa.CREATOR);
-
+                    mensaActivityWear.notifyAboutNewMensaData(m);
 
                 } else {
                     LOGD(TAG, "Unrecognized path: " + path);

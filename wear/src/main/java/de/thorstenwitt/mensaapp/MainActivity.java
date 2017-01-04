@@ -86,7 +86,7 @@ public class MainActivity extends Activity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-        dls = new DataLayerListenerService(this);
+        //dls = new DataLayerListenerService(this);
         setupViews();
         Log.d(TAG, "onCreate!!!");
     }
@@ -94,7 +94,7 @@ public class MainActivity extends Activity  {
     @Override
     protected void onResume() {
         super.onResume();
-        dls.getGoogleApiClient().connect();
+        //dls.getGoogleApiClient().connect();
     }
 
     @Override
