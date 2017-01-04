@@ -20,13 +20,19 @@ import de.thorstenwitt.mensaapp.R;
 
 public class ChooseDateActivityWear extends Activity implements WearableListView.ClickListener {
 
-    public String[] dates = {"11.12.2016", "12.12.2016", "13.12.2016"};
+    public String[] dates={"Keine Daten"};
     WearableListView listView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.choose_date_activity_mensa_wear);
+
+        Bundle bundle = getIntent().getExtras();
+        if(bundle != null) {
+            dates = bundle.getStringArray("DATES");
+        }
+
 
         final WatchViewStub stub = (WatchViewStub) findViewById(R.id.watch_view_stub);
         stub.setOnLayoutInflatedListener(new WatchViewStub.OnLayoutInflatedListener() {
@@ -52,7 +58,6 @@ public class ChooseDateActivityWear extends Activity implements WearableListView
         private final String[] dates;
 
         public DateListAdapterWear (Context context, String[] dates) {
-            System.out.println("teleeel");
             this.context = context;
             this.dates = dates;
 
@@ -85,7 +90,7 @@ public class ChooseDateActivityWear extends Activity implements WearableListView
     @Override
     public void onClick(WearableListView.ViewHolder viewHolder) {
         Intent intent = new Intent();
-        intent.putExtra("DATE",dates[viewHolder.getAdapterPosition()]);
+        intent.putExtra("SELECTEDDATE",viewHolder.getAdapterPosition());
         setResult(RESULT_OK, intent);
         finish();
     }

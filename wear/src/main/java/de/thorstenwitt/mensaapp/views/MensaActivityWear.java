@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -22,6 +23,7 @@ import android.widget.Toast;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import de.thorstenwitt.mensaapp.DataLayerListenerService;
 import de.thorstenwitt.mensaapp.R;
@@ -51,8 +53,8 @@ public class MensaActivityWear extends Activity implements WearableListView.Clic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mensa_wear);
         ArrayList<Lunch> lunchlist = new ArrayList<>();
-        lunchlist.add(new Lunch("Test",1,1,1,false));
-        LunchOffer lo = new LunchOffer("12.12.2016", lunchlist);
+        lunchlist.add(new Lunch("Smartphone App -> Speisekarte aktualisieren",1,1,1,false));
+        LunchOffer lo = new LunchOffer("Keine Daten", lunchlist);
         ArrayList<LunchOffer> lolist = new ArrayList<>();
         dls = new DataLayerListenerService(this);
         dls.getGoogleApiClient().connect();
@@ -76,7 +78,7 @@ public class MensaActivityWear extends Activity implements WearableListView.Clic
                       @Override
                       public WindowInsets onApplyWindowInsets(View view, WindowInsets windowInsets) {
                           int chin = windowInsets.getSystemWindowInsetBottom();
-                          linearLayout.setPadding(0,0,0,chin);
+                          stub.setPadding(0,0,0,chin);
                           return windowInsets;
                       }
                   });
@@ -117,7 +119,7 @@ public class MensaActivityWear extends Activity implements WearableListView.Clic
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == PICK_DATE_FROM_ACTIVITY) {
             if (resultCode == RESULT_OK) {
-
+                selectedDate = data.getIntExtra("SELECTEDDATE",0);
                 loadAdapter();
             }
         }
@@ -127,7 +129,7 @@ public class MensaActivityWear extends Activity implements WearableListView.Clic
     public void onClick(WearableListView.ViewHolder viewHolder) {
 
         float price = mensaData.getLunchOffers().get(selectedDate).getLunchList().get(viewHolder.getAdapterPosition()).getPriceStud();
-        String s = NumberFormat.getCurrencyInstance().format(price);
+        String s = NumberFormat.getCurrencyInstance(Locale.GERMANY).format(price);
         Toast.makeText(this, s,Toast.LENGTH_LONG).show();
     }
 
@@ -160,8 +162,15 @@ public class MensaActivityWear extends Activity implements WearableListView.Clic
             textView.setText(mensaData.getLunchOffers().get(selectedDate).getLunchList().get(position).getmName());
 
             ImageView imageView = (ImageView) lunchItemView.findViewById(R.id.itemIcon);
-            imageView.setImageResource(R.drawable.tag_purple);
-;
+            if(mensaData.getLunchOffers().get(selectedDate).getLunchList().get(position).getIsMensaVital()) {
+                imageView.setImageResource(R.drawable.tag_green);
+                textView.setTextColor(Color.rgb(0,134,61));
+            }
+            else {
+                imageView.setImageResource(R.drawable.tag_purple);
+            }
+
+
         }
 
 
