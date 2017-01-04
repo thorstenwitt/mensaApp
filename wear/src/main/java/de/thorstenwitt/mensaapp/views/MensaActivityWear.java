@@ -41,6 +41,8 @@ public class MensaActivityWear extends Activity implements WearableListView.Clic
     RelativeLayout rectLayout;
     RelativeLayout roundLayout;
     private static final int PICK_DATE_FROM_ACTIVITY=1;
+    private Mensa mensaData;
+    private int selectedDate;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT_WATCH)
     @Override
@@ -55,8 +57,7 @@ public class MensaActivityWear extends Activity implements WearableListView.Clic
         ArrayList<LunchOffer> lolist = new ArrayList<>();
         lolist.add(lo);
         Mensa mensa = new Mensa("Mensa1", lolist);
-
-
+        mensaData = mensa;
 
         final WatchViewStub stub = (WatchViewStub) findViewById(R.id.watch_view_stub);
 
@@ -89,14 +90,18 @@ public class MensaActivityWear extends Activity implements WearableListView.Clic
                     }
                 });
 
-                loadAdapter(lunches);
+                loadAdapter();
             }
         });
     }
 
-    private  void loadAdapter(String[] pLunches) {
+    private void notifyAboutNewMensaData(Mensa mensa) {
+        this.mensaData = mensa;
+        loadAdapter();
+    }
 
-        listView.setAdapter(new LunchListAdapterWear(this, pLunches));
+    private  void loadAdapter() {
+        listView.setAdapter(new LunchListAdapterWear(this, mensaData));
         listView.setClickListener(this);
     }
 
@@ -126,12 +131,11 @@ public class MensaActivityWear extends Activity implements WearableListView.Clic
     public class LunchListAdapterWear extends WearableListView.Adapter {
 
         private final Context context;
-        private final String[] lunches;
+        private final Mensa mensaData;
 
-        public LunchListAdapterWear (Context context, String[] lunches) {
-            System.out.println("teleeel");
+        public LunchListAdapterWear (Context context, Mensa mensa) {
             this.context = context;
-            this.lunches = lunches;
+            this.mensaData = mensa;
 
         }
 
@@ -145,7 +149,7 @@ public class MensaActivityWear extends Activity implements WearableListView.Clic
             LunchItemView lunchItemView = (LunchItemView) viewHolder.itemView;
 
             TextView textView = (TextView) lunchItemView.findViewById(R.id.itemName);
-            textView.setText(lunches[position]);
+            textView.setText(mensaData.getLunchOffers().get(selectedDate).getLunchList().get(position).getmName());
 
             ImageView imageView = (ImageView) lunchItemView.findViewById(R.id.itemIcon);
             imageView.setImageResource(R.drawable.tag_purple);
