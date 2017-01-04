@@ -20,6 +20,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 import de.thorstenwitt.mensaapp.R;
@@ -111,7 +112,7 @@ public class MensaActivityWear extends Activity implements WearableListView.Clic
             if (resultCode == RESULT_OK) {
                 String[] mylunches = {"Schnitzel mit Champignons", "Senfeier mit Kartoffeln"};
                 String test=data.getStringExtra("DATE");
-                loadAdapter(mylunches);
+                loadAdapter();
             }
         }
     }
@@ -119,8 +120,9 @@ public class MensaActivityWear extends Activity implements WearableListView.Clic
     @Override
     public void onClick(WearableListView.ViewHolder viewHolder) {
 
-        String s = lunches[viewHolder.getAdapterPosition()];
-        Toast.makeText(this, 2.55+viewHolder.getAdapterPosition()+" €",Toast.LENGTH_LONG).show();
+        float price = mensaData.getLunchOffers().get(selectedDate).getLunchList().get(viewHolder.getAdapterPosition()).getPriceStud();
+        String s = NumberFormat.getCurrencyInstance().format(price);
+        Toast.makeText(this, s,Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -159,7 +161,7 @@ public class MensaActivityWear extends Activity implements WearableListView.Clic
 
         @Override
         public int getItemCount() {
-            return lunches.length;
+            return mensaData.getLunchOffers().get(selectedDate).getLunchList().size();
         }
     }
 
