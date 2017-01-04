@@ -26,14 +26,14 @@ import android.widget.TextView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.google.android.gms.wearable.PutDataMapRequest;
-
-import de.thorstenwitt.mensaapp.common.DataMapParcelableUtils;
 import de.thorstenwitt.mensaapp.helper.DataSync;
+import de.thorstenwitt.mensaapp.helper.Contributors;
 import de.thorstenwitt.mensaapp.parser.LunchParser;
 import de.thorstenwitt.mensaapp.R;
 import de.thorstenwitt.mensaapp.common.businessobject.Lunch;
 import de.thorstenwitt.mensaapp.common.businessobject.LunchOffer;
+
+
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -49,6 +49,7 @@ public class MenuActivity extends AppCompatActivity {
 
 	private DataSync ds;
 
+
 //	// Send DataItems.
 //	private ScheduledExecutorService mGeneratorExecutor;
 //	private ScheduledFuture<?> mDataItemGeneratorFuture;
@@ -63,6 +64,7 @@ public class MenuActivity extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_menu);
+
 		lbAmount = (TextView) findViewById(R.id.textViewBetrag);
 		btReset = (Button) findViewById(R.id.buttonReset);
 		spDate = (Spinner) findViewById(R.id.spinnerDay);
@@ -139,7 +141,6 @@ public class MenuActivity extends AppCompatActivity {
 			ds.sendLunch(lunchy, counter++);
 		}
 
-
 		/*mGeneratorExecutor = new ScheduledThreadPoolExecutor(1);
 		mDataItemGeneratorFuture = mGeneratorExecutor.scheduleWithFixedDelay(
 				new DataItemGenerator(), 1, 5, TimeUnit.SECONDS);*/
@@ -191,7 +192,7 @@ public class MenuActivity extends AppCompatActivity {
 		menu.add(Menu.NONE, 0, Menu.NONE,"Speisekarte aktualisieren");
 		SubMenu submenuPreis = menu.addSubMenu(Menu.NONE, 1, Menu.NONE,"Preiskategorie auswaehlen");
 		SubMenu submenuMensa = menu.addSubMenu(Menu.NONE, 2, Menu.NONE,"Mensa auswaehlen");
-		menu.add(Menu.NONE, 3, Menu.NONE,"Beenden");
+		menu.add(Menu.NONE, 3, Menu.NONE,"Disclaimer");
 
 		submenuPreis.add(Menu.NONE, 11, Menu.NONE,"Studenten");
 		submenuPreis.add(Menu.NONE, 12, Menu.NONE,"Angestellte");
@@ -212,10 +213,9 @@ public class MenuActivity extends AppCompatActivity {
 			finish();
 		}
 		if(item.getItemId()==3) {
-			finish();
-			super.onDestroy();
-			android.os.Process.killProcess(android.os.Process.myPid());
-			System.exit(1);
+
+			new Contributors(this).show();
+
 		}
 		if(item.getItemId()==11) {
 			priceCategory = Lunch.PRICE_STUDENT;
