@@ -34,6 +34,7 @@ import java.util.concurrent.TimeUnit;
 
 import de.thorstenwitt.mensaapp.common.businessobject.Lunch;
 import de.thorstenwitt.mensaapp.common.DataMapParcelableUtils;
+import de.thorstenwitt.mensaapp.common.businessobject.Mensa;
 
 /**
  * Created by freese on 05.12.2016.
@@ -65,8 +66,6 @@ public class DataSync  implements
                 .build();
         if (!mResolvingError) {
             mGoogleApiClient.connect();
-            Bitmap bitmap = Bitmap.createBitmap(300,300, Bitmap.Config.ARGB_8888);
-            sendPhoto(toAsset(bitmap));
         }
 //        mGeneratorExecutor = new ScheduledThreadPoolExecutor(1);
 //        mDataItemGeneratorFuture = mGeneratorExecutor.scheduleWithFixedDelay(
@@ -132,48 +131,6 @@ public class DataSync  implements
     /**
      * Sends the asset that was created from the photo we took by adding it to the Data Item store.
      */
-    private void sendPhoto(Asset asset) {
-        PutDataMapRequest dataMap = PutDataMapRequest.create("/image");
-        dataMap.getDataMap().putAsset("photo", asset);
-        dataMap.getDataMap().putLong("time", new Date().getTime());
-        PutDataRequest request = dataMap.asPutDataRequest();
-        request.setUrgent();
-
-        Wearable.DataApi.putDataItem(mGoogleApiClient, request)
-                .setResultCallback(new ResultCallback<DataApi.DataItemResult>() {
-                    @Override
-                    public void onResult(DataApi.DataItemResult dataItemResult) {
-                        Log.d("MenuActivity", "Sending image was successful: " + dataItemResult.getStatus()
-                                .isSuccess());
-                    }
-                });
-    }
-
-
-
-    /**
-     * Builds an {@link com.google.android.gms.wearable.Asset} from a bitmap. The image that we get
-     * back from the camera in "data" is a thumbnail size. Typically, your image should not exceed
-     * 320x320 and if you want to have zoom and parallax effect in your app, limit the size of your
-     * image to 640x400. Resize your image before transferring to your wearable device.
-     */
-    private static Asset toAsset(Bitmap bitmap) {
-        ByteArrayOutputStream byteStream = null;
-
-        try {
-            byteStream = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteStream);
-            return Asset.createFromBytes(byteStream.toByteArray());
-        } finally {
-            if (null != byteStream) {
-                try {
-                    byteStream.close();
-                } catch (IOException e) {
-                    // ignore
-                }
-            }
-        }
-    }
 
     /**
      * Sendet Strings an die WearableAPI
@@ -202,13 +159,9 @@ public class DataSync  implements
 
 
 
-    /**
-     * Sendet Lunch an die WearableAPI
-     * @param text
-     */
-    public void sendLunch(Lunch lunch, int counter){
+    public void sendMensa(Mensa mensa){
         PutDataMapRequest putDataMapRequest = PutDataMapRequest.create("/lunch");
-        DataMapParcelableUtils.putParcelable(putDataMapRequest.getDataMap(), "lunch", lunch, counter);
+        DataMapParcelableUtils.putParcelable(putDataMapRequest.getDataMap(), "lunch", mensa);
 
         PutDataRequest request = putDataMapRequest.asPutDataRequest();
         request.setUrgent();
@@ -238,50 +191,5 @@ public class DataSync  implements
             this.text = text;
         }
     }
-
-    /**
-     * Generates a DataItem based on an incrementing count.
-     */
-    private class DataItemGenerator implements Runnable {
-
-        private int count = 0;
-
-        @Override
-        public void run() {
-//            PutDataMapRequest putDataMapRequest = PutDataMapRequest.create("/count");
-//            putDataMapRequest.getDataMap().putInt("count", count++);
-//
-//            PutDataRequest request = putDataMapRequest.asPutDataRequest();
-//            request.setUrgent();
-//
-//            Log.d("DataItemGenerator", "Generating DataItem: " + request);
-//            if (!mGoogleApiClient.isConnected()) {
-//                return;
-//            }
-//            Wearable.DataApi.putDataItem(mGoogleApiClient, request)
-//                    .setResultCallback(new ResultCallback<DataApi.DataItemResult>() {
-//                        @Override
-//                        public void onResult(DataApi.DataItemResult dataItemResult) {
-//                            if (!dataItemResult.getStatus().isSuccess()) {
-//                                Log.e("DataItemGenerator", "ERROR: failed to putDataItem, status code: "
-//                                        + dataItemResult.getStatus().getStatusCode());
-//                            }
-//                        }
-//                    });
-
-            //// send string
-
-            Lunch lunch = new Lunch("Nahrung", 1f,2f,3f, false);
-            sendText("Argh" + count++);
-            sendLunch(lunch, count);
-
-
-        }
-
-
-
-    }
-
-
 
 }
