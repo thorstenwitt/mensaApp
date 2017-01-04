@@ -20,7 +20,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 import de.thorstenwitt.mensaapp.R;
+import de.thorstenwitt.mensaapp.common.businessobject.Lunch;
+import de.thorstenwitt.mensaapp.common.businessobject.LunchOffer;
+import de.thorstenwitt.mensaapp.common.businessobject.Mensa;
 
 /**
  * Created by dev on 02.12.16.
@@ -29,7 +34,7 @@ import de.thorstenwitt.mensaapp.R;
 
 public class MensaActivityWear extends Activity implements WearableListView.ClickListener{
 
-    private String[] lunches = {"Geschnitzeltes nach Gyros Art", "Rindersauerbraten mit Sauce", "Tellerrösti mediterrainer Art", "Hähnbrust natur mit Letschosauce"};
+
     WearableListView listView;
     LinearLayout linearLayout;
     ImageButton dateButton;
@@ -42,6 +47,16 @@ public class MensaActivityWear extends Activity implements WearableListView.Clic
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mensa_wear);
+
+
+        ArrayList<Lunch> lunchlist = new ArrayList<>();
+        lunchlist.add(new Lunch("Test",1,1,1,false));
+        LunchOffer lo = new LunchOffer("12.12.2016", lunchlist);
+        ArrayList<LunchOffer> lolist = new ArrayList<>();
+        lolist.add(lo);
+        Mensa mensa = new Mensa("Mensa1", lolist);
+
+
 
         final WatchViewStub stub = (WatchViewStub) findViewById(R.id.watch_view_stub);
 
