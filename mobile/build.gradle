@@ -38,4 +38,5 @@ dependencies {
     compile 'org.jsoup:jsoup:1.8.2'
     compile 'com.google.android.gms:play-services-wearable:8.4.0'
     compile project(':common')
+    wearApp project(':wear')
 }
