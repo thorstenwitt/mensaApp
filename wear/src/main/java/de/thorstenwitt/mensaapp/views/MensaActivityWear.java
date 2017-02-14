@@ -21,8 +21,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DateFormat;
 import java.text.NumberFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Locale;
 
 import de.thorstenwitt.mensaapp.DataLayerListenerService;
@@ -89,7 +93,14 @@ public class MensaActivityWear extends Activity implements WearableListView.Clic
                     public void onClick(View view) {
                         String[] availableDates = new String[mensaData.getLunchOffers().size()];
                         for(int i=0; i<mensaData.getLunchOffers().size(); i++) {
-                            availableDates[i] = mensaData.getLunchOffers().get(i).getMydate();
+                            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                            try {
+                                Date lunchOfferDate = sdf.parse(mensaData.getLunchOffers().get(i).getMydate());
+                                String localizedLunchDate = DateFormat.getDateInstance(DateFormat.LONG).format(lunchOfferDate);
+                                availableDates[i] = localizedLunchDate;
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                            }
                         }
                         Intent intentDate = new Intent(getApplicationContext(), ChooseDateActivityWear.class);
                         intentDate.putExtra("DATES", availableDates);
