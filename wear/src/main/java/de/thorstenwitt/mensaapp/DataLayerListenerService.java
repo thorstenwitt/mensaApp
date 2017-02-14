@@ -29,12 +29,15 @@ import android.util.Log;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.PendingResult;
+import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.wearable.Asset;
 import com.google.android.gms.wearable.CapabilityApi;
 import com.google.android.gms.wearable.CapabilityInfo;
 import com.google.android.gms.wearable.DataApi;
 import com.google.android.gms.wearable.DataEvent;
 import com.google.android.gms.wearable.DataEventBuffer;
+import com.google.android.gms.wearable.DataItemBuffer;
 import com.google.android.gms.wearable.DataMapItem;
 import com.google.android.gms.wearable.MessageApi;
 import com.google.android.gms.wearable.MessageEvent;
@@ -111,6 +114,27 @@ public class DataLayerListenerService implements
         Wearable.MessageApi.addListener(mGoogleApiClient, this);
         Wearable.CapabilityApi.addListener(
                 mGoogleApiClient, this, Uri.parse("wear://"), CapabilityApi.FILTER_REACHABLE);
+        PendingResult<DataItemBuffer> pendingResult = Wearable.DataApi.getDataItems(mGoogleApiClient);
+        pendingResult.setResultCallback(new ResultCallback<DataItemBuffer>() {
+            @Override
+            public void onResult(@NonNull DataItemBuffer dataItems) {
+                if(dataItems.getCount()!=0) {
+                    for(int i=0; i<dataItems.getCount(); i++) {
+                        String path = dataItems.get(i).getUri().getPath();
+                        if (DataLayerListenerService.LUNCH_PATH.equals(path)) {
+                            DataMapItem dataMapItem = DataMapItem.fromDataItem(dataItems.get(i));
+                            Mensa m = DataMapParcelableUtils.getParcelable(dataMapItem.getDataMap(), "lunch", Mensa.CREATOR);
+                            mensaActivityWear.notifyAboutNewMensaData(m);
+                        } else {
+                            LOGD(TAG, "Unrecognized path: " + path);
+                        }
+                    }
+                }
+                dataItems.release();
+            }
+        });
+
+
     }
 
     @Override
