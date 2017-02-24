@@ -178,7 +178,11 @@ public class MensaActivityWear extends Activity implements WearableListView.Clic
             LunchItemView lunchItemView = (LunchItemView) viewHolder.itemView;
 
             TextView textView = (TextView) lunchItemView.findViewById(R.id.itemName);
-            textView.setText(mensaData.getLunchOffers().get(selectedDate).getLunchList().get(position).getmName());
+            String mName = mensaData.getLunchOffers().get(selectedDate).getLunchList().get(position).getmName();
+            if(mName.length()>45) {
+                mName = mName.substring(0,45)+"...";
+            }
+            textView.setText(mName);
 
             ImageView imageView = (ImageView) lunchItemView.findViewById(R.id.itemIcon);
             if(mensaData.getLunchOffers().get(selectedDate).getLunchList().get(position).getIsMensaVital()) {
