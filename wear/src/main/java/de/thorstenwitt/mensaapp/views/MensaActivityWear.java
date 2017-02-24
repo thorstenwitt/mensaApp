@@ -45,6 +45,7 @@ public class MensaActivityWear extends Activity implements WearableListView.Clic
 
     WearableListView listView;
     LinearLayout linearLayout;
+    LinearLayout progressBarLayout;
     ImageButton dateButton;
     private static final int PICK_DATE_FROM_ACTIVITY=1;
     private Mensa mensaData;
@@ -74,6 +75,9 @@ public class MensaActivityWear extends Activity implements WearableListView.Clic
             @TargetApi(Build.VERSION_CODES.KITKAT_WATCH)
             @Override
             public void onLayoutInflated(WatchViewStub watchViewStub) {
+
+
+                progressBarLayout = (LinearLayout) findViewById(R.id.progressbar_layout);
                 listView = (WearableListView) findViewById(R.id.wearable_list);
                 linearLayout = (LinearLayout) findViewById(R.id.frame_layout);
                 dateButton = (ImageButton) findViewById(R.id.date_button);
@@ -96,7 +100,9 @@ public class MensaActivityWear extends Activity implements WearableListView.Clic
                             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                             try {
                                 Date lunchOfferDate = sdf.parse(mensaData.getLunchOffers().get(i).getMydate());
-                                String localizedLunchDate = DateFormat.getDateInstance(DateFormat.LONG).format(lunchOfferDate);
+                                SimpleDateFormat targetSdf = new SimpleDateFormat("EEEE, dd.MM.yyyy");
+                                String localizedLunchDate = targetSdf.format(lunchOfferDate);
+                                        //DateFormat.getDateInstance(DateFormat.FULL).format(lunchOfferDate);
                                 availableDates[i] = localizedLunchDate;
                             } catch (ParseException e) {
                                 e.printStackTrace();
@@ -118,6 +124,8 @@ public class MensaActivityWear extends Activity implements WearableListView.Clic
 
     public void notifyAboutNewMensaData(Mensa mensa) {
         this.mensaData = mensa;
+        this.progressBarLayout.setVisibility(View.INVISIBLE);
+        this.linearLayout.setVisibility(View.VISIBLE);
         loadAdapter();
     }
 
