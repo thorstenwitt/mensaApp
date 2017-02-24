@@ -1,6 +1,7 @@
 package de.thorstenwitt.mensaapp.helper;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.IntentSender;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -23,6 +24,7 @@ import com.google.android.gms.wearable.MessageEvent;
 import com.google.android.gms.wearable.PutDataMapRequest;
 import com.google.android.gms.wearable.PutDataRequest;
 import com.google.android.gms.wearable.Wearable;
+import com.google.android.gms.wearable.WearableListenerService;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -32,6 +34,7 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
+import de.thorstenwitt.mensaapp.activity.SplashActivity;
 import de.thorstenwitt.mensaapp.common.businessobject.Lunch;
 import de.thorstenwitt.mensaapp.common.DataMapParcelableUtils;
 import de.thorstenwitt.mensaapp.common.businessobject.Mensa;
@@ -40,7 +43,7 @@ import de.thorstenwitt.mensaapp.common.businessobject.Mensa;
  * Created by freese on 05.12.2016.
  */
 
-public class DataSync  implements
+public class DataSync extends WearableListenerService implements
         CapabilityApi.CapabilityListener,
         MessageApi.MessageListener,
         DataApi.DataListener,
@@ -55,6 +58,18 @@ public class DataSync  implements
     // Send DataItems.
     private ScheduledExecutorService mGeneratorExecutor;
     private ScheduledFuture<?> mDataItemGeneratorFuture;
+    private static final String LAUNCHAPP_PATH = "/launch-app";
+
+    public DataSync() {
+        mGoogleApiClient = new GoogleApiClient.Builder(this.getApplicationContext())
+                .addApi(Wearable.API)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .build();
+        if (!mResolvingError) {
+            mGoogleApiClient.connect();
+        }
+    }
 
 
     public DataSync(Activity activity) {
@@ -126,38 +141,20 @@ public class DataSync  implements
     @Override
     public void onMessageReceived(MessageEvent messageEvent) {
         Log.d("DataSync", "Message: "+ messageEvent.toString());
+        if(messageEvent.getPath().equals(LAUNCHAPP_PATH)) {
+            if(activity==null) {
+                Intent startIntent = new Intent(this, SplashActivity.class);
+                startIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                this.startActivity(startIntent);
+            }
+            else {
+                Intent startIntent = new Intent(activity.getApplicationContext(), SplashActivity.class);
+                activity.startActivity(startIntent);
+                activity.finish();
+            }
+
+        }
     }
-
-    /**
-     * Sends the asset that was created from the photo we took by adding it to the Data Item store.
-     */
-
-    /**
-     * Sendet Strings an die WearableAPI
-     * @param text
-     */
-    public void sendText(String text){
-        PutDataMapRequest putDataMapRequestString = PutDataMapRequest.create("/string");
-        putDataMapRequestString.getDataMap().putString("string", text);
-
-        PutDataRequest request = putDataMapRequestString.asPutDataRequest();
-        request.setUrgent();
-
-        Log.d("DataItemGenerator", "Generating DataItem String: " + request);
-
-        Wearable.DataApi.putDataItem(mGoogleApiClient, request)
-                .setResultCallback(new ResultCallback<DataApi.DataItemResult>() {
-                    @Override
-                    public void onResult(DataApi.DataItemResult dataItemResult) {
-                        if (!dataItemResult.getStatus().isSuccess()) {
-                            Log.e("DataItemGenerator", "ERROR: failed to putDataItem, status code: "
-                                    + dataItemResult.getStatus().getStatusCode());
-                        }
-                    }
-                });
-    }
-
-
 
     public void sendMensa(Mensa mensa){
         PutDataMapRequest putDataMapRequest = PutDataMapRequest.create("/lunch");
@@ -178,18 +175,6 @@ public class DataSync  implements
                         }
                     }
                 });
-    }
-
-
-    private class Event {
-
-        String title;
-        String text;
-
-        public Event(String title, String text) {
-            this.title = title;
-            this.text = text;
-        }
     }
 
 }

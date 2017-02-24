@@ -41,7 +41,12 @@ import com.google.android.gms.wearable.DataItemBuffer;
 import com.google.android.gms.wearable.DataMapItem;
 import com.google.android.gms.wearable.MessageApi;
 import com.google.android.gms.wearable.MessageEvent;
+import com.google.android.gms.wearable.Node;
+import com.google.android.gms.wearable.NodeApi;
 import com.google.android.gms.wearable.Wearable;
+
+import java.util.List;
+
 import de.thorstenwitt.mensaapp.common.DataMapParcelableUtils;
 import de.thorstenwitt.mensaapp.common.businessobject.Mensa;
 import de.thorstenwitt.mensaapp.fragments.AssetFragment;
@@ -62,6 +67,7 @@ public class DataLayerListenerService implements
 
 
     public static final String LUNCH_PATH = "/lunch";
+    public static final String LAUNCHAPP_PATH = "/launch-app";
 
     private GoogleApiClient mGoogleApiClient;
     private DataFragment mDataFragment;
@@ -130,6 +136,20 @@ public class DataLayerListenerService implements
                         }
                     }
                 }
+                else {
+                    PendingResult<NodeApi.GetConnectedNodesResult> nodeResult= Wearable.NodeApi.getConnectedNodes(mGoogleApiClient);
+                    nodeResult.setResultCallback(new ResultCallback<NodeApi.GetConnectedNodesResult>() {
+                        @Override
+                        public void onResult(@NonNull NodeApi.GetConnectedNodesResult getConnectedNodesResult) {
+                            List<Node> nodeList = getConnectedNodesResult.getNodes();
+                            for(Node node: nodeList) {
+                                Wearable.MessageApi.sendMessage(mGoogleApiClient, node.getId(), LAUNCHAPP_PATH,new byte[1]);
+                            }
+                        }
+                    });
+
+                }
+
                 dataItems.release();
             }
         });
