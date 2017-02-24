@@ -94,10 +94,21 @@ public class LunchParser {
 		}
 	}
 	public ArrayList<LunchOffer> getLunchData(int mensaLocation) {
+		if(mensaList.size()<=0) {
+			try {
+				parse();
+			}
+			catch (IOException e) {
+				System.out.println(e.getMessage());
+			}
+		}
 
-		ArrayList<LunchOffer> t = mensaList.get(mensaLocation).getLunchOffers();
-
-		return t;
+		if (mensaList.size()<mensaLocation) {
+			return mensaList.get(0).getLunchOffers();
+		}
+		else {
+			return mensaList.get(mensaLocation).getLunchOffers();
+		}
 
 	}
 
