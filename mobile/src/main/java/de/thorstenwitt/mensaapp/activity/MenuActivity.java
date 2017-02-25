@@ -31,6 +31,7 @@ import com.google.android.gms.wearable.PutDataMapRequest;
 import de.thorstenwitt.mensaapp.common.DataMapParcelableUtils;
 import de.thorstenwitt.mensaapp.common.businessobject.Mensa;
 import de.thorstenwitt.mensaapp.common.businessobject.Properties;
+import de.thorstenwitt.mensaapp.helper.Contributors;
 import de.thorstenwitt.mensaapp.helper.DataSync;
 import de.thorstenwitt.mensaapp.parser.LunchParser;
 import de.thorstenwitt.mensaapp.R;
@@ -164,7 +165,7 @@ public class MenuActivity extends AppCompatActivity {
 		menu.add(Menu.NONE, 0, Menu.NONE,"Speisekarte aktualisieren");
 		SubMenu submenuPreis = menu.addSubMenu(Menu.NONE, 1, Menu.NONE,"Preiskategorie auswaehlen");
 		SubMenu submenuMensa = menu.addSubMenu(Menu.NONE, 2, Menu.NONE,"Mensa auswaehlen");
-		menu.add(Menu.NONE, 3, Menu.NONE,"Beenden");
+		menu.add(Menu.NONE, 3, Menu.NONE,"Infos");
 
 		submenuPreis.add(Menu.NONE, 11, Menu.NONE,"Studenten");
 		submenuPreis.add(Menu.NONE, 12, Menu.NONE,"Angestellte");
@@ -185,10 +186,7 @@ public class MenuActivity extends AppCompatActivity {
 			finish();
 		}
 		if(item.getItemId()==3) {
-			finish();
-			super.onDestroy();
-			android.os.Process.killProcess(android.os.Process.myPid());
-			System.exit(1);
+			new Contributors(this).show();
 		}
 		if(item.getItemId()==11) {
 			properties.setSelectedPriceCategory(Lunch.PRICE_STUDENT);

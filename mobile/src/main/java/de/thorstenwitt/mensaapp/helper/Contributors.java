@@ -33,7 +33,8 @@ public class Contributors {
     }
 
     public void show() {
-        String message = "<b>Team</b>" +
+        String message = "<div style='margin: 100px'>" +
+                        "<b>Team</b>" +
                         "<p>" +
                         "Thorsten Witt, Robert Freese, Christopher Karst, Sascha Schwarz, Steven Kannewischer" +
                         "<p>" +
@@ -45,7 +46,8 @@ public class Contributors {
                         "<p>" +
                         "<b>Studentenwerk Greifswald</b>" +
                         "<p>" +
-                        "<a href=http://studwerk.fh-stralsund.de> Studentenwerk </a> ";
+                        "<a href=http://studwerk.fh-stralsund.de> Studentenwerk </a> "+
+                        "</div>";
 
         AlertDialog.Builder builder = new AlertDialog.Builder(mActivity)
                 .setTitle("Disclaimer");
@@ -67,14 +69,6 @@ public class Contributors {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.dismiss();
                     }
-                })
-                .setNegativeButton(android.R.string.cancel, new Dialog.OnClickListener() {
-
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        mActivity.finish();
-                    }
-
                 });
         builder.create().show();
         //}
