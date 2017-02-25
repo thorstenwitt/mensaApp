@@ -32,51 +32,7 @@ public class Contributors {
         mActivity = context;
     }
 
-
-    /*
-
     public void show() {
-
-            String title = "Disclaimer";
-
-            String message = "Team\n" +
-                    "\n" +
-                    "Thorsten Witt, Robert Freese, Christopher Karst, Sascha Schwarz, Steven Kannewischer\n" +
-                    "\n" +
-                    "Urheberrecht\n" +
-                    "\n" +
-                    "Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet.\n" +
-                    "\n" +
-                    "Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.";
-
-
-            AlertDialog.Builder builder = new AlertDialog.Builder(mActivity)
-                    .setTitle(title)
-                    .setMessage(message)
-                    .setPositiveButton(android.R.string.ok, new Dialog.OnClickListener() {
-
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            dialogInterface.dismiss();
-                        }
-                    })
-                    .setNegativeButton(android.R.string.cancel, new Dialog.OnClickListener() {
-
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            mActivity.finish();
-                        }
-
-                    });
-            builder.create().show();
-        //}
-    }
-
-    */
-
-
-    public void show() {
-
         String message = "<b>Team</b>" +
                         "<p>" +
                         "Thorsten Witt, Robert Freese, Christopher Karst, Sascha Schwarz, Steven Kannewischer" +
