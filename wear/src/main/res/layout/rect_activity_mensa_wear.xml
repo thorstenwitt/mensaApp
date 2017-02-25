@@ -47,7 +47,7 @@
             android:layout_weight=".85"
             android:layout_gravity="bottom|center"
             android:src="@drawable/date2"
-            android:background="@color/green"
+            android:background="@color/dark_red"
             android:tint="@color/white" />
     </LinearLayout>
 </android.support.wearable.view.BoxInsetLayout>
