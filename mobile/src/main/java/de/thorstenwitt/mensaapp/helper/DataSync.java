@@ -38,6 +38,7 @@ import de.thorstenwitt.mensaapp.activity.SplashActivity;
 import de.thorstenwitt.mensaapp.common.businessobject.Lunch;
 import de.thorstenwitt.mensaapp.common.DataMapParcelableUtils;
 import de.thorstenwitt.mensaapp.common.businessobject.Mensa;
+import de.thorstenwitt.mensaapp.common.businessobject.Properties;
 
 /**
  * Created by freese on 05.12.2016.
@@ -59,6 +60,8 @@ public class DataSync extends WearableListenerService implements
     private ScheduledExecutorService mGeneratorExecutor;
     private ScheduledFuture<?> mDataItemGeneratorFuture;
     private static final String LAUNCHAPP_PATH = "/launch-app";
+    private static final String PROPERTIES_PATH = "/properties";
+    private static final String LUNCH_PATH = "/lunch";
 
     public DataSync() {
         mGoogleApiClient = new GoogleApiClient.Builder(this.getApplicationContext())
@@ -157,7 +160,7 @@ public class DataSync extends WearableListenerService implements
     }
 
     public void sendMensa(Mensa mensa){
-        PutDataMapRequest putDataMapRequest = PutDataMapRequest.create("/lunch");
+        PutDataMapRequest putDataMapRequest = PutDataMapRequest.create(LUNCH_PATH);
         DataMapParcelableUtils.putParcelable(putDataMapRequest.getDataMap(), "lunch", mensa);
 
         PutDataRequest request = putDataMapRequest.asPutDataRequest();
@@ -177,4 +180,26 @@ public class DataSync extends WearableListenerService implements
                 });
     }
 
+    public void sendProperties(Properties properties) {
+        PutDataMapRequest putDataMapRequest = PutDataMapRequest.create(PROPERTIES_PATH);
+        DataMapParcelableUtils.putParcelable(putDataMapRequest.getDataMap(), "properties", properties);
+
+        PutDataRequest request = putDataMapRequest.asPutDataRequest();
+        request.setUrgent();
+
+        Log.d("DataItemGenerator", "Generating DataItem Properties: " + request);
+
+        Wearable.DataApi.putDataItem(mGoogleApiClient, request)
+                .setResultCallback(new ResultCallback<DataApi.DataItemResult>() {
+                    @Override
+                    public void onResult(DataApi.DataItemResult dataItemResult) {
+                        if (!dataItemResult.getStatus().isSuccess()) {
+                            Log.e("DataItemGenerator", "ERROR: failed to putDataItem, status code: "
+                                    + dataItemResult.getStatus().getStatusCode());
+                        }
+                    }
+                });
+    }
+
 }
+

@@ -34,6 +34,7 @@ import de.thorstenwitt.mensaapp.R;
 import de.thorstenwitt.mensaapp.common.businessobject.Lunch;
 import de.thorstenwitt.mensaapp.common.businessobject.LunchOffer;
 import de.thorstenwitt.mensaapp.common.businessobject.Mensa;
+import de.thorstenwitt.mensaapp.common.businessobject.Properties;
 
 /**
  * Created by dev on 02.12.16.
@@ -51,19 +52,20 @@ public class MensaActivityWear extends Activity implements WearableListView.Clic
     private Mensa mensaData;
     private int selectedDate;
     private DataLayerListenerService dls;
+    private Properties properties;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT_WATCH)
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mensa_wear);
+        properties = new Properties(Lunch.MENSA_STRALSUND, Lunch.PRICE_STUDENT);
         ArrayList<Lunch> lunchlist = new ArrayList<>();
         lunchlist.add(new Lunch("Smartphone App -> Speisekarte aktualisieren",1,1,1,false));
         LunchOffer lo = new LunchOffer("Keine Daten", lunchlist);
         ArrayList<LunchOffer> lolist = new ArrayList<>();
         dls = new DataLayerListenerService(this);
         dls.getGoogleApiClient().connect();
-
         lolist.add(lo);
         Mensa mensa = new Mensa("Mensa1", lolist);
         mensaData = mensa;
@@ -117,7 +119,7 @@ public class MensaActivityWear extends Activity implements WearableListView.Clic
                     }
                 });
 
-                loadAdapter();
+                loadAdapter(properties);
             }
         });
     }
@@ -126,11 +128,16 @@ public class MensaActivityWear extends Activity implements WearableListView.Clic
         this.mensaData = mensa;
         this.progressBarLayout.setVisibility(View.INVISIBLE);
         this.linearLayout.setVisibility(View.VISIBLE);
-        loadAdapter();
+        loadAdapter(properties);
     }
 
-    private  void loadAdapter() {
-        listView.setAdapter(new LunchListAdapterWear(this, mensaData));
+    public void notifyAboutNewProperties(Properties properties) {
+        this.properties = properties;
+        loadAdapter(this.properties);
+    }
+
+    private  void loadAdapter(Properties properties) {
+        listView.setAdapter(new LunchListAdapterWear(this, mensaData, properties));
         listView.setClickListener(this);
     }
 
@@ -139,15 +146,24 @@ public class MensaActivityWear extends Activity implements WearableListView.Clic
         if (requestCode == PICK_DATE_FROM_ACTIVITY) {
             if (resultCode == RESULT_OK) {
                 selectedDate = data.getIntExtra("SELECTEDDATE",0);
-                loadAdapter();
+                loadAdapter(this.properties);
             }
         }
     }
 
     @Override
     public void onClick(WearableListView.ViewHolder viewHolder) {
+        float price;
+        if(properties.getSelectedPriceCategory()==Lunch.PRICE_STUDENT) {
+            price = mensaData.getLunchOffers().get(selectedDate).getLunchList().get(viewHolder.getAdapterPosition()).getPriceStud();
+        }
+        else if (properties.getSelectedPriceCategory()==Lunch.PRICE_EMPLOYEE) {
+            price = mensaData.getLunchOffers().get(selectedDate).getLunchList().get(viewHolder.getAdapterPosition()).getPriceEmp();
+        }
+        else {
+            price = mensaData.getLunchOffers().get(selectedDate).getLunchList().get(viewHolder.getAdapterPosition()).getPriceGuest();
+        }
 
-        float price = mensaData.getLunchOffers().get(selectedDate).getLunchList().get(viewHolder.getAdapterPosition()).getPriceStud();
         String s = NumberFormat.getCurrencyInstance(Locale.GERMANY).format(price);
         Toast.makeText(this, s,Toast.LENGTH_LONG).show();
     }
@@ -161,10 +177,12 @@ public class MensaActivityWear extends Activity implements WearableListView.Clic
 
         private final Context context;
         private final Mensa mensaData;
+        private final Properties properties;
 
-        public LunchListAdapterWear (Context context, Mensa mensa) {
+        public LunchListAdapterWear (Context context, Mensa mensa, Properties properties) {
             this.context = context;
             this.mensaData = mensa;
+            this.properties = properties;
 
         }
 

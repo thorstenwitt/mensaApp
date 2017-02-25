@@ -30,6 +30,7 @@ import com.google.android.gms.wearable.PutDataMapRequest;
 
 import de.thorstenwitt.mensaapp.common.DataMapParcelableUtils;
 import de.thorstenwitt.mensaapp.common.businessobject.Mensa;
+import de.thorstenwitt.mensaapp.common.businessobject.Properties;
 import de.thorstenwitt.mensaapp.helper.DataSync;
 import de.thorstenwitt.mensaapp.parser.LunchParser;
 import de.thorstenwitt.mensaapp.R;
@@ -46,7 +47,7 @@ public class MenuActivity extends AppCompatActivity {
 	public float totalAmount = 0.0f;
 	public ArrayList<LunchOffer> myLunchData;
 	int selectedDay=0;
-	private int priceCategory = Lunch.PRICE_STUDENT;
+	private Properties properties;
 	private DataSync ds;
 
 
@@ -80,9 +81,11 @@ public class MenuActivity extends AppCompatActivity {
 
 		if(savedInstanceState!=null) {
 			myLunchData = savedInstanceState.getParcelableArrayList("menues");
+			properties = savedInstanceState.getParcelable("properties");
 		}
 		else {
-			getLunchOffersfromSelectedMensa(LunchParser.getInstance(), Lunch.MENSA_STRALSUND);
+			properties = new Properties(Lunch.MENSA_STRALSUND, Lunch.PRICE_STUDENT);
+			getLunchOffersfromSelectedMensa(LunchParser.getInstance(), properties.getSelectedMensa());
 		}
 		ArrayList<String> lunchDates = new ArrayList<String>();
 		for(LunchOffer t:myLunchData) {
@@ -117,7 +120,8 @@ public class MenuActivity extends AppCompatActivity {
 	}
 
 	public void sendMensaDataToWatch() {
-		ds.sendMensa(LunchParser.getInstance().getLunchDataForAllMensas().get(Lunch.MENSA_STRALSUND));
+		ds.sendMensa(LunchParser.getInstance().getLunchDataForAllMensas().get(properties.getSelectedMensa()));
+		ds.sendProperties(properties);
 	}
 
 	public void updateAmountLabel(float amount) {
@@ -125,17 +129,17 @@ public class MenuActivity extends AppCompatActivity {
 	}
 	public void setListAdapter(int selectedDay){
 		final ArrayList<Lunch> selectedLunches = myLunchData.get(selectedDay).getLunchList();
-		menuListAdapter = new MenuListAdapter(this.getApplicationContext(), selectedLunches, priceCategory);
+		menuListAdapter = new MenuListAdapter(this.getApplicationContext(), selectedLunches, properties.getSelectedPriceCategory());
 		lstLunch.setAdapter(menuListAdapter);
 		lstLunch.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int position,
 									long arg3) {
-				if (priceCategory == Lunch.PRICE_STUDENT	){
+				if (properties.getSelectedPriceCategory() == Lunch.PRICE_STUDENT	){
 					totalAmount += selectedLunches.get(position).getPriceStud();
 					updateAmountLabel(totalAmount);
-				}else if (priceCategory == Lunch.PRICE_EMPLOYEE){
+				}else if (properties.getSelectedPriceCategory() == Lunch.PRICE_EMPLOYEE){
 					totalAmount += selectedLunches.get(position).getPriceEmp();
 					updateAmountLabel(totalAmount);
 				}else{
@@ -144,10 +148,12 @@ public class MenuActivity extends AppCompatActivity {
 				}
 			}
 		});
+		sendMensaDataToWatch();
 	}
 	@Override
 	protected void onSaveInstanceState(Bundle bundle) {
 		bundle.putParcelableArrayList("menues", myLunchData);
+		bundle.putParcelable("properties",properties);
 	}
 
 
@@ -185,31 +191,35 @@ public class MenuActivity extends AppCompatActivity {
 			System.exit(1);
 		}
 		if(item.getItemId()==11) {
-			priceCategory = Lunch.PRICE_STUDENT;
+			properties.setSelectedPriceCategory(Lunch.PRICE_STUDENT);
 			setListAdapter(selectedDay);
 		}
 		if(item.getItemId()==12) {
-			priceCategory = Lunch.PRICE_EMPLOYEE;
+			properties.setSelectedPriceCategory(Lunch.PRICE_EMPLOYEE);
 			setListAdapter(selectedDay);
 		}
 		if(item.getItemId()==13) {
-			priceCategory = Lunch.PRICE_GUEST;
+			properties.setSelectedPriceCategory(Lunch.PRICE_GUEST);
 			setListAdapter(selectedDay);
 		}
 		if(item.getItemId()==21) {
-			getLunchOffersfromSelectedMensa(LunchParser.getInstance(), Lunch.MENSA_AM_WALL);
+			properties.setSelectedMensa(Lunch.MENSA_AM_WALL);
+			getLunchOffersfromSelectedMensa(LunchParser.getInstance(), properties.getSelectedMensa());
 			setListAdapter(selectedDay);
 		}
 		if(item.getItemId()==22) {
-			getLunchOffersfromSelectedMensa(LunchParser.getInstance(), Lunch.MENSA_NEUBRANDENBURG);
+			properties.setSelectedMensa(Lunch.MENSA_NEUBRANDENBURG);
+			getLunchOffersfromSelectedMensa(LunchParser.getInstance(), properties.getSelectedMensa());
 			setListAdapter(selectedDay);
 		}
 		if(item.getItemId()==23) {
-			getLunchOffersfromSelectedMensa(LunchParser.getInstance(), Lunch.MENSA_STRALSUND);
+			properties.setSelectedMensa(Lunch.MENSA_STRALSUND);
+			getLunchOffersfromSelectedMensa(LunchParser.getInstance(), properties.getSelectedMensa());
 			setListAdapter(selectedDay);
 		}
 		if(item.getItemId()==24) {
-			getLunchOffersfromSelectedMensa(LunchParser.getInstance(), Lunch.MENSA_BERTHOLD_BEITZ_PLATZ);
+			properties.setSelectedMensa(Lunch.MENSA_BERTHOLD_BEITZ_PLATZ);
+			getLunchOffersfromSelectedMensa(LunchParser.getInstance(), properties.getSelectedMensa());
 			setListAdapter(selectedDay);
 		}
 

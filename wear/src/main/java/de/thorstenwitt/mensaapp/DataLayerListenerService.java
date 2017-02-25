@@ -49,6 +49,7 @@ import java.util.List;
 
 import de.thorstenwitt.mensaapp.common.DataMapParcelableUtils;
 import de.thorstenwitt.mensaapp.common.businessobject.Mensa;
+import de.thorstenwitt.mensaapp.common.businessobject.Properties;
 import de.thorstenwitt.mensaapp.fragments.AssetFragment;
 import de.thorstenwitt.mensaapp.fragments.DataFragment;
 import de.thorstenwitt.mensaapp.views.MensaActivityWear;
@@ -66,8 +67,9 @@ public class DataLayerListenerService implements
     private static final String TAG = "DLLService";
 
 
-    public static final String LUNCH_PATH = "/lunch";
-    public static final String LAUNCHAPP_PATH = "/launch-app";
+    private static final String LUNCH_PATH = "/lunch";
+    private static final String LAUNCHAPP_PATH = "/launch-app";
+    private static final String PROPERTIES_PATH = "/properties";
 
     private GoogleApiClient mGoogleApiClient;
     private DataFragment mDataFragment;
@@ -131,7 +133,12 @@ public class DataLayerListenerService implements
                             DataMapItem dataMapItem = DataMapItem.fromDataItem(dataItems.get(i));
                             Mensa m = DataMapParcelableUtils.getParcelable(dataMapItem.getDataMap(), "lunch", Mensa.CREATOR);
                             mensaActivityWear.notifyAboutNewMensaData(m);
-                        } else {
+                        } else if (DataLayerListenerService.PROPERTIES_PATH.equals(path)){
+                            DataMapItem dataMapItem = DataMapItem.fromDataItem(dataItems.get(i));
+                            Properties p = DataMapParcelableUtils.getParcelable(dataMapItem.getDataMap(), "properties", Properties.CREATOR);
+                            mensaActivityWear.notifyAboutNewProperties(p);
+                        }
+                        else {
                             LOGD(TAG, "Unrecognized path: " + path);
                         }
                     }
@@ -185,6 +192,10 @@ public class DataLayerListenerService implements
                     Mensa m = DataMapParcelableUtils.getParcelable(dataMapItem.getDataMap(), "lunch", Mensa.CREATOR);
                     mensaActivityWear.notifyAboutNewMensaData(m);
 
+                } else if (DataLayerListenerService.PROPERTIES_PATH.equals(path)){
+                    DataMapItem dataMapItem = DataMapItem.fromDataItem(event.getDataItem());
+                    Properties p = DataMapParcelableUtils.getParcelable(dataMapItem.getDataMap(), "properties", Properties.CREATOR);
+                    mensaActivityWear.notifyAboutNewProperties(p);
                 } else {
                     LOGD(TAG, "Unrecognized path: " + path);
                 }
