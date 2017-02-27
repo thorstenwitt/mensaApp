@@ -1,0 +1,2921 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<anbieter xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="mensen.xsd">
+    <mensa>
+        <name>Mensa Am Wall</name>
+        <theke>
+            <name>Tellergericht</name>
+            <gericht>
+                <name>Tasse: Grießbrei mit Sauerkirschsoße </name>
+                <datum>2017-02-27</datum>
+                <preisStudent>0,70</preisStudent>
+                <preisMitarbeiter>1,35</preisMitarbeiter>
+                <preisGast>2,00</preisGast>
+                <inhaltsstoff>
+                    <name>A,G</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Tasse Bunte Gemüsesuppe mit Mais (Knobi) </name>
+                <datum>2017-02-27</datum>
+                <preisStudent>0,70</preisStudent>
+                <preisMitarbeiter>1,35</preisMitarbeiter>
+                <preisGast>2,00</preisGast>
+                <inhaltsstoff>
+                    <name>,1,4,9,G,I</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Teller: Grießbrei mit Sauerkirschsoße </name>
+                <datum>2017-02-27</datum>
+                <preisStudent>1,20</preisStudent>
+                <preisMitarbeiter>2,00</preisMitarbeiter>
+                <preisGast>3,00</preisGast>
+                <inhaltsstoff>
+                    <name>A,G</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Teller Bunte Gemüsesuppe mit Mais (Knobi) </name>
+                <datum>2017-02-27</datum>
+                <preisStudent>1,20</preisStudent>
+                <preisMitarbeiter>2,00</preisMitarbeiter>
+                <preisGast>3,00</preisGast>
+                <inhaltsstoff>
+                    <name>,1,4,9,G,I</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Terrine: Grießbrei mit Sauerkirschsoße </name>
+                <datum>2017-02-27</datum>
+                <preisStudent>1,60</preisStudent>
+                <preisMitarbeiter>3,00</preisMitarbeiter>
+                <preisGast>4,00</preisGast>
+                <inhaltsstoff>
+                    <name>A,G</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Terrine Bunte Gemüsesuppe mit Mais (Knobi) </name>
+                <datum>2017-02-27</datum>
+                <preisStudent>1,60</preisStudent>
+                <preisMitarbeiter>3,00</preisMitarbeiter>
+                <preisGast>4,00</preisGast>
+                <inhaltsstoff>
+                    <name>,1,4,9,G,I</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Komponente 1</name>
+            <gericht>
+                <name>gedünstetes Wildachsfilet mit Limonen-Buttersauce </name>
+                <datum>2017-02-27</datum>
+                <preisStudent>2,00</preisStudent>
+                <preisMitarbeiter>2,65</preisMitarbeiter>
+                <preisGast>3,30</preisGast>
+                <inhaltsstoff>
+                    <name>9,14,A,C,D,F,G,I,J</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Komponente 2</name>
+            <gericht>
+                <name>Wurstgulasch </name>
+                <datum>2017-02-27</datum>
+                <preisStudent>1,50</preisStudent>
+                <preisMitarbeiter>2,15</preisMitarbeiter>
+                <preisGast>2,80</preisGast>
+                <inhaltsstoff>
+                    <name>1,2,3,7,9,A,I,J,S</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Vegetarische Kost</name>
+            <gericht>
+                <name>Vegetarisch gefüllte Paprikaschote mit Paprikasauce und Salzkartoffeln </name>
+                <datum>2017-02-27</datum>
+                <preisStudent>1,75</preisStudent>
+                <preisMitarbeiter>2,75</preisMitarbeiter>
+                <preisGast>3,75</preisGast>
+                <inhaltsstoff>
+                    <name>5,9,A,C,F,G,I</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Mensa Vital</name>
+            <gericht>
+                <name>Limettenspaghetti mit Erbsen-Pilz-Ragout </name>
+                <datum>2017-02-27</datum>
+                <preisStudent>2,20</preisStudent>
+                <preisMitarbeiter>3,20</preisMitarbeiter>
+                <preisGast>4,20</preisGast>
+                <inhaltsstoff>
+                    <name>9,A,H</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Beilagen</name>
+            <gericht>
+                <name>Reis </name>
+                <datum>2017-02-27</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name>9</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Nudeln </name>
+                <datum>2017-02-27</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name>9,A</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Gemüse</name>
+            <gericht>
+                <name>Karottenscheiben </name>
+                <datum>2017-02-27</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name>9</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Europa Gemüse </name>
+                <datum>2017-02-27</datum>
+                <preisStudent>0,70</preisStudent>
+                <preisMitarbeiter>0,90</preisMitarbeiter>
+                <preisGast>1,20</preisGast>
+                <inhaltsstoff>
+                    <name>9</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Salate und Desserts</name>
+            <gericht>
+                <name>Frische Salate und verschiedene Desserts stehen zur Auswahl.</name>
+                <datum>2017-02-27</datum>
+                <preisStudent></preisStudent>
+                <preisMitarbeiter></preisMitarbeiter>
+                <preisGast></preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Tellergericht</name>
+            <gericht>
+                <name>eine Wiener zum Eintopf </name>
+                <datum>2017-02-28</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,60</preisMitarbeiter>
+                <preisGast>0,60</preisGast>
+                <inhaltsstoff>
+                    <name>2,3,7,S</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Bunter Linseneintopf mit Kasselerfleisch, Tasse </name>
+                <datum>2017-02-28</datum>
+                <preisStudent>0,70</preisStudent>
+                <preisMitarbeiter>1,35</preisMitarbeiter>
+                <preisGast>2,00</preisGast>
+                <inhaltsstoff>
+                    <name>2,3,5,9,I,S</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Bunter Linseneintopf mit Kasselerfleisch, Teller </name>
+                <datum>2017-02-28</datum>
+                <preisStudent>1,20</preisStudent>
+                <preisMitarbeiter>2,00</preisMitarbeiter>
+                <preisGast>3,00</preisGast>
+                <inhaltsstoff>
+                    <name>2,3,5,9,I,S</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Bunter Linseneintopf mit Kasselerfleisch, Terrine </name>
+                <datum>2017-02-28</datum>
+                <preisStudent>1,60</preisStudent>
+                <preisMitarbeiter>3,00</preisMitarbeiter>
+                <preisGast>4,00</preisGast>
+                <inhaltsstoff>
+                    <name>2,3,5,9,I,S</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Komponente 2</name>
+            <gericht>
+                <name>Paniertes Schweineschnitzel mit Pilzrahmsoße </name>
+                <datum>2017-02-28</datum>
+                <preisStudent>1,75</preisStudent>
+                <preisMitarbeiter>2,40</preisMitarbeiter>
+                <preisGast>3,05</preisGast>
+                <inhaltsstoff>
+                    <name>1,9,A,C,G,S</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Komponente 3</name>
+            <gericht>
+                <name>Hühnerfrikassee mit Gemüse </name>
+                <datum>2017-02-28</datum>
+                <preisStudent>2,00</preisStudent>
+                <preisMitarbeiter>2,65</preisMitarbeiter>
+                <preisGast>3,30</preisGast>
+                <inhaltsstoff>
+                    <name>3,9,A,G,Gefl,I</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Vegetarische Kost</name>
+            <gericht>
+                <name>Vegan: Klopse mit Kräuter-Tomatensoße und Reis </name>
+                <datum>2017-02-28</datum>
+                <preisStudent>1,75</preisStudent>
+                <preisMitarbeiter>2,75</preisMitarbeiter>
+                <preisGast>3,75</preisGast>
+                <inhaltsstoff>
+                    <name>9,A,I</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Nudeltheke</name>
+            <gericht>
+                <name>Spiralnudeln mit Spinat-Sahnesoße </name>
+                <datum>2017-02-28</datum>
+                <preisStudent>2,00</preisStudent>
+                <preisMitarbeiter>2,65</preisMitarbeiter>
+                <preisGast>3,30</preisGast>
+                <inhaltsstoff>
+                    <name>9,A,G</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Beilagen</name>
+            <gericht>
+                <name>Salzkartoffeln </name>
+                <datum>2017-02-28</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name>5,9</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Reis </name>
+                <datum>2017-02-28</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name>9</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Pommes Frites </name>
+                <datum>2017-02-28</datum>
+                <preisStudent>0,80</preisStudent>
+                <preisMitarbeiter>1,00</preisMitarbeiter>
+                <preisGast>1,30</preisGast>
+                <inhaltsstoff>
+                    <name>9</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Gemüse</name>
+            <gericht>
+                <name>Erbsengemüse </name>
+                <datum>2017-02-28</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name>9</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>buntes Pfannengemüse </name>
+                <datum>2017-02-28</datum>
+                <preisStudent>0,70</preisStudent>
+                <preisMitarbeiter>0,90</preisMitarbeiter>
+                <preisGast>1,20</preisGast>
+                <inhaltsstoff>
+                    <name>9</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Salate und Desserts</name>
+            <gericht>
+                <name>Frische Salate und verschiedene Desserts stehen zur Auswahl.</name>
+                <datum>2017-02-28</datum>
+                <preisStudent></preisStudent>
+                <preisMitarbeiter></preisMitarbeiter>
+                <preisGast></preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Tellergericht</name>
+            <gericht>
+                <name>Feurige Apfel-Tomatensuppe, Tasse </name>
+                <datum>2017-03-01</datum>
+                <preisStudent>0,70</preisStudent>
+                <preisMitarbeiter>1,35</preisMitarbeiter>
+                <preisGast>2,00</preisGast>
+                <inhaltsstoff>
+                    <name>2,3,9</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Feurige Apfel-Tomatensuppe, Teller </name>
+                <datum>2017-03-01</datum>
+                <preisStudent>1,20</preisStudent>
+                <preisMitarbeiter>2,00</preisMitarbeiter>
+                <preisGast>3,00</preisGast>
+                <inhaltsstoff>
+                    <name>2,3,9</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Feurige Apfel-Tomatensuppe, Terrine </name>
+                <datum>2017-03-01</datum>
+                <preisStudent>1,60</preisStudent>
+                <preisMitarbeiter>3,00</preisMitarbeiter>
+                <preisGast>4,00</preisGast>
+                <inhaltsstoff>
+                    <name>2,3,9</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Komponente 1</name>
+            <gericht>
+                <name>Fischplatte Bordelaise mit Dillsoße </name>
+                <datum>2017-03-01</datum>
+                <preisStudent>2,00</preisStudent>
+                <preisMitarbeiter>2,65</preisMitarbeiter>
+                <preisGast>3,30</preisGast>
+                <inhaltsstoff>
+                    <name>9,A,D,G</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Komponente 2</name>
+            <gericht>
+                <name>Geschnetzeltes vom Schwein nach Zürcher Art </name>
+                <datum>2017-03-01</datum>
+                <preisStudent>2,20</preisStudent>
+                <preisMitarbeiter>2,85</preisMitarbeiter>
+                <preisGast>3,50</preisGast>
+                <inhaltsstoff>
+                    <name>9,A,G,S</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Vegetarische Kost</name>
+            <gericht>
+                <name>Backkartoffel mit Schnittlauch Quark Dip oder veganem Dip und Salatbeilage </name>
+                <datum>2017-03-01</datum>
+                <preisStudent>1,75</preisStudent>
+                <preisMitarbeiter>2,75</preisMitarbeiter>
+                <preisGast>3,75</preisGast>
+                <inhaltsstoff>
+                    <name>,9,G</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Mensa Vital</name>
+            <gericht>
+                <name>Putenbrustgeschnetzeltes in Currysoße mit gebratenem Gemüse und Bandnudeln </name>
+                <datum>2017-03-01</datum>
+                <preisStudent>2,50</preisStudent>
+                <preisMitarbeiter>3,50</preisMitarbeiter>
+                <preisGast>4,50</preisGast>
+                <inhaltsstoff>
+                    <name>9,A,G,Gefl,J</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Beilagen</name>
+            <gericht>
+                <name>Reis </name>
+                <datum>2017-03-01</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name>9</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Salzkartoffeln </name>
+                <datum>2017-03-01</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name>5,9</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Spätzle </name>
+                <datum>2017-03-01</datum>
+                <preisStudent>0,80</preisStudent>
+                <preisMitarbeiter>1,00</preisMitarbeiter>
+                <preisGast>1,30</preisGast>
+                <inhaltsstoff>
+                    <name>9,A,C</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Kartoffelkroketten </name>
+                <datum>2017-03-01</datum>
+                <preisStudent>0,80</preisStudent>
+                <preisMitarbeiter>1,00</preisMitarbeiter>
+                <preisGast>1,30</preisGast>
+                <inhaltsstoff>
+                    <name>1,A</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Gemüse</name>
+            <gericht>
+                <name>Mischgemüse </name>
+                <datum>2017-03-01</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name>9</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Romanesco </name>
+                <datum>2017-03-01</datum>
+                <preisStudent>0,70</preisStudent>
+                <preisMitarbeiter>0,90</preisMitarbeiter>
+                <preisGast>1,20</preisGast>
+                <inhaltsstoff>
+                    <name>9</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Salate und Desserts</name>
+            <gericht>
+                <name>Frische Salate und verschiedene Desserts stehen zur Auswahl.</name>
+                <datum>2017-03-01</datum>
+                <preisStudent></preisStudent>
+                <preisMitarbeiter></preisMitarbeiter>
+                <preisGast></preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Tellergericht</name>
+            <gericht>
+                <name>Soljanka Ukrainische Art, Tasse </name>
+                <datum>2017-03-02</datum>
+                <preisStudent>0,70</preisStudent>
+                <preisMitarbeiter>1,35</preisMitarbeiter>
+                <preisGast>2,00</preisGast>
+                <inhaltsstoff>
+                    <name>2,3,7,9,15,G,I,J,S</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Soljanka Ukrainische Art, Teller </name>
+                <datum>2017-03-02</datum>
+                <preisStudent>1,20</preisStudent>
+                <preisMitarbeiter>2,00</preisMitarbeiter>
+                <preisGast>3,00</preisGast>
+                <inhaltsstoff>
+                    <name>2,3,7,9,15,G,I,J,S</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Soljanka Ukrainische Art, Terrine </name>
+                <datum>2017-03-02</datum>
+                <preisStudent>1,60</preisStudent>
+                <preisMitarbeiter>3,00</preisMitarbeiter>
+                <preisGast>4,00</preisGast>
+                <inhaltsstoff>
+                    <name>2,3,7,9,15,G,I,J,S</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Komponente 2</name>
+            <gericht>
+                <name>Kohlroulade in Krautsoße </name>
+                <datum>2017-03-02</datum>
+                <preisStudent>2,00</preisStudent>
+                <preisMitarbeiter>2,65</preisMitarbeiter>
+                <preisGast>3,30</preisGast>
+                <inhaltsstoff>
+                    <name>1,9,A,C,G,J,S</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Komponente 3</name>
+            <gericht>
+                <name>Chicken Wings mit Asia-Dip (süss-scharf) </name>
+                <datum>2017-03-02</datum>
+                <preisStudent>2,00</preisStudent>
+                <preisMitarbeiter>2,65</preisMitarbeiter>
+                <preisGast>3,30</preisGast>
+                <inhaltsstoff>
+                    <name>9,15,A,Gefl</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Vegetarische Kost</name>
+            <gericht>
+                <name>Eierragout mit Spargel und Gemüse dazu Salzkartoffeln </name>
+                <datum>2017-03-02</datum>
+                <preisStudent>1,75</preisStudent>
+                <preisMitarbeiter>2,75</preisMitarbeiter>
+                <preisGast>3,75</preisGast>
+                <inhaltsstoff>
+                    <name>1,5,9,A,C,G,J</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Mensa Vital</name>
+            <gericht>
+                <name>Vegan: Aubergine im Haferflockenmantel mit Tomatensoße und Gemüsebulgur </name>
+                <datum>2017-03-02</datum>
+                <preisStudent>2,20</preisStudent>
+                <preisMitarbeiter>3,20</preisMitarbeiter>
+                <preisGast>4,20</preisGast>
+                <inhaltsstoff>
+                    <name>9,A</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Nudeltheke</name>
+            <gericht>
+                <name>Spiralnudeln Spinat - Lachs Sauce </name>
+                <datum>2017-03-02</datum>
+                <preisStudent>2,00</preisStudent>
+                <preisMitarbeiter>2,65</preisMitarbeiter>
+                <preisGast>3,30</preisGast>
+                <inhaltsstoff>
+                    <name>1,9,A,D,G</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Beilagen</name>
+            <gericht>
+                <name>Reis </name>
+                <datum>2017-03-02</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name>9</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Salzkartoffeln </name>
+                <datum>2017-03-02</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name>5,9</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Pommes Frites </name>
+                <datum>2017-03-02</datum>
+                <preisStudent>0,80</preisStudent>
+                <preisMitarbeiter>1,00</preisMitarbeiter>
+                <preisGast>1,30</preisGast>
+                <inhaltsstoff>
+                    <name>9</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Gemüse</name>
+            <gericht>
+                <name>Sommergemüse </name>
+                <datum>2017-03-02</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name>9</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Blumenkohlgemüse </name>
+                <datum>2017-03-02</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name>9</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Salate und Desserts</name>
+            <gericht>
+                <name>Frische Salate und verschiedene Desserts stehen zur Auswahl.</name>
+                <datum>2017-03-02</datum>
+                <preisStudent></preisStudent>
+                <preisMitarbeiter></preisMitarbeiter>
+                <preisGast></preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Tellergericht</name>
+            <gericht>
+                <name>Karottencremesuppe mit Ingwer, Tasse </name>
+                <datum>2017-03-03</datum>
+                <preisStudent>0,70</preisStudent>
+                <preisMitarbeiter>1,35</preisMitarbeiter>
+                <preisGast>2,00</preisGast>
+                <inhaltsstoff>
+                    <name>9,G</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Karottencremesuppe mit Ingwer, Teller </name>
+                <datum>2017-03-03</datum>
+                <preisStudent>1,20</preisStudent>
+                <preisMitarbeiter>2,00</preisMitarbeiter>
+                <preisGast>3,00</preisGast>
+                <inhaltsstoff>
+                    <name>9,G</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Karottencremesuppe mit Ingwer, Terrine </name>
+                <datum>2017-03-03</datum>
+                <preisStudent>1,60</preisStudent>
+                <preisMitarbeiter>3,00</preisMitarbeiter>
+                <preisGast>4,00</preisGast>
+                <inhaltsstoff>
+                    <name>9,G</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Komponente 2</name>
+            <gericht>
+                <name>Schweinegulasch mit Paprika und Zwiebeln </name>
+                <datum>2017-03-03</datum>
+                <preisStudent>1,75</preisStudent>
+                <preisMitarbeiter>2,40</preisMitarbeiter>
+                <preisGast>3,05</preisGast>
+                <inhaltsstoff>
+                    <name>9,A,G,S</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Komponente 3</name>
+            <gericht>
+                <name>Frisch gebackene Hähnchenkeule mit Rahmsoße </name>
+                <datum>2017-03-03</datum>
+                <preisStudent>2,00</preisStudent>
+                <preisMitarbeiter>2,65</preisMitarbeiter>
+                <preisGast>3,30</preisGast>
+                <inhaltsstoff>
+                    <name>3,9,A,F,Gefl</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Vegetarische Kost</name>
+            <gericht>
+                <name>Asiatische Gemüse-Reis Pfanne </name>
+                <datum>2017-03-03</datum>
+                <preisStudent>1,75</preisStudent>
+                <preisMitarbeiter>2,75</preisMitarbeiter>
+                <preisGast>3,75</preisGast>
+                <inhaltsstoff>
+                    <name>3,9,A,F</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Nudeltheke</name>
+            <gericht>
+                <name>Nudeln mit Gemüseragout </name>
+                <datum>2017-03-03</datum>
+                <preisStudent>2,00</preisStudent>
+                <preisMitarbeiter>2,65</preisMitarbeiter>
+                <preisGast>3,30</preisGast>
+                <inhaltsstoff>
+                    <name>9,A,G</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Beilagen</name>
+            <gericht>
+                <name>Salzkartoffeln </name>
+                <datum>2017-03-03</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name>5,9</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Nudeln </name>
+                <datum>2017-03-03</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name>9,A</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Kartoffelkroketten </name>
+                <datum>2017-03-03</datum>
+                <preisStudent>0,80</preisStudent>
+                <preisMitarbeiter>1,00</preisMitarbeiter>
+                <preisGast>1,30</preisGast>
+                <inhaltsstoff>
+                    <name>A</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Gemüse</name>
+            <gericht>
+                <name>Rotkohl </name>
+                <datum>2017-03-03</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name>3,9</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Grüne Bohnen </name>
+                <datum>2017-03-03</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name>9</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Salate und Desserts</name>
+            <gericht>
+                <name>Frische Salate und verschiedene Desserts stehen zur Auswahl.</name>
+                <datum>2017-03-03</datum>
+                <preisStudent></preisStudent>
+                <preisMitarbeiter></preisMitarbeiter>
+                <preisGast></preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+    </mensa>
+    <mensa>
+        <name>Mensa Neubrandenburg</name>
+        <theke>
+            <name>Komponente 1</name>
+            <gericht>
+                <name>Hähnchenbrust natur gebraten mit Tomaten-Hollandaise </name>
+                <datum>2017-02-27</datum>
+                <preisStudent>2,00</preisStudent>
+                <preisMitarbeiter>2,65</preisMitarbeiter>
+                <preisGast>3,30</preisGast>
+                <inhaltsstoff>
+                    <name>9,A,C,G,Gefl,J</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Komponente 2</name>
+            <gericht>
+                <name>Schweinegeschnetzeltes mit Paprika und Zwiebeln </name>
+                <datum>2017-02-27</datum>
+                <preisStudent>1,75</preisStudent>
+                <preisMitarbeiter>2,40</preisMitarbeiter>
+                <preisGast>3,05</preisGast>
+                <inhaltsstoff>
+                    <name>9,A,F,G,R,S</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Vegetarische Kost</name>
+            <gericht>
+                <name>vegetarische Paprikaschote mit Paprikasoße </name>
+                <datum>2017-02-27</datum>
+                <preisStudent>1,75</preisStudent>
+                <preisMitarbeiter>2,75</preisMitarbeiter>
+                <preisGast>3,75</preisGast>
+                <inhaltsstoff>
+                    <name>9,A,C,F,G,I</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Beilagen</name>
+            <gericht>
+                <name>Salzkartoffeln </name>
+                <datum>2017-02-27</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name>5</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>gedrehte Röhrennudeln </name>
+                <datum>2017-02-27</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name>A</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Pommes Frites </name>
+                <datum>2017-02-27</datum>
+                <preisStudent>0,80</preisStudent>
+                <preisMitarbeiter>1,00</preisMitarbeiter>
+                <preisGast>1,30</preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Gemüse</name>
+            <gericht>
+                <name>feines Möhrengemüse </name>
+                <datum>2017-02-27</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Romanesco </name>
+                <datum>2017-02-27</datum>
+                <preisStudent>0,70</preisStudent>
+                <preisMitarbeiter>0,90</preisMitarbeiter>
+                <preisGast>1,20</preisGast>
+                <inhaltsstoff>
+                    <name>9</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Salate und Desserts</name>
+            <gericht>
+                <name>Frische Salate und verschiedene Desserts stehen zur Auswahl.</name>
+                <datum>2017-02-27</datum>
+                <preisStudent></preisStudent>
+                <preisMitarbeiter></preisMitarbeiter>
+                <preisGast></preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Komponente 1</name>
+            <gericht>
+                <name>Geflügel-Bratwurst mit mit Rahmsauce </name>
+                <datum>2017-02-28</datum>
+                <preisStudent>2,00</preisStudent>
+                <preisMitarbeiter>2,65</preisMitarbeiter>
+                <preisGast>3,30</preisGast>
+                <inhaltsstoff>
+                    <name>1,9,A,C,G,Gefl,I</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Komponente 2</name>
+            <gericht>
+                <name>Kohlroulade in Krautsauce </name>
+                <datum>2017-02-28</datum>
+                <preisStudent>1,75</preisStudent>
+                <preisMitarbeiter>2,40</preisMitarbeiter>
+                <preisGast>3,05</preisGast>
+                <inhaltsstoff>
+                    <name>7,9,A,C,G,J,R,S</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Vegetarische Kost</name>
+            <gericht>
+                <name>Frische Rahmchampignons mit Reis </name>
+                <datum>2017-02-28</datum>
+                <preisStudent>1,75</preisStudent>
+                <preisMitarbeiter>2,75</preisMitarbeiter>
+                <preisGast>3,75</preisGast>
+                <inhaltsstoff>
+                    <name>9,A,G</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Beilagen</name>
+            <gericht>
+                <name>Salzkartoffeln </name>
+                <datum>2017-02-28</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name>5</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Kartoffelpüree </name>
+                <datum>2017-02-28</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name>9,G</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Gemüse</name>
+            <gericht>
+                <name>Leipziger Allerlei </name>
+                <datum>2017-02-28</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Broccoli </name>
+                <datum>2017-02-28</datum>
+                <preisStudent>0,70</preisStudent>
+                <preisMitarbeiter>0,90</preisMitarbeiter>
+                <preisGast>1,20</preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Salate und Desserts</name>
+            <gericht>
+                <name>Frische Salate und verschiedene Desserts stehen zur Auswahl.</name>
+                <datum>2017-02-28</datum>
+                <preisStudent></preisStudent>
+                <preisMitarbeiter></preisMitarbeiter>
+                <preisGast></preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Komponente 1</name>
+            <gericht>
+                <name>Putengeschnetzeltes Gyros-Art mit mit Tzatziki </name>
+                <datum>2017-03-01</datum>
+                <preisStudent>1,75</preisStudent>
+                <preisMitarbeiter>2,40</preisMitarbeiter>
+                <preisGast>3,05</preisGast>
+                <inhaltsstoff>
+                    <name>G,Gefl</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Komponente 2</name>
+            <gericht>
+                <name>Hackbraten mit Rahmsoße </name>
+                <datum>2017-03-01</datum>
+                <preisStudent>1,50</preisStudent>
+                <preisMitarbeiter>2,15</preisMitarbeiter>
+                <preisGast>2,80</preisGast>
+                <inhaltsstoff>
+                    <name>9,A,G,I,R,S</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Mensa Vital</name>
+            <gericht>
+                <name>vegetarisches Mexikanisches Ragout mit Kräuterreis </name>
+                <datum>2017-03-01</datum>
+                <preisStudent>2,20</preisStudent>
+                <preisMitarbeiter>3,20</preisMitarbeiter>
+                <preisGast>4,20</preisGast>
+                <inhaltsstoff>
+                    <name>3,F,G</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Beilagen</name>
+            <gericht>
+                <name>Salzkartoffeln </name>
+                <datum>2017-03-01</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name>5</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>fritierte Kartoffelscheiben </name>
+                <datum>2017-03-01</datum>
+                <preisStudent>0,80</preisStudent>
+                <preisMitarbeiter>1,00</preisMitarbeiter>
+                <preisGast>1,30</preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Gemüse</name>
+            <gericht>
+                <name>grüne Bohnen </name>
+                <datum>2017-03-01</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Weisskrautsalat </name>
+                <datum>2017-03-01</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name>3,9,15</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Salate und Desserts</name>
+            <gericht>
+                <name>Frische Salate und verschiedene Desserts stehen zur Auswahl.</name>
+                <datum>2017-03-01</datum>
+                <preisStudent></preisStudent>
+                <preisMitarbeiter></preisMitarbeiter>
+                <preisGast></preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Komponente 1</name>
+            <gericht>
+                <name>Wildgulasch mit Pilzen </name>
+                <datum>2017-03-02</datum>
+                <preisStudent>2,20</preisStudent>
+                <preisMitarbeiter>2,85</preisMitarbeiter>
+                <preisGast>3,50</preisGast>
+                <inhaltsstoff>
+                    <name>12,A,G,W</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Komponente 2</name>
+            <gericht>
+                <name>Chicken Nuggets mit Asia-Dip </name>
+                <datum>2017-03-02</datum>
+                <preisStudent>2,00</preisStudent>
+                <preisMitarbeiter>2,65</preisMitarbeiter>
+                <preisGast>3,30</preisGast>
+                <inhaltsstoff>
+                    <name>9,15,A,Gefl</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Vegetarische Kost</name>
+            <gericht>
+                <name>Gemüsebolognese </name>
+                <datum>2017-03-02</datum>
+                <preisStudent>1,75</preisStudent>
+                <preisMitarbeiter>2,75</preisMitarbeiter>
+                <preisGast>3,75</preisGast>
+                <inhaltsstoff>
+                    <name>9,15,A,I</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Beilagen</name>
+            <gericht>
+                <name>Kartoffelpüree </name>
+                <datum>2017-03-02</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name>9,G</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Salzkartoffeln </name>
+                <datum>2017-03-02</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name>5</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Spaghetti </name>
+                <datum>2017-03-02</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name>A</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Kartoffelspalten </name>
+                <datum>2017-03-02</datum>
+                <preisStudent>0,80</preisStudent>
+                <preisMitarbeiter>1,00</preisMitarbeiter>
+                <preisGast>1,30</preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Gemüse</name>
+            <gericht>
+                <name>buntes Pfannengemüse </name>
+                <datum>2017-03-02</datum>
+                <preisStudent>0,70</preisStudent>
+                <preisMitarbeiter>0,90</preisMitarbeiter>
+                <preisGast>1,20</preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Rosenkohl </name>
+                <datum>2017-03-02</datum>
+                <preisStudent>0,70</preisStudent>
+                <preisMitarbeiter>0,90</preisMitarbeiter>
+                <preisGast>1,20</preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Salate und Desserts</name>
+            <gericht>
+                <name>Frische Salate und verschiedene Desserts stehen zur Auswahl.</name>
+                <datum>2017-03-02</datum>
+                <preisStudent></preisStudent>
+                <preisMitarbeiter></preisMitarbeiter>
+                <preisGast></preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Komponente 1</name>
+            <gericht>
+                <name>Kasselerschinkenbraten mit Sahnesoße </name>
+                <datum>2017-03-03</datum>
+                <preisStudent>2,00</preisStudent>
+                <preisMitarbeiter>2,65</preisMitarbeiter>
+                <preisGast>3,30</preisGast>
+                <inhaltsstoff>
+                    <name>1,2,3,7,9,A,G,I,J,R,S</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Komponente 2</name>
+            <gericht>
+                <name>pan. Seelachfilet mit Broccoli-Käsefüllung mit Kräuterhollandaise </name>
+                <datum>2017-03-03</datum>
+                <preisStudent>2,00</preisStudent>
+                <preisMitarbeiter>2,65</preisMitarbeiter>
+                <preisGast>3,30</preisGast>
+                <inhaltsstoff>
+                    <name>A,C,D,G</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Vegetarische Kost</name>
+            <gericht>
+                <name>2 Gemüsefrikadellen mit griechischem Dip </name>
+                <datum>2017-03-03</datum>
+                <preisStudent>1,75</preisStudent>
+                <preisMitarbeiter>2,75</preisMitarbeiter>
+                <preisGast>3,75</preisGast>
+                <inhaltsstoff>
+                    <name>2,5,9,A,C,G</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Beilagen</name>
+            <gericht>
+                <name>Salzkartoffeln </name>
+                <datum>2017-03-03</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name>5</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Reis </name>
+                <datum>2017-03-03</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Gemüse</name>
+            <gericht>
+                <name>Mischgemüse </name>
+                <datum>2017-03-03</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Kaisergemüse </name>
+                <datum>2017-03-03</datum>
+                <preisStudent>0,70</preisStudent>
+                <preisMitarbeiter>0,90</preisMitarbeiter>
+                <preisGast>1,20</preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Salate und Desserts</name>
+            <gericht>
+                <name>Frische Salate und verschiedene Desserts stehen zur Auswahl.</name>
+                <datum>2017-03-03</datum>
+                <preisStudent></preisStudent>
+                <preisMitarbeiter></preisMitarbeiter>
+                <preisGast></preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+    </mensa>
+    <mensa>
+        <name>Mensa Stralsund</name>
+        <theke>
+            <name>Komponente 1</name>
+            <gericht>
+                <name>Hähnchenbrust natur gebraten Thymiansauce </name>
+                <datum>2017-02-27</datum>
+                <preisStudent>2,00</preisStudent>
+                <preisMitarbeiter>2,65</preisMitarbeiter>
+                <preisGast>3,30</preisGast>
+                <inhaltsstoff>
+                    <name>9,12,A,C,F,G,Gefl,I,J</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Komponente 2</name>
+            <gericht>
+                <name>Schweinegeschnetzeltes &quot;chinesisch süss-sauer&quot; </name>
+                <datum>2017-02-27</datum>
+                <preisStudent>1,75</preisStudent>
+                <preisMitarbeiter>2,40</preisMitarbeiter>
+                <preisGast>3,05</preisGast>
+                <inhaltsstoff>
+                    <name>A,F,H,S</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Vegetarische Kost</name>
+            <gericht>
+                <name>Vegetarische Paprikaschote mit Paprikasoße </name>
+                <datum>2017-02-27</datum>
+                <preisStudent>1,75</preisStudent>
+                <preisMitarbeiter>2,75</preisMitarbeiter>
+                <preisGast>3,75</preisGast>
+                <inhaltsstoff>
+                    <name>9,A,C,F,G,I</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Nudeltheke</name>
+            <gericht>
+                <name>Nudeln mit fruchtiger Tomatensoße </name>
+                <datum>2017-02-27</datum>
+                <preisStudent>2,00</preisStudent>
+                <preisMitarbeiter>2,65</preisMitarbeiter>
+                <preisGast>3,30</preisGast>
+                <inhaltsstoff>
+                    <name>2,3,9,15,A,G,S</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Beilagen</name>
+            <gericht>
+                <name>Salzkartoffeln </name>
+                <datum>2017-02-27</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name>5</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Reis </name>
+                <datum>2017-02-27</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name>9</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Kartoffelkroketten </name>
+                <datum>2017-02-27</datum>
+                <preisStudent>0,80</preisStudent>
+                <preisMitarbeiter>1,00</preisMitarbeiter>
+                <preisGast>1,30</preisGast>
+                <inhaltsstoff>
+                    <name>A</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Gemüse</name>
+            <gericht>
+                <name>Frühlingsgemüse </name>
+                <datum>2017-02-27</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Rosenkohl </name>
+                <datum>2017-02-27</datum>
+                <preisStudent>0,70</preisStudent>
+                <preisMitarbeiter>0,90</preisMitarbeiter>
+                <preisGast>1,20</preisGast>
+                <inhaltsstoff>
+                    <name>9,G,A,C,I</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Salate und Desserts</name>
+            <gericht>
+                <name>Frische Salate und verschiedene Desserts stehen zur Auswahl.</name>
+                <datum>2017-02-27</datum>
+                <preisStudent></preisStudent>
+                <preisMitarbeiter></preisMitarbeiter>
+                <preisGast></preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Komponente 1</name>
+            <gericht>
+                <name>Geflügel-Bratwurst mit Geflügelrahmsauce </name>
+                <datum>2017-02-28</datum>
+                <preisStudent>2,00</preisStudent>
+                <preisMitarbeiter>2,65</preisMitarbeiter>
+                <preisGast>3,30</preisGast>
+                <inhaltsstoff>
+                    <name>3,9,G,Gefl,I</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Komponente 2</name>
+            <gericht>
+                <name>Kohlroulade in Krautsauce </name>
+                <datum>2017-02-28</datum>
+                <preisStudent>1,75</preisStudent>
+                <preisMitarbeiter>2,40</preisMitarbeiter>
+                <preisGast>3,05</preisGast>
+                <inhaltsstoff>
+                    <name>7,9,C,G,J,S</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Komponente 3</name>
+            <gericht>
+                <name>Kichererbsencurry mit Wildreis u. Zuckererbsenstroh (Vegan </name>
+                <datum>2017-02-28</datum>
+                <preisStudent>2,20</preisStudent>
+                <preisMitarbeiter>2,85</preisMitarbeiter>
+                <preisGast>3,50</preisGast>
+                <inhaltsstoff>
+                    <name>9</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Vegetarische Kost</name>
+            <gericht>
+                <name>Tofubolognese mit Spaghetti  (vegan) </name>
+                <datum>2017-02-28</datum>
+                <preisStudent>1,75</preisStudent>
+                <preisMitarbeiter>2,75</preisMitarbeiter>
+                <preisGast>3,75</preisGast>
+                <inhaltsstoff>
+                    <name>5,12,A,F,I,K</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Beilagen</name>
+            <gericht>
+                <name>Salzkartoffeln </name>
+                <datum>2017-02-28</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name>5</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Kartoffelpüree </name>
+                <datum>2017-02-28</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name>9,G</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Gemüse</name>
+            <gericht>
+                <name>buntes Karottengemüse </name>
+                <datum>2017-02-28</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Euromix </name>
+                <datum>2017-02-28</datum>
+                <preisStudent>0,70</preisStudent>
+                <preisMitarbeiter>0,90</preisMitarbeiter>
+                <preisGast>1,20</preisGast>
+                <inhaltsstoff>
+                    <name>9,G,A,C,I</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Salate und Desserts</name>
+            <gericht>
+                <name>Frische Salate und verschiedene Desserts stehen zur Auswahl.</name>
+                <datum>2017-02-28</datum>
+                <preisStudent></preisStudent>
+                <preisMitarbeiter></preisMitarbeiter>
+                <preisGast></preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Tellergericht</name>
+            <gericht>
+                <name>Ungarischer Kartoffeltopf, Teller </name>
+                <datum>2017-03-01</datum>
+                <preisStudent>1,20</preisStudent>
+                <preisMitarbeiter>1,95</preisMitarbeiter>
+                <preisGast>2,70</preisGast>
+                <inhaltsstoff>
+                    <name>2,3,5,7,9,G,I,J,R,S</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Ungarischer Kartoffeltopf, Terrine </name>
+                <datum>2017-03-01</datum>
+                <preisStudent>1,60</preisStudent>
+                <preisMitarbeiter>2,45</preisMitarbeiter>
+                <preisGast>3,30</preisGast>
+                <inhaltsstoff>
+                    <name>2,3,5,7,9,G,I,J,R,S</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Komponente 1</name>
+            <gericht>
+                <name>Putengeschnetzeltes Gyros-Art mit Tzatziki </name>
+                <datum>2017-03-01</datum>
+                <preisStudent>1,75</preisStudent>
+                <preisMitarbeiter>2,40</preisMitarbeiter>
+                <preisGast>3,05</preisGast>
+                <inhaltsstoff>
+                    <name>G,Gefl</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Komponente 2</name>
+            <gericht>
+                <name>Hackbraten mit Rahmsauce </name>
+                <datum>2017-03-01</datum>
+                <preisStudent>1,50</preisStudent>
+                <preisMitarbeiter>2,15</preisMitarbeiter>
+                <preisGast>2,80</preisGast>
+                <inhaltsstoff>
+                    <name>9,12,A,G,I,K,S</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Vegetarische Kost</name>
+            <gericht>
+                <name>Broccoli-Nuss-Ecke dazu Hollandaise mit Gurkenstreifen und Salatbeilage </name>
+                <datum>2017-03-01</datum>
+                <preisStudent>1,75</preisStudent>
+                <preisMitarbeiter>2,75</preisMitarbeiter>
+                <preisGast>3,75</preisGast>
+                <inhaltsstoff>
+                    <name>9,12,A,C,G,H,I,K</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Beilagen</name>
+            <gericht>
+                <name>Salzkartoffeln </name>
+                <datum>2017-03-01</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name>5</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Couscous </name>
+                <datum>2017-03-01</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name>A</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Pommes Twister </name>
+                <datum>2017-03-01</datum>
+                <preisStudent>0,80</preisStudent>
+                <preisMitarbeiter>1,00</preisMitarbeiter>
+                <preisGast>1,30</preisGast>
+                <inhaltsstoff>
+                    <name>A</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Gemüse</name>
+            <gericht>
+                <name>Weisskrautsalat mit Paprika </name>
+                <datum>2017-03-01</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Mischgemüse </name>
+                <datum>2017-03-01</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name>9,G,A,C,I</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Salate und Desserts</name>
+            <gericht>
+                <name>Frische Salate und verschiedene Desserts stehen zur Auswahl.</name>
+                <datum>2017-03-01</datum>
+                <preisStudent></preisStudent>
+                <preisMitarbeiter></preisMitarbeiter>
+                <preisGast></preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Tellergericht</name>
+            <gericht>
+                <name>4 Kartoffelpuffer mit Apfelmus </name>
+                <datum>2017-03-02</datum>
+                <preisStudent>1,50</preisStudent>
+                <preisMitarbeiter>2,50</preisMitarbeiter>
+                <preisGast>3,50</preisGast>
+                <inhaltsstoff>
+                    <name>3,9,A,C</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Komponente 1</name>
+            <gericht>
+                <name>Wildgulasch mit Pilzen </name>
+                <datum>2017-03-02</datum>
+                <preisStudent>2,20</preisStudent>
+                <preisMitarbeiter>2,85</preisMitarbeiter>
+                <preisGast>3,50</preisGast>
+                <inhaltsstoff>
+                    <name>9,12,G,W</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Komponente 2</name>
+            <gericht>
+                <name>Chicken Nuggets mit Asia-Dip </name>
+                <datum>2017-03-02</datum>
+                <preisStudent>2,00</preisStudent>
+                <preisMitarbeiter>2,65</preisMitarbeiter>
+                <preisGast>3,30</preisGast>
+                <inhaltsstoff>
+                    <name>2,9,15,A,F,Gefl</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Vegetarische Kost</name>
+            <gericht>
+                <name>Veggie-Bolognese mit Spaghetti </name>
+                <datum>2017-03-02</datum>
+                <preisStudent>1,75</preisStudent>
+                <preisMitarbeiter>2,75</preisMitarbeiter>
+                <preisGast>3,75</preisGast>
+                <inhaltsstoff>
+                    <name>A,F</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Beilagen</name>
+            <gericht>
+                <name>Kartoffelpüree </name>
+                <datum>2017-03-02</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name>9,G,A,C,I</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Pommes Frites </name>
+                <datum>2017-03-02</datum>
+                <preisStudent>0,80</preisStudent>
+                <preisMitarbeiter>1,00</preisMitarbeiter>
+                <preisGast>1,30</preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Kartoffelklöße </name>
+                <datum>2017-03-02</datum>
+                <preisStudent>0,80</preisStudent>
+                <preisMitarbeiter>1,00</preisMitarbeiter>
+                <preisGast>1,30</preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Gemüse</name>
+            <gericht>
+                <name>Rotkohl </name>
+                <datum>2017-03-02</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name>2,3,12,S,K</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Broccoli </name>
+                <datum>2017-03-02</datum>
+                <preisStudent>0,70</preisStudent>
+                <preisMitarbeiter>0,90</preisMitarbeiter>
+                <preisGast>1,20</preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Salate und Desserts</name>
+            <gericht>
+                <name>Frische Salate und verschiedene Desserts stehen zur Auswahl.</name>
+                <datum>2017-03-02</datum>
+                <preisStudent></preisStudent>
+                <preisMitarbeiter></preisMitarbeiter>
+                <preisGast></preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Komponente 1</name>
+            <gericht>
+                <name>Chicken Wings mit Asia-Dip (süss-scharf) </name>
+                <datum>2017-03-03</datum>
+                <preisStudent>2,00</preisStudent>
+                <preisMitarbeiter>2,65</preisMitarbeiter>
+                <preisGast>3,30</preisGast>
+                <inhaltsstoff>
+                    <name>2,9,15,A,Gefl</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Komponente 2</name>
+            <gericht>
+                <name>Schlemmerfilet Pomodoro mit Sauce Hollandaise </name>
+                <datum>2017-03-03</datum>
+                <preisStudent>2,00</preisStudent>
+                <preisMitarbeiter>2,65</preisMitarbeiter>
+                <preisGast>3,30</preisGast>
+                <inhaltsstoff>
+                    <name>12,A,C,D,G,K</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Vegetarische Kost</name>
+            <gericht>
+                <name>Mais-Lauch Röst   Tomaten - Chili-Dip und Salatbeilage </name>
+                <datum>2017-03-03</datum>
+                <preisStudent>1,75</preisStudent>
+                <preisMitarbeiter>2,75</preisMitarbeiter>
+                <preisGast>3,75</preisGast>
+                <inhaltsstoff>
+                    <name>C,G,I</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Beilagen</name>
+            <gericht>
+                <name>Salzkartoffeln </name>
+                <datum>2017-03-03</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name>5</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Reis </name>
+                <datum>2017-03-03</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name>9</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Kartoffelspalten </name>
+                <datum>2017-03-03</datum>
+                <preisStudent>0,80</preisStudent>
+                <preisMitarbeiter>1,00</preisMitarbeiter>
+                <preisGast>1,30</preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Gemüse</name>
+            <gericht>
+                <name>Grüne Bohnen </name>
+                <datum>2017-03-03</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Kaisergemüse </name>
+                <datum>2017-03-03</datum>
+                <preisStudent>0,70</preisStudent>
+                <preisMitarbeiter>0,90</preisMitarbeiter>
+                <preisGast>1,20</preisGast>
+                <inhaltsstoff>
+                    <name>9,G,A,C,I</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Salate und Desserts</name>
+            <gericht>
+                <name>Frische Salate und verschiedene Desserts stehen zur Auswahl.</name>
+                <datum>2017-03-03</datum>
+                <preisStudent></preisStudent>
+                <preisMitarbeiter></preisMitarbeiter>
+                <preisGast></preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+    </mensa>
+    <mensa>
+        <name>Mensa Berthold-Beitz-Platz</name>
+        <theke>
+            <name>Tellergericht</name>
+            <gericht>
+                <name>Kl. Schüssel: Grießbrei mit Sauerkirschsoße </name>
+                <datum>2017-02-27</datum>
+                <preisStudent>0,70</preisStudent>
+                <preisMitarbeiter>1,35</preisMitarbeiter>
+                <preisGast>2,00</preisGast>
+                <inhaltsstoff>
+                    <name>A,G</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Teller: Grießbrei mit Sauerkirschsoße </name>
+                <datum>2017-02-27</datum>
+                <preisStudent>1,20</preisStudent>
+                <preisMitarbeiter>2,00</preisMitarbeiter>
+                <preisGast>3,00</preisGast>
+                <inhaltsstoff>
+                    <name>A,G</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Terrine: Grießbrei mit Sauerkirschsoße </name>
+                <datum>2017-02-27</datum>
+                <preisStudent>1,60</preisStudent>
+                <preisMitarbeiter>3,00</preisMitarbeiter>
+                <preisGast>4,00</preisGast>
+                <inhaltsstoff>
+                    <name>A,G</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Komponente 1</name>
+            <gericht>
+                <name>Wildlachs mit Apfel-Meerrettich-Dip </name>
+                <datum>2017-02-27</datum>
+                <preisStudent>2,00</preisStudent>
+                <preisMitarbeiter>2,65</preisMitarbeiter>
+                <preisGast>3,30</preisGast>
+                <inhaltsstoff>
+                    <name>3,5,D,G</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Komponente 2</name>
+            <gericht>
+                <name>Wurstgulasch </name>
+                <datum>2017-02-27</datum>
+                <preisStudent>1,50</preisStudent>
+                <preisMitarbeiter>2,15</preisMitarbeiter>
+                <preisGast>2,80</preisGast>
+                <inhaltsstoff>
+                    <name>1,2,3,7,15,A,I,J,S</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Terrine Wurstgulasch Spirelli doppelte Portion Nudeln und Wurstgulasch </name>
+                <datum>2017-02-27</datum>
+                <preisStudent>4,00</preisStudent>
+                <preisMitarbeiter>5,70</preisMitarbeiter>
+                <preisGast>7,60</preisGast>
+                <inhaltsstoff>
+                    <name>1,2,3,7,15,A,I,J,S</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Komponente 3</name>
+            <gericht>
+                <name>Pizza mit Pute, Früchten, Mais, Brokkoli und Hollandaise </name>
+                <datum>2017-02-27</datum>
+                <preisStudent>2,00</preisStudent>
+                <preisMitarbeiter>2,65</preisMitarbeiter>
+                <preisGast>3,30</preisGast>
+                <inhaltsstoff>
+                    <name>2,3,7,A,C,F,G,Gefl</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Komponente 4</name>
+            <gericht>
+                <name>Extra 40 Port.: Putenpfanne Chakalaka </name>
+                <datum>2017-02-27</datum>
+                <preisStudent>1,75</preisStudent>
+                <preisMitarbeiter>2,40</preisMitarbeiter>
+                <preisGast>3,05</preisGast>
+                <inhaltsstoff>
+                    <name>3,A,Gefl</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Vegetarische Kost</name>
+            <gericht>
+                <name>Gefüllte Paprikaschote mit Paprikasoße und Salzkartoffeln </name>
+                <datum>2017-02-27</datum>
+                <preisStudent>1,75</preisStudent>
+                <preisMitarbeiter>2,75</preisMitarbeiter>
+                <preisGast>3,75</preisGast>
+                <inhaltsstoff>
+                    <name>5,9,A,C,F,I,J</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Mensa Vital</name>
+            <gericht>
+                <name>Vegan: Bohnen-Zucchini-Chili mit Vollkornreis </name>
+                <datum>2017-02-27</datum>
+                <preisStudent>2,20</preisStudent>
+                <preisMitarbeiter>3,20</preisMitarbeiter>
+                <preisGast>4,20</preisGast>
+                <inhaltsstoff>
+                    <name>A</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Beilagen</name>
+            <gericht>
+                <name>Kürbisreis </name>
+                <datum>2017-02-27</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Spirelli </name>
+                <datum>2017-02-27</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name>A</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Salzkartoffeln </name>
+                <datum>2017-02-27</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name>5</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Vollkornreis </name>
+                <datum>2017-02-27</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Pommes Frites </name>
+                <datum>2017-02-27</datum>
+                <preisStudent>0,80</preisStudent>
+                <preisMitarbeiter>1,00</preisMitarbeiter>
+                <preisGast>1,30</preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Pommes Frites MAXI PORTION </name>
+                <datum>2017-02-27</datum>
+                <preisStudent>1,60</preisStudent>
+                <preisMitarbeiter>2,00</preisMitarbeiter>
+                <preisGast>2,60</preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Gemüse</name>
+            <gericht>
+                <name>Balkangemüse </name>
+                <datum>2017-02-27</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Schmorgemüse </name>
+                <datum>2017-02-27</datum>
+                <preisStudent>0,70</preisStudent>
+                <preisMitarbeiter>0,90</preisMitarbeiter>
+                <preisGast>1,20</preisGast>
+                <inhaltsstoff>
+                    <name>I</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Salate und Desserts</name>
+            <gericht>
+                <name>Frische Salate und verschiedene Desserts stehen zur Auswahl.</name>
+                <datum>2017-02-27</datum>
+                <preisStudent></preisStudent>
+                <preisMitarbeiter></preisMitarbeiter>
+                <preisGast></preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Tellergericht</name>
+            <gericht>
+                <name>Bunter Linseneintopf mit Kasselerfleisch, kl. Schüssel </name>
+                <datum>2017-02-28</datum>
+                <preisStudent>0,70</preisStudent>
+                <preisMitarbeiter>1,35</preisMitarbeiter>
+                <preisGast>2,00</preisGast>
+                <inhaltsstoff>
+                    <name>2,3,5,7,9,I,S</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Bunter Linseneintopf mit Kasselerfleisch, Teller </name>
+                <datum>2017-02-28</datum>
+                <preisStudent>1,20</preisStudent>
+                <preisMitarbeiter>2,00</preisMitarbeiter>
+                <preisGast>3,00</preisGast>
+                <inhaltsstoff>
+                    <name>2,3,5,7,9,I,S</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Bunter Linseneintopf mit Kasselerfleisch, Terrine </name>
+                <datum>2017-02-28</datum>
+                <preisStudent>1,60</preisStudent>
+                <preisMitarbeiter>3,00</preisMitarbeiter>
+                <preisGast>4,00</preisGast>
+                <inhaltsstoff>
+                    <name>2,3,5,7,9,I,S</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Komponente 2</name>
+            <gericht>
+                <name>Schweinelachsschnitzel mit Bratensoße </name>
+                <datum>2017-02-28</datum>
+                <preisStudent>1,75</preisStudent>
+                <preisMitarbeiter>2,40</preisMitarbeiter>
+                <preisGast>3,05</preisGast>
+                <inhaltsstoff>
+                    <name>9,A,G,I,S</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Komponente 3</name>
+            <gericht>
+                <name>Hühnerfrikassee </name>
+                <datum>2017-02-28</datum>
+                <preisStudent>2,00</preisStudent>
+                <preisMitarbeiter>2,65</preisMitarbeiter>
+                <preisGast>3,30</preisGast>
+                <inhaltsstoff>
+                    <name>3,9,A,Gefl</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Vegetarische Kost</name>
+            <gericht>
+                <name>Vegan: Kichererbsenbällchen mit Kräuter-Tomatensoße und Reis </name>
+                <datum>2017-02-28</datum>
+                <preisStudent>1,75</preisStudent>
+                <preisMitarbeiter>2,75</preisMitarbeiter>
+                <preisGast>3,75</preisGast>
+                <inhaltsstoff>
+                    <name>A,I</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Mensa Vital</name>
+            <gericht>
+                <name>Gebratenes Seehechtfilet auf buntem Sesam-Glasnudel-Salat </name>
+                <datum>2017-02-28</datum>
+                <preisStudent>2,80</preisStudent>
+                <preisMitarbeiter>3,80</preisMitarbeiter>
+                <preisGast>4,80</preisGast>
+                <inhaltsstoff>
+                    <name>A,D,F,L</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Nudeltheke</name>
+            <gericht>
+                <name>Penne mit Spinat-Sahnesoße </name>
+                <datum>2017-02-28</datum>
+                <preisStudent>2,00</preisStudent>
+                <preisMitarbeiter>2,65</preisMitarbeiter>
+                <preisGast>3,30</preisGast>
+                <inhaltsstoff>
+                    <name>A,C,G,J</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Beilagen</name>
+            <gericht>
+                <name>Salzkartoffeln </name>
+                <datum>2017-02-28</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name>5</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Reis </name>
+                <datum>2017-02-28</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Pommes Frites </name>
+                <datum>2017-02-28</datum>
+                <preisStudent>0,80</preisStudent>
+                <preisMitarbeiter>1,00</preisMitarbeiter>
+                <preisGast>1,30</preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Pommes Frites MAXI PORTION </name>
+                <datum>2017-02-28</datum>
+                <preisStudent>1,60</preisStudent>
+                <preisMitarbeiter>2,00</preisMitarbeiter>
+                <preisGast>2,60</preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Gemüse</name>
+            <gericht>
+                <name>Blumenkohl </name>
+                <datum>2017-02-28</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Honig-Ingwer-Möhren </name>
+                <datum>2017-02-28</datum>
+                <preisStudent>0,70</preisStudent>
+                <preisMitarbeiter>0,90</preisMitarbeiter>
+                <preisGast>1,20</preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Salate und Desserts</name>
+            <gericht>
+                <name>Frische Salate und verschiedene Desserts stehen zur Auswahl.</name>
+                <datum>2017-02-28</datum>
+                <preisStudent></preisStudent>
+                <preisMitarbeiter></preisMitarbeiter>
+                <preisGast></preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Tellergericht</name>
+            <gericht>
+                <name>Feurige Apfel-Tomatensuppe, kl. Schüssel </name>
+                <datum>2017-03-01</datum>
+                <preisStudent>0,70</preisStudent>
+                <preisMitarbeiter>1,35</preisMitarbeiter>
+                <preisGast>2,00</preisGast>
+                <inhaltsstoff>
+                    <name>2,3,9</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Feurige Apfel-Tomatensuppe, Teller </name>
+                <datum>2017-03-01</datum>
+                <preisStudent>1,20</preisStudent>
+                <preisMitarbeiter>2,00</preisMitarbeiter>
+                <preisGast>3,00</preisGast>
+                <inhaltsstoff>
+                    <name>2,3,9</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Feurige Apfel-Tomatensuppe, Terrine </name>
+                <datum>2017-03-01</datum>
+                <preisStudent>1,60</preisStudent>
+                <preisMitarbeiter>3,00</preisMitarbeiter>
+                <preisGast>4,00</preisGast>
+                <inhaltsstoff>
+                    <name>2,3,9</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Komponente 1</name>
+            <gericht>
+                <name>Fischplatte Bordelaise mit Dillsoße </name>
+                <datum>2017-03-01</datum>
+                <preisStudent>2,00</preisStudent>
+                <preisMitarbeiter>2,65</preisMitarbeiter>
+                <preisGast>3,30</preisGast>
+                <inhaltsstoff>
+                    <name>9,A,D,G,I</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Komponente 2</name>
+            <gericht>
+                <name>Schweinegeschnetzeltes Zürcher Art </name>
+                <datum>2017-03-01</datum>
+                <preisStudent>2,20</preisStudent>
+                <preisMitarbeiter>2,85</preisMitarbeiter>
+                <preisGast>3,50</preisGast>
+                <inhaltsstoff>
+                    <name>A,G,S</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Komponente 3</name>
+            <gericht>
+                <name>Hähnchenroulade mit Spinat- und Käsefüllung dazu eine Rahmsoße </name>
+                <datum>2017-03-01</datum>
+                <preisStudent>2,00</preisStudent>
+                <preisMitarbeiter>2,65</preisMitarbeiter>
+                <preisGast>3,30</preisGast>
+                <inhaltsstoff>
+                    <name>1,9,A,G,Gefl,I,J</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Vegetarische Kost</name>
+            <gericht>
+                <name>Wedges dazu Sour Cream (mit Knoblauch und Zwiebeln) Blattsalat </name>
+                <datum>2017-03-01</datum>
+                <preisStudent>1,75</preisStudent>
+                <preisMitarbeiter>2,75</preisMitarbeiter>
+                <preisGast>3,75</preisGast>
+                <inhaltsstoff>
+                    <name>,G</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Mensa Vital</name>
+            <gericht>
+                <name>Putenbrustgeschnetzeltes in Currysoße mit gebratenem Gemüse und Bandnudeln </name>
+                <datum>2017-03-01</datum>
+                <preisStudent>2,50</preisStudent>
+                <preisMitarbeiter>3,50</preisMitarbeiter>
+                <preisGast>4,50</preisGast>
+                <inhaltsstoff>
+                    <name>A,G,Gefl</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Aktionstheke</name>
+            <gericht>
+                <name>Schnitzel Wiener Art mit Salat dazu Pommes Frites </name>
+                <datum>2017-03-01</datum>
+                <preisStudent>4,00</preisStudent>
+                <preisMitarbeiter>5,00</preisMitarbeiter>
+                <preisGast>6,00</preisGast>
+                <inhaltsstoff>
+                    <name>A,S</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Beilagen</name>
+            <gericht>
+                <name>Reis </name>
+                <datum>2017-03-01</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Salzkartoffeln </name>
+                <datum>2017-03-01</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name>5</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Pommes Frites </name>
+                <datum>2017-03-01</datum>
+                <preisStudent>0,80</preisStudent>
+                <preisMitarbeiter>1,00</preisMitarbeiter>
+                <preisGast>1,30</preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Spätzle </name>
+                <datum>2017-03-01</datum>
+                <preisStudent>0,80</preisStudent>
+                <preisMitarbeiter>1,00</preisMitarbeiter>
+                <preisGast>1,30</preisGast>
+                <inhaltsstoff>
+                    <name>A,C</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Pommes Frites MAXI PORTION </name>
+                <datum>2017-03-01</datum>
+                <preisStudent>1,60</preisStudent>
+                <preisMitarbeiter>2,00</preisMitarbeiter>
+                <preisGast>2,60</preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Gemüse</name>
+            <gericht>
+                <name>Erbsen </name>
+                <datum>2017-03-01</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Kaisergemüse </name>
+                <datum>2017-03-01</datum>
+                <preisStudent>0,70</preisStudent>
+                <preisMitarbeiter>0,90</preisMitarbeiter>
+                <preisGast>1,20</preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Salate und Desserts</name>
+            <gericht>
+                <name>Frische Salate und verschiedene Desserts stehen zur Auswahl.</name>
+                <datum>2017-03-01</datum>
+                <preisStudent></preisStudent>
+                <preisMitarbeiter></preisMitarbeiter>
+                <preisGast></preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Tellergericht</name>
+            <gericht>
+                <name>Soljanka Ukrainische Art, kl. Schüssel </name>
+                <datum>2017-03-02</datum>
+                <preisStudent>0,70</preisStudent>
+                <preisMitarbeiter>1,35</preisMitarbeiter>
+                <preisGast>2,00</preisGast>
+                <inhaltsstoff>
+                    <name>2,3,7,9,15,G,I,J,S</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Soljanka Ukrainische Art, Teller </name>
+                <datum>2017-03-02</datum>
+                <preisStudent>1,20</preisStudent>
+                <preisMitarbeiter>2,00</preisMitarbeiter>
+                <preisGast>3,00</preisGast>
+                <inhaltsstoff>
+                    <name>2,3,7,9,15,G,I,J,S</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Soljanka Ukrainische Art, Terrine </name>
+                <datum>2017-03-02</datum>
+                <preisStudent>1,60</preisStudent>
+                <preisMitarbeiter>3,00</preisMitarbeiter>
+                <preisGast>4,00</preisGast>
+                <inhaltsstoff>
+                    <name>2,3,7,9,15,G,I,J,S</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Komponente 2</name>
+            <gericht>
+                <name>Kohlroulade mit Krautsoße </name>
+                <datum>2017-03-02</datum>
+                <preisStudent>2,00</preisStudent>
+                <preisMitarbeiter>2,65</preisMitarbeiter>
+                <preisGast>3,30</preisGast>
+                <inhaltsstoff>
+                    <name>9,A,S</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Komponente 3</name>
+            <gericht>
+                <name>6 Chicken Wings mit Barbecuecream </name>
+                <datum>2017-03-02</datum>
+                <preisStudent>2,00</preisStudent>
+                <preisMitarbeiter>2,65</preisMitarbeiter>
+                <preisGast>3,30</preisGast>
+                <inhaltsstoff>
+                    <name>1,3,A,C,G,Gefl,I,J</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Vegetarische Kost</name>
+            <gericht>
+                <name>Eierragout mit Spargel, Erbsen und Karotten dazu Salzkartoffeln </name>
+                <datum>2017-03-02</datum>
+                <preisStudent>1,75</preisStudent>
+                <preisMitarbeiter>2,75</preisMitarbeiter>
+                <preisGast>3,75</preisGast>
+                <inhaltsstoff>
+                    <name>5,9,A,C,G,I</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Mensa Vital</name>
+            <gericht>
+                <name>Vegan: Aubergine im Haferflockenmantel mit Tomatensoße und Gemüsebulgur </name>
+                <datum>2017-03-02</datum>
+                <preisStudent>2,20</preisStudent>
+                <preisMitarbeiter>3,20</preisMitarbeiter>
+                <preisGast>4,20</preisGast>
+                <inhaltsstoff>
+                    <name>A</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Aktionstheke</name>
+            <gericht>
+                <name>Zwiebelringe in Bierteig dazu Sour Cream (mit Knoblauch und Zwiebeln) , Blattsalat und Pommes Frites </name>
+                <datum>2017-03-02</datum>
+                <preisStudent>4,00</preisStudent>
+                <preisMitarbeiter>5,00</preisMitarbeiter>
+                <preisGast>6,00</preisGast>
+                <inhaltsstoff>
+                    <name>1,12,A,G</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Nudeltheke</name>
+            <gericht>
+                <name>Rigatoni mit Spinat und Lachs </name>
+                <datum>2017-03-02</datum>
+                <preisStudent>2,00</preisStudent>
+                <preisMitarbeiter>2,65</preisMitarbeiter>
+                <preisGast>3,30</preisGast>
+                <inhaltsstoff>
+                    <name>A,D,G</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Beilagen</name>
+            <gericht>
+                <name>Salzkartoffeln </name>
+                <datum>2017-03-02</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name>5,A</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Reis </name>
+                <datum>2017-03-02</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name>A</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Pommes Frites </name>
+                <datum>2017-03-02</datum>
+                <preisStudent>0,80</preisStudent>
+                <preisMitarbeiter>1,00</preisMitarbeiter>
+                <preisGast>1,30</preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Pommes Frites MAXI PORTION </name>
+                <datum>2017-03-02</datum>
+                <preisStudent>1,60</preisStudent>
+                <preisMitarbeiter>2,00</preisMitarbeiter>
+                <preisGast>2,60</preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Gemüse</name>
+            <gericht>
+                <name>Mischgemüse </name>
+                <datum>2017-03-02</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Mondialgemüse </name>
+                <datum>2017-03-02</datum>
+                <preisStudent>0,70</preisStudent>
+                <preisMitarbeiter>0,90</preisMitarbeiter>
+                <preisGast>1,20</preisGast>
+                <inhaltsstoff>
+                    <name>I</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Salate und Desserts</name>
+            <gericht>
+                <name>Frische Salate und verschiedene Desserts stehen zur Auswahl.</name>
+                <datum>2017-03-02</datum>
+                <preisStudent></preisStudent>
+                <preisMitarbeiter></preisMitarbeiter>
+                <preisGast></preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Tellergericht</name>
+            <gericht>
+                <name>Karottencremesuppe mit Ingwer, kl. Schüssel </name>
+                <datum>2017-03-03</datum>
+                <preisStudent>0,70</preisStudent>
+                <preisMitarbeiter>1,35</preisMitarbeiter>
+                <preisGast>2,00</preisGast>
+                <inhaltsstoff>
+                    <name>9,G</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Karottencremesuppe mit Ingwer, Teller </name>
+                <datum>2017-03-03</datum>
+                <preisStudent>1,20</preisStudent>
+                <preisMitarbeiter>2,00</preisMitarbeiter>
+                <preisGast>3,00</preisGast>
+                <inhaltsstoff>
+                    <name>9,G</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Karottencremesuppe mit Ingwer, Terrine </name>
+                <datum>2017-03-03</datum>
+                <preisStudent>1,60</preisStudent>
+                <preisMitarbeiter>3,00</preisMitarbeiter>
+                <preisGast>4,00</preisGast>
+                <inhaltsstoff>
+                    <name>9,G</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Komponente 2</name>
+            <gericht>
+                <name>Schweineragout </name>
+                <datum>2017-03-03</datum>
+                <preisStudent>1,75</preisStudent>
+                <preisMitarbeiter>2,40</preisMitarbeiter>
+                <preisGast>3,05</preisGast>
+                <inhaltsstoff>
+                    <name>A,I,S</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Komponente 3</name>
+            <gericht>
+                <name>Gebratene Hähnchenkeule mit Thymiansoße </name>
+                <datum>2017-03-03</datum>
+                <preisStudent>2,00</preisStudent>
+                <preisMitarbeiter>2,65</preisMitarbeiter>
+                <preisGast>3,30</preisGast>
+                <inhaltsstoff>
+                    <name>9,A,Gefl,I</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Vegetarische Kost</name>
+            <gericht>
+                <name>Vegan: Asiatische Gemüse-Reispfanne </name>
+                <datum>2017-03-03</datum>
+                <preisStudent>1,75</preisStudent>
+                <preisMitarbeiter>2,75</preisMitarbeiter>
+                <preisGast>3,75</preisGast>
+                <inhaltsstoff>
+                    <name>A,F,I,J</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Nudeltheke</name>
+            <gericht>
+                <name>Hörnchennudeln mit Korv (Wurst) Stroganoff </name>
+                <datum>2017-03-03</datum>
+                <preisStudent>2,00</preisStudent>
+                <preisMitarbeiter>2,65</preisMitarbeiter>
+                <preisGast>3,30</preisGast>
+                <inhaltsstoff>
+                    <name>2,3,7,A,C,G,I,S</name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Beilagen</name>
+            <gericht>
+                <name>Salzkartoffeln </name>
+                <datum>2017-03-03</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name>5</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Reis </name>
+                <datum>2017-03-03</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>5 Böhmische Knödelscheiben </name>
+                <datum>2017-03-03</datum>
+                <preisStudent>0,80</preisStudent>
+                <preisMitarbeiter>1,00</preisMitarbeiter>
+                <preisGast>1,30</preisGast>
+                <inhaltsstoff>
+                    <name>G,A,C</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Spätzle </name>
+                <datum>2017-03-03</datum>
+                <preisStudent>0,80</preisStudent>
+                <preisMitarbeiter>1,00</preisMitarbeiter>
+                <preisGast>1,30</preisGast>
+                <inhaltsstoff>
+                    <name>A,C</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Pommes Frites </name>
+                <datum>2017-03-03</datum>
+                <preisStudent>0,80</preisStudent>
+                <preisMitarbeiter>1,00</preisMitarbeiter>
+                <preisGast>1,30</preisGast>
+                <inhaltsstoff>
+                    <name>15,I</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Pommes Frites MAXI PORTION </name>
+                <datum>2017-03-03</datum>
+                <preisStudent>1,60</preisStudent>
+                <preisMitarbeiter>2,00</preisMitarbeiter>
+                <preisGast>2,60</preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Gemüse</name>
+            <gericht>
+                <name>Rotkohl </name>
+                <datum>2017-03-03</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name>1,3</name>
+                </inhaltsstoff>
+            </gericht>
+            <gericht>
+                <name>Fingermöhren </name>
+                <datum>2017-03-03</datum>
+                <preisStudent>0,50</preisStudent>
+                <preisMitarbeiter>0,70</preisMitarbeiter>
+                <preisGast>1,00</preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+        <theke>
+            <name>Salate und Desserts</name>
+            <gericht>
+                <name>Frische Salate und verschiedene Desserts stehen zur Auswahl.</name>
+                <datum>2017-03-03</datum>
+                <preisStudent></preisStudent>
+                <preisMitarbeiter></preisMitarbeiter>
+                <preisGast></preisGast>
+                <inhaltsstoff>
+                    <name></name>
+                </inhaltsstoff>
+            </gericht>
+        </theke>
+    </mensa>
+</anbieter>

@@ -39,4 +39,9 @@ dependencies {
     compile 'com.google.android.gms:play-services-wearable:8.4.0'
     compile project(':common')
     wearApp project(':wear')
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.powermock:powermock:1.6.5'
+    testCompile 'org.powermock:powermock-module-junit4:1.6.5'
+    testCompile 'org.easymock:easymock:3.4'
+    testCompile 'org.powermock:powermock-api-easymock:1.6.5'
 }
