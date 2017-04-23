@@ -12,6 +12,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -33,6 +34,11 @@ public class SplashActivity extends AppCompatActivity {
 		iv = (ImageView) findViewById(R.id.splashImage);
 		pb = (ProgressBar) findViewById(R.id.splashProgress);
 		tv = (TextView) findViewById(R.id.splashText);
+		startParseTask();
+		
+	}
+
+	private void startParseTask() {
 		if(isOnline()) {
 			parseTask pt = new parseTask();
 			pt.execute("");
@@ -42,17 +48,27 @@ public class SplashActivity extends AppCompatActivity {
 			pb.setVisibility(View.GONE);
 			iv.setVisibility(View.GONE);
 		}
-		
 	}
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.menu_splash, menu);
+		super.onCreateOptionsMenu(menu);
+		menu.add(Menu.NONE, 0, Menu.NONE,"Speisekarte aktualisieren");
 		return true;
 	}
 
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		if (item.getItemId() == 0) {
+			Intent i = new Intent(getApplicationContext(), SplashActivity.class);
+			startActivity(i);
+			finish();
+		}
 
-	public boolean isOnline() {
+		return super.onOptionsItemSelected(item);
+	}
+
+	private boolean isOnline() {
 	    ConnectivityManager cm =
 	        (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 

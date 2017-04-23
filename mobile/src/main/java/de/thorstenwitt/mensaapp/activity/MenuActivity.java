@@ -121,7 +121,9 @@ public class MenuActivity extends AppCompatActivity {
 	}
 
 	public void sendMensaDataToWatch() {
-		ds.sendMensa(LunchParser.getInstance().getLunchDataForAllMensas().get(properties.getSelectedMensa()));
+		if (LunchParser.getInstance().getLunchDataForAllMensas().size()>=properties.getSelectedMensa()) {
+			ds.sendMensa(LunchParser.getInstance().getLunchDataForAllMensas().get(properties.getSelectedMensa()));
+		}
 		ds.sendProperties(properties);
 	}
 
