@@ -1,6 +1,6 @@
 # mensaApp
 [![Build Status](https://travis-ci.org/thorstenwitt/mensaApp.svg?branch=master)](https://travis-ci.org/thorstenwitt/mensaApp)
-
+[![License](https://img.shields.io/badge/license-GNU%20General%20Public%20License%20v3.0-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.txt)
 Android Anwendung zur Abfrage der Mittagskarte in der Mensa.
 
 
